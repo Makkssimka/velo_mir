@@ -1,0 +1,64 @@
+2021-01-14T06:28:00+00:00 CRITICAL syntax error, unexpected '$url' (T_VARIABLE) в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/helper_function.php на строке 23
+
+2021-01-14T06:28:00+00:00 CRITICAL syntax error, unexpected '$url' (T_VARIABLE) в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/helper_function.php на строке 23
+
+2021-01-14T18:36:31+00:00 CRITICAL syntax error, unexpected ')' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/functions.php на строке 14
+
+2021-01-14T18:36:32+00:00 CRITICAL syntax error, unexpected ')' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/functions.php на строке 14
+
+2021-01-14T18:36:33+00:00 CRITICAL syntax error, unexpected ')' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/functions.php на строке 14
+
+2021-01-14T18:36:34+00:00 CRITICAL syntax error, unexpected ')' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/functions.php на строке 14
+
+2021-01-14T18:44:33+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function wp_redirect(), 0 passed in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/functions.php on line 16 and at least 1 expected in /Users/maksimzukovic/Sites/velo/wp-includes/pluggable.php:1246
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/functions.php(16): wp_redirect()
+#1 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(287): myResetSession('')
+#2 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#3 /Users/maksimzukovic/Sites/velo/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /Users/maksimzukovic/Sites/velo/wp-settings.php(557): do_action('init')
+#5 /Users/maksimzukovic/Sites/velo/wp-config.php(89): require_once('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/wp-load.php(37): require_once('/Users/maksimzu...')
+#7 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(13): require_once('/Users/maksimzu...')
+#8 /Users/maksimzukovi в /Users/maksimzukovic/Sites/velo/wp-includes/pluggable.php на строке 1246
+
+2021-01-14T18:45:19+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function wp_redirect(), 0 passed in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/functions.php on line 17 and at least 1 expected in /Users/maksimzukovic/Sites/velo/wp-includes/pluggable.php:1246
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/functions.php(17): wp_redirect()
+#1 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(287): myResetSession('')
+#2 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#3 /Users/maksimzukovic/Sites/velo/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /Users/maksimzukovic/Sites/velo/wp-settings.php(557): do_action('init')
+#5 /Users/maksimzukovic/Sites/velo/wp-config.php(89): require_once('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/wp-load.php(37): require_once('/Users/maksimzu...')
+#7 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(13): require_once('/Users/maksimzu...')
+#8 /Users/maksimzukovi в /Users/maksimzukovic/Sites/velo/wp-includes/pluggable.php на строке 1246
+
+2021-01-14T18:45:43+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function wp_redirect(), 0 passed in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/functions.php on line 17 and at least 1 expected in /Users/maksimzukovic/Sites/velo/wp-includes/pluggable.php:1246
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/functions.php(17): wp_redirect()
+#1 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(287): myResetSession('')
+#2 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters(NULL, Array)
+#3 /Users/maksimzukovic/Sites/velo/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /Users/maksimzukovic/Sites/velo/wp-settings.php(557): do_action('init')
+#5 /Users/maksimzukovic/Sites/velo/wp-config.php(89): require_once('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/wp-load.php(37): require_once('/Users/maksimzu...')
+#7 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(13): require_once('/Users/maksimzu...')
+#8 /Users/maksimzukovi в /Users/maksimzukovic/Sites/velo/wp-includes/pluggable.php на строке 1246
+
+2021-01-14T18:53:38+00:00 CRITICAL syntax error, unexpected '}' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/helper_function.php на строке 29
+
+2021-01-14T18:53:39+00:00 CRITICAL syntax error, unexpected '}' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/helper_function.php на строке 29
+
+2021-01-14T18:53:53+00:00 CRITICAL syntax error, unexpected '}' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/helper_function.php на строке 29
+
+2021-01-14T18:54:35+00:00 CRITICAL syntax error, unexpected '}' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/helper_function.php на строке 29
+
+2021-01-14T18:54:53+00:00 CRITICAL syntax error, unexpected '}' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/helper_function.php на строке 29
+
+2021-01-14T18:55:54+00:00 CRITICAL syntax error, unexpected '}' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/helper_function.php на строке 29
+
+2021-01-14T18:56:35+00:00 CRITICAL syntax error, unexpected '}' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/helper_function.php на строке 29
+
+2021-01-14T18:56:53+00:00 CRITICAL syntax error, unexpected '}' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/helper_function.php на строке 29
+

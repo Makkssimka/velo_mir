@@ -1,0 +1,113 @@
+2021-01-04T13:04:08+00:00 CRITICAL Uncaught Error: Call to a member function get_permalink() on array in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php:36
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-includes/template.php(732): require()
+#1 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/Users/maksimzu...', false)
+#2 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(965): wc_get_template_part('content', 'single-product')
+#3 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce.php(3): woocommerce_content()
+#4 /Users/maksimzukovic/Sites/velo/wp-includes/template-loader.php(106): include('/Users/maksimzu...')
+#5 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(19): require_once('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/index.php(17): require('/Users/maksimzu...')
+#7 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 36
+
+2021-01-04T13:04:25+00:00 CRITICAL Uncaught Error: Call to a member function get_permalink() on array in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php:36
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-includes/template.php(732): require()
+#1 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/Users/maksimzu...', false)
+#2 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(965): wc_get_template_part('content', 'single-product')
+#3 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce.php(3): woocommerce_content()
+#4 /Users/maksimzukovic/Sites/velo/wp-includes/template-loader.php(106): include('/Users/maksimzu...')
+#5 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(19): require_once('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/index.php(17): require('/Users/maksimzu...')
+#7 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 36
+
+2021-01-04T13:04:26+00:00 CRITICAL Uncaught Error: Call to a member function get_permalink() on array in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php:36
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-includes/template.php(732): require()
+#1 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/Users/maksimzu...', false)
+#2 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(965): wc_get_template_part('content', 'single-product')
+#3 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce.php(3): woocommerce_content()
+#4 /Users/maksimzukovic/Sites/velo/wp-includes/template-loader.php(106): include('/Users/maksimzu...')
+#5 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(19): require_once('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/index.php(17): require('/Users/maksimzu...')
+#7 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 36
+
+2021-01-04T13:14:07+00:00 CRITICAL Uncaught Error: Call to a member function get_variation_attributes() on bool in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php:53
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-includes/template.php(732): require()
+#1 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/Users/maksimzu...', false)
+#2 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(965): wc_get_template_part('content', 'single-product')
+#3 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce.php(3): woocommerce_content()
+#4 /Users/maksimzukovic/Sites/velo/wp-includes/template-loader.php(106): include('/Users/maksimzu...')
+#5 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(19): require_once('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/index.php(17): require('/Users/maksimzu...')
+#7 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 53
+
+2021-01-04T13:20:17+00:00 CRITICAL syntax error, unexpected '?>' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 99
+
+2021-01-04T13:22:05+00:00 CRITICAL syntax error, unexpected '?>', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 99
+
+2021-01-04T13:25:43+00:00 CRITICAL syntax error, unexpected '=', expecting ';' or ',' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 99
+
+2021-01-04T13:29:48+00:00 CRITICAL Uncaught Error: Call to undefined method WC_Product_Variable::get_permlink() in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php:87
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-includes/template.php(732): require()
+#1 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/Users/maksimzu...', false)
+#2 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(965): wc_get_template_part('content', 'single-product')
+#3 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce.php(3): woocommerce_content()
+#4 /Users/maksimzukovic/Sites/velo/wp-includes/template-loader.php(106): include('/Users/maksimzu...')
+#5 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(19): require_once('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/index.php(17): require('/Users/maksimzu...')
+#7 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 87
+
+2021-01-04T13:32:54+00:00 CRITICAL syntax error, unexpected '$default_variable' (T_VARIABLE) в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 53
+
+2021-01-04T13:33:01+00:00 CRITICAL syntax error, unexpected '$default_variable' (T_VARIABLE) в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 53
+
+2021-01-04T13:50:55+00:00 CRITICAL syntax error, unexpected ')', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 42
+
+2021-01-04T13:51:00+00:00 CRITICAL syntax error, unexpected ')', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 42
+
+2021-01-04T13:51:02+00:00 CRITICAL syntax error, unexpected ')', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 42
+
+2021-01-04T13:55:50+00:00 CRITICAL Uncaught Error: Call to a member function get_variation_attributes() on null in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php:64
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-includes/template.php(732): require()
+#1 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/Users/maksimzu...', false)
+#2 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(965): wc_get_template_part('content', 'single-product')
+#3 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce.php(3): woocommerce_content()
+#4 /Users/maksimzukovic/Sites/velo/wp-includes/template-loader.php(106): include('/Users/maksimzu...')
+#5 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(19): require_once('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/index.php(17): require('/Users/maksimzu...')
+#7 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 64
+
+2021-01-04T14:23:09+00:00 CRITICAL Uncaught Error: Call to undefined method WC_Product_Variation::get_variation_attribute() in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php:57
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-includes/template.php(732): require()
+#1 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/Users/maksimzu...', false)
+#2 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(965): wc_get_template_part('content', 'single-product')
+#3 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce.php(3): woocommerce_content()
+#4 /Users/maksimzukovic/Sites/velo/wp-includes/template-loader.php(106): include('/Users/maksimzu...')
+#5 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(19): require_once('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/index.php(17): require('/Users/maksimzu...')
+#7 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 57
+
+2021-01-04T17:00:47+00:00 CRITICAL syntax error, unexpected '$attr' (T_VARIABLE) в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 44
+
+2021-01-04T17:02:38+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function wc_get_product_terms(), 1 passed in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php on line 42 and at least 2 expected in /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-term-functions.php:176
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php(42): wc_get_product_terms(559)
+#1 /Users/maksimzukovic/Sites/velo/wp-includes/template.php(732): require('/Users/maksimzu...')
+#2 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/Users/maksimzu...', false)
+#3 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(965): wc_get_template_part('content', 'single-product')
+#4 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce.php(3): woocommerce_content()
+#5 /Users/maksimzukovic/Sites/velo/wp-includ в /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-term-functions.php на строке 176
+
+2021-01-04T17:15:07+00:00 CRITICAL syntax error, unexpected ')' в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php на строке 101
+

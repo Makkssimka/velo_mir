@@ -1,0 +1,928 @@
+# Translation of Plugins - WordPress Real Media Library: Media Library Folder &amp; File Manager - Development (trunk) in Russian
+# This file is distributed under the same license as the Plugins - WordPress Real Media Library: Media Library Folder &amp; File Manager - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-02-26 23:26:35+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - WordPress Real Media Library: Media Library Folder &amp; File Manager - Development (trunk)\n"
+
+#. Plugin URI of the plugin
+msgid "https://devowl.io/wordpress-real-media-library/"
+msgstr "https://devowl.io/wordpress-real-media-library/"
+
+#. Description of the plugin
+msgid "Organize uploaded media in folders, collections and galleries: A file manager for WordPress. Media management made easy!"
+msgstr "Организовать загруженные носители в папках, коллекциях и галереях: Файловый менеджер для WordPress. Медиа-менеджмент стал легче!"
+
+#. Author URI of the plugin
+msgid "https://devowl.io"
+msgstr "https://devowl.io"
+
+#: inc/api/attachment.php:111 inc/api/attachment.php:131
+#: inc/api/attachment.php:149
+msgid "The given folder was not found."
+msgstr "Данная папка не найдена."
+
+#: inc/Assets.php:226
+msgid "Complementary Plugins"
+msgstr "Дополнительные плагины"
+
+#: inc/Assets.php:243
+msgid ""
+"\n"
+"\n"
+"Note: If you want to delete a shortcut file, the source file will NOT be deleted.\n"
+"If you want to delete a non-shortcut file, all associated shortcuts are deleted, too."
+msgstr ""
+"\n"
+"\n"
+"Примечание: Если вы хотите удалить файл ярлыка, исходный файл не будет удалён.\n"
+"Если вы хотите удалить файл без ярлыка, все связанные ярлыки также будут удалены."
+
+#: inc/attachment/CustomField.php:46
+msgid "If you move this shortcut, the location of the source/main file is not changed."
+msgstr "При перемещении этого ярлыка, расположение папки исходного / основного файла не будет изменено."
+
+#: inc/attachment/CustomField.php:47
+msgid "If you move this attachment, the folder location of the associated shortcuts are not changed."
+msgstr "При перемещении этого вложения, расположение папки связанных ярлыков не будет изменено."
+
+#: inc/attachment/CustomField.php:69
+msgid "Move to another folder"
+msgstr "Перейти в другую папку"
+
+#: inc/attachment/CustomField.php:73 inc/view/FolderShortcode.php:98
+#: inc/view/Lang.php:28 inc/folder/Creatable.php:373
+msgid "Folder"
+msgstr "Папка"
+
+#: inc/attachment/CustomField.php:111
+msgid "Shortcut infos"
+msgstr "Информация о ярлыке"
+
+#: inc/attachment/CustomField.php:117
+msgid "This is a shortcut of a media library file. Shortcuts doesn't need any physical storage <strong>(0 kB)</strong>. If you want to change the file itself, you must do this in the original file (for example replace media file through a plugin).<br/>Note also that the fields in the shortcuts can be different to the original file, for example \"Title\", \"Description\" or \"Caption\"."
+msgstr "Это ярлык файла библиотеки мультимедиа. Ярлыки не нуждаются в физическом хранилище <strong>(0kb)</strong>. Если вы хотите изменить сам файл, вы должны сделать это в исходном файле (например, заменить файл мультимедиа через плагин).<br/>Обратите внимание, что поля в ярлыках могут отличаться от исходного файла, например \"Заголовок\", \"Описание\" или \"Подпись\"."
+
+#: inc/attachment/CustomField.php:159
+msgid "This file has no associated shortcuts. You can create shortcuts by moving files per mouse and hold any key."
+msgstr "Этот файл не имеет ярлыков. Вы можете создавать ярлыки, перемещая файлы с помощью мыши и удерживая любую клавишу."
+
+#: inc/attachment/Permissions.php:36
+msgid "You are not allowed to insert files here."
+msgstr "Вы не можете вставить файлы."
+
+#: inc/attachment/Permissions.php:44
+msgid "You are not allowed to move the file."
+msgstr "Вы не можете переместить файл."
+
+#: inc/attachment/Permissions.php:61
+msgid "You are not allowed to create a subfolder here."
+msgstr "Вы не можете создать подпапку."
+
+#: inc/attachment/Permissions.php:75
+msgid "You are not allowed to delete this folder."
+msgstr "Вы не можете удалить эту папку."
+
+#: inc/attachment/Permissions.php:89
+msgid "You are not allowed to rename this folder."
+msgstr "Вы не можете переименовать эту папку."
+
+#: inc/attachment/Upload.php:52
+msgid "Select destination folder"
+msgstr "Выберите папку назначения"
+
+#: inc/attachment/Upload.php:62
+msgid "You can simply upload files directly to a folder. Select a folder and upload files."
+msgstr "Вы можете просто загрузить файлы непосредственно на папку. Выберите папку и загрузите файлы."
+
+#: inc/attachment/Upload.php:67
+msgid "upload to folder"
+msgstr "загрузить в папку"
+
+#: inc/comp/ExImport.php:62
+msgid "RealMediaLibrary:Import / Export"
+msgstr "RealMediaLibrary:Импорт/Экспорт"
+
+#: inc/comp/ExImport.php:68
+msgid "Import from other plugins"
+msgstr "Другие плагины для WordPress"
+
+#: inc/comp/ExImport.php:75
+msgid "Export / Import Real Media Library folders"
+msgstr "Экспорт / импорт Real Media Library папок"
+
+#: inc/comp/ExImport.php:87
+msgid "Export"
+msgstr "Экспорт"
+
+#: inc/comp/ExImport.php:92 inc/comp/ExImport.php:135 inc/comp/ExImport.php:145
+#: inc/comp/ExImport.php:153
+msgid "Import"
+msgstr "Импорт"
+
+#: inc/comp/ExImport.php:95
+msgid "All available folders will be exported. The current structure is not lost during import - but check that there are no duplicate names in the import data, as these are not checked."
+msgstr "Процесс экспорта будет учитывать все доступные папки. Процесс импорта не коснётся вашей существующей структуры и, пожалуйста, убедитесь, что данные импорта не имеют повторяющихся имен с вашей текущей иерархией."
+
+#: inc/comp/ExImport.php:101
+msgid "Exported data:"
+msgstr "Экспорт данных:"
+
+#: inc/comp/ExImport.php:104
+msgid "Import data:"
+msgstr "Импорт данных:"
+
+#: inc/comp/ExImport.php:110
+msgid "Importing data is only available in PRO version."
+msgstr "Импорт данных доступен только в версии PRO."
+
+#: inc/view/Lang.php:176 inc/comp/ExImport.php:114 inc/comp/ExImport.php:166
+msgid "Learn more about PRO"
+msgstr "Узнать больше о PRO"
+
+#: inc/comp/ExImport.php:156
+msgid "Imports categories and post relations."
+msgstr "Импорт категорий и почтовых связей."
+
+#: inc/comp/ExImport.php:162
+msgid "Importing categories from another plugin is only available in PRO version."
+msgstr "Импорт категорий из другого плагина доступен только в версии PRO."
+
+#: inc/comp/ExportMediaLibrary.php:136
+msgid "No valid folder."
+msgstr "Нет действительной папки."
+
+#: inc/comp/ExportMediaLibrary.php:184
+msgid "No valid type."
+msgstr "Тип папки"
+
+#: inc/comp/PolyLang.php:51
+msgid "PolyLang: Automatically move translations"
+msgstr "PolyLang: Автоматически перемещайте переводы"
+
+#: inc/comp/PolyLang.php:67 inc/comp/WPML.php:251
+msgid "If you move a file, the corresponding translated file will also be moved."
+msgstr "Если вы перемещаете файл, также переместите связанные файлы с переводом."
+
+#: inc/comp/WPML.php:235
+msgid "WPML: Automatically move translations"
+msgstr "WPML: Автоматически перемещать переводы"
+
+#. translators:
+#: inc/exception/FolderAlreadyExistsException.php:31
+msgid "'%s' already exists in this folder."
+msgstr "\"%s \" уже существует в этой папке."
+
+#. translators:
+#: inc/exception/OnlyInProVersionException.php:23
+msgid "This functionality is not available in the free version (%s)."
+msgstr "Эта функциональность не доступна в бесплатной версии (%s)."
+
+#: inc/rest/Attachment.php:161 inc/folder/Creatable.php:131
+msgid "Something went wrong."
+msgstr "Что-то пошло не так..."
+
+#: inc/folder/Creatable.php:225
+msgid "You need to provide a set of files."
+msgstr "Вам необходимо предоставить набор файлов."
+
+#. translators:
+#: inc/folder/Creatable.php:278
+msgid "The parent %d does not exist."
+msgstr "Родительский %d не существует."
+
+#: inc/folder/Creatable.php:312
+msgid "The folder could not be created in the database."
+msgstr "Не удалось создать папку в базе данных."
+
+#: inc/folder/Creatable.php:315
+msgid "The folder could not be created because it already exists."
+msgstr "Не удалось создать папку, так как она уже существует."
+
+#: inc/folder/Creatable.php:392
+msgid "A folder can contain every type of file or a collection, but not gallery."
+msgstr "Папка может содержать любой тип файла или коллекцию, но не галерею."
+
+#: inc/folder/Creatable.php:413
+msgid "The given parent does not exist to set the parent for this folder."
+msgstr "Данный родитель не существует, чтобы установить родителя для этой папки."
+
+#: inc/folder/Creatable.php:417
+msgid "You are not allowed to change the parent for this folder."
+msgstr "Вы не можете изменить родителя для этой папки."
+
+#: inc/folder/Creatable.php:421
+msgid "The given parent does not allow the folder type."
+msgstr "Данный родитель не предусматривает тип папки."
+
+#. translators:
+#: inc/folder/Creatable.php:523
+msgid "'%s' is not a valid folder name."
+msgstr "'%s' недопустимое имя папки."
+
+#: inc/folder/Creatable.php:643
+msgid "Order by name ascending"
+msgstr "Сортировать по имени: от А до Я"
+
+#: inc/folder/Creatable.php:644
+msgid "Order by name descending"
+msgstr "Сортировать по имени: от Я до А"
+
+#: inc/folder/Creatable.php:645 inc/order/Sortable.php:80
+msgid "Order by ID ascending"
+msgstr "Сортировать по ID ⬆"
+
+#: inc/folder/Creatable.php:646 inc/order/Sortable.php:81
+msgid "Order by ID descending"
+msgstr "Сортировать по ID ⬇"
+
+#: inc/folder/CRUD.php:111
+msgid "The given folder does not exist or you cannot rename this folder."
+msgstr "Данная папка не существует или Вы не можете переименовать эту папку."
+
+#: inc/view/Lang.php:72 inc/folder/CRUD.php:127
+msgid "The folder you try to delete has subfolders."
+msgstr "В папке, которую вы пытаетесь удалить, есть подпапки."
+
+#: inc/folder/CRUD.php:177
+msgid "The given folder does not exist."
+msgstr "Данная папка не существует."
+
+#: inc/view/View.php:110 inc/view/View.php:115 inc/view/Lang.php:105
+#: inc/folder/Root.php:20 inc/folder/Root.php:69
+msgid "Unorganized"
+msgstr "Неорганизованные"
+
+#: inc/folder/Root.php:75
+msgid "Unorganized is the same as a root folder. Here you can find all files which are not assigned to a folder."
+msgstr "Неорганизованные- это то же самое, что корневая папка. Здесь находятся все файлы, которые не отсортированы по папкам."
+
+#: inc/metadata/CoverImage.php:79
+msgid "Cover image"
+msgstr "Изображение обложки"
+
+#: inc/metadata/Description.php:33
+msgid "Description"
+msgstr "Описание"
+
+#: inc/metadata/Meta.php:38
+msgid "Path"
+msgstr "Путь"
+
+#: inc/metadata/Meta.php:42
+msgid "Folder type"
+msgstr "Тип папки"
+
+#: inc/metadata/Meta.php:86
+msgid "General"
+msgstr "Общие"
+
+#: inc/order/Sortable.php:60
+msgid "Order by date ascending"
+msgstr "Сортировать по дате ⬆"
+
+#: inc/order/Sortable.php:61
+msgid "Order by date descending"
+msgstr "Сортировать по дате ⬇"
+
+#: inc/order/Sortable.php:62
+msgid "Order by title ascending"
+msgstr "Сортировать по названию: от Я до А"
+
+#: inc/order/Sortable.php:63
+msgid "Order by title descending"
+msgstr "Сортировать по названию: от Я до А"
+
+#: inc/order/Sortable.php:65
+msgid "Order by filename ascending"
+msgstr "Сортировать по имени: от А до Я"
+
+#: inc/order/Sortable.php:69
+msgid "Order by filename descending"
+msgstr "Сортировать по имени: от Я до А"
+
+#: inc/order/Sortable.php:73
+msgid "Natural order by filename ascending"
+msgstr "Естественно сортировать по имени: от А до Я"
+
+#: inc/order/Sortable.php:77
+msgid "Natural order by filename descending"
+msgstr "Естественно сортировать по имени: от Я до А"
+
+#: inc/rest/Attachment.php:70
+msgid "Fetch only media in a folder by folder id."
+msgstr "В папку по идентификатору папки записывайте только носители."
+
+#: inc/rest/Service.php:89
+msgid "Folder not found."
+msgstr "Папка не найдена."
+
+#: inc/rest/Service.php:211
+msgid "Forbidden"
+msgstr "Запрещено"
+
+#: inc/rest/Service.php:216
+msgid "Real Media Library is not active for the current user."
+msgstr "Real Media Library не активна для текущего пользователя."
+
+#: inc/usersettings/AllFilesShortcuts.php:53
+msgid "Hide shortcuts in \"All files\""
+msgstr "Скрыть ярлыки во \"Все файлы\""
+
+#: inc/usersettings/AllFilesShortcuts.php:56
+msgid "The count always includes shortcuts"
+msgstr "Подсчёт всегда включает ярлыки"
+
+#: inc/usersettings/DefaultFolder.php:45 inc/view/Lang.php:155
+msgid "Please select a folder to show items."
+msgstr "Пожалуйста, выберите папку для отображения элементов."
+
+#: inc/usersettings/DefaultFolder.php:82
+msgid "Default startup folder"
+msgstr "Начальная папка по умолчанию"
+
+#: inc/usersettings/DefaultFolder.php:90
+msgid "No folder at startup"
+msgstr "Нет папки при запуске"
+
+#: inc/view/FolderShortcode.php:93
+msgid "Gallery from Media Folder"
+msgstr "Галерея из мультимедиа папки"
+
+#: inc/view/FolderShortcode.php:94
+msgid "Note: You can only select galleries. Folders and collections are grayed."
+msgstr "Примечание: Вы можете выбрать только галереи. Папки и коллекции отображаются серым цветом."
+
+#: inc/view/FolderShortcode.php:99
+msgid "Link to"
+msgstr "Подсоединить к"
+
+#: inc/view/FolderShortcode.php:100
+msgid "Columns"
+msgstr "Столбцы"
+
+#: inc/view/FolderShortcode.php:101
+msgid "Random Order"
+msgstr "Случайный порядок"
+
+#: inc/view/FolderShortcode.php:102
+msgid "Size"
+msgstr "Размер"
+
+#: inc/view/FolderShortcode.php:104
+msgid "Attachment File"
+msgstr "Вложенный файл"
+
+#: inc/view/FolderShortcode.php:105
+msgid "Media File"
+msgstr "Медиа файл"
+
+#: inc/view/FolderShortcode.php:106
+msgid "None"
+msgstr "Нет"
+
+#: inc/view/FolderShortcode.php:109
+msgid "Thumbnail"
+msgstr "Иконка"
+
+#: inc/view/FolderShortcode.php:110
+msgid "Medium"
+msgstr "Средний"
+
+#: inc/view/FolderShortcode.php:111
+msgid "Large"
+msgstr "Огромный"
+
+#: inc/view/FolderShortcode.php:112
+msgid "Full Size"
+msgstr "Полный размер"
+
+#: inc/view/Lang.php:26
+msgid "No folder selected"
+msgstr "Папка не выбрана"
+
+#: inc/view/Lang.php:27
+msgid "Reload content"
+msgstr "Перезагрузите содержание"
+
+#: inc/view/Lang.php:29
+msgid "Subfolders"
+msgstr "Вложенная папка"
+
+#: inc/view/Lang.php:30
+msgid "Please select a folder (media library) in the block settings."
+msgstr "Пожалуйста, выберите папку Media Library в настройках блока."
+
+#: inc/view/Lang.php:32
+msgid "New folders inherit this restriction"
+msgstr "Новые папки наследуют это ограничение"
+
+#: inc/view/Lang.php:33
+msgid "The current selected folder has some restrictions:"
+msgstr "Текущая выбранная папка имеет некоторые ограничения:"
+
+#: inc/view/Lang.php:34
+msgid "You cannot change *parent* folder"
+msgstr "Вы не можете изменить *родительскую* папку"
+
+#: inc/view/Lang.php:35
+msgid "You cannot *rearrange* subfolders"
+msgstr "Вы не можете *перемещать* подпапки"
+
+#: inc/view/Lang.php:36
+msgid "You cannot *create* subfolders"
+msgstr "Вы не можете *создавать* подпапки"
+
+#: inc/view/Lang.php:37
+msgid "You cannot *insert* new files. New files will be moved to Unorganized..."
+msgstr "Вы не можете *вставить* новые файлы. Новые файлы будут перемещены в Неорганизованные..."
+
+#: inc/view/Lang.php:41
+msgid "You cannot *rename* the folder"
+msgstr "Вы не можете *переименовать* папку"
+
+#: inc/view/Lang.php:42
+msgid "You cannot *delete* the folder"
+msgstr "Вы не можете *удалить* папку"
+
+#: inc/view/Lang.php:43
+msgid "You cannot *move* files outside the folder"
+msgstr "Вы не можете *перемещать* файлы вне папки"
+
+#: inc/view/Lang.php:44
+msgid "Parent"
+msgstr "Родительский"
+
+#: inc/view/Lang.php:45
+msgid "Before this node"
+msgstr "Перед этим узлом"
+
+#: inc/view/Lang.php:46
+msgid "If no next node is given, the element is placed at the end."
+msgstr "Если следующий узел не указан, элемент ставится в конце."
+
+#: inc/view/Lang.php:47
+msgid "The file is uploaded to the folder where you are currently in."
+msgstr "Файл будет загружен в папку, в которой вы находитесь в данный момент."
+
+#: inc/view/Lang.php:48
+msgid "Are you sure?"
+msgstr "Вы уверены?"
+
+#: inc/view/Lang.php:49
+msgid "Success"
+msgstr "Успешно"
+
+#: inc/view/Lang.php:50
+msgid "Failed"
+msgstr "Неудачный"
+
+#: inc/view/Lang.php:51
+msgid "No entries found"
+msgstr "Записи не найдены"
+
+#: inc/view/Lang.php:52
+msgid "Are you sure to delete *{name}*? All files gets moved to Unorganized."
+msgstr "Вы уверены, что хотите удалить *{name}*? Все файлы будут перемещены в Неорганизованные."
+
+#: inc/view/Lang.php:53
+msgid "Are you sure to delete *{count} folders*? All files gets moved to Unorganized."
+msgstr "Вы уверены, что хотите удалить *{name}*? Все файлы будут перемещены в Неорганизованные."
+
+#: inc/view/Lang.php:57
+msgid "Ok"
+msgstr "ОК"
+
+#: inc/view/Lang.php:58
+msgid "Cancel"
+msgstr "Отменить"
+
+#: inc/view/Lang.php:59
+msgid "Save"
+msgstr "Сохранить"
+
+#: inc/view/Lang.php:60
+msgid "Back"
+msgstr "Назад"
+
+#: inc/view/Lang.php:61
+msgid "No folders found"
+msgstr "Папки не найдены"
+
+#: inc/view/Lang.php:62
+msgid "No folders have been created yet. Just click on the button above to create your first folder."
+msgstr "У вас нет созданных папок. Просто нажмите на кнопку заголовка, чтобы создать свою первую папку."
+
+#: inc/view/Lang.php:66
+msgid "Folders"
+msgstr "Папки"
+
+#: inc/view/Lang.php:67
+msgid "No search results."
+msgstr "Нет результатов поиска."
+
+#: inc/view/Lang.php:68
+msgid "Renaming to *{name}*..."
+msgstr "Переименование в *{name}*..."
+
+#: inc/view/Lang.php:69
+msgid "Successfully renamed folder to *{name}*"
+msgstr "Папка успешно переименована в *{name}*"
+
+#: inc/view/Lang.php:70
+msgid "Creating *{name}*..."
+msgstr "Создание *{name}*..."
+
+#: inc/view/Lang.php:71
+msgid "Successfully created *{name}*"
+msgstr "Успешно создано *{name}*"
+
+#: inc/view/Lang.php:73
+msgid "Deleting *{name}*..."
+msgstr "Создание *{name}*..."
+
+#: inc/view/Lang.php:74
+msgid "Successfully deleted *{name}*"
+msgstr "Успешно удалено *{name}*"
+
+#: inc/view/Lang.php:75
+msgid "Successfully deleted *{count} folders*"
+msgstr "Успешно перемещены {count} файлов"
+
+#: inc/view/Lang.php:76
+msgid "Rearrange *{name}* placement manually"
+msgstr "Переупорядочить  *{name}* размещение вручную"
+
+#: inc/view/Lang.php:77
+msgid "Reordering the tree hierarchy..."
+msgstr "Изменение порядка иерархии дерева..."
+
+#: inc/view/Lang.php:78
+msgid "Successfully sorted the tree hierarchy"
+msgstr "Успешно отсортирована иерархия дерева"
+
+#: inc/view/Lang.php:79
+msgid "Reorder subfolders of *{name}*..."
+msgstr "Изменить порядок вложенных папок в *{name}*..."
+
+#: inc/view/Lang.php:80
+msgid "{count} files remaining..."
+msgstr "Осталось {count} файлов..."
+
+#: inc/view/Lang.php:81
+msgid "Receiving data..."
+msgstr "Получение данных..."
+
+#: inc/view/Lang.php:82
+msgid "Shortcut"
+msgstr "Ярлык"
+
+#: inc/view/Lang.php:88
+msgid "In the current view of uploads, filters are active. Please reset them and refresh the view."
+msgstr "В текущем представлении загрузок активны фильтры. Пожалуйста, сбросьте их и обновите вид."
+
+#: inc/view/Lang.php:92
+msgid "A collection cannot contain files. Upload moved to Unorganized..."
+msgstr "Коллекция не может содержать файлы. Загрузка перемещена в папку Неорганизованные..."
+
+#: inc/view/Lang.php:83
+msgid ""
+"This is a shortcut of a media library file. Shortcuts doesn't need any physical storage *(0 kB)*. If you want to change the file itself, you must do this in the original file (for example replace media file through a plugin).\n"
+"Note also that the fields in the shortcuts can be different to the original file, for example \"Title\", \"Description\" or \"Caption\"."
+msgstr ""
+"Это ярлык файла библиотеки мультимедиа. Ярлыки не нуждаются в физическом хранилище *(0kb)*. Если вы хотите изменить сам файл, вы должны сделать это в исходном файле (например, заменить файл мультимедиа через плагин).\n"
+"Обратите внимание, что поля в ярлыках могут отличаться от исходного файла, например \"Заголовок\", \"Описание\" или \"Подпись\"."
+
+#: inc/view/Lang.php:93
+msgid "A gallery can only contain images. Upload moved to Unorganized..."
+msgstr "Галерея может содержать только изображения. Загрузка перемещена в папку Неорганизованные..."
+
+#: inc/view/Lang.php:94
+msgid "Order content by *{name}*..."
+msgstr "Сортировать содержимое по *{name}*..."
+
+#: inc/view/Lang.php:95
+msgid "Order content by drag & drop"
+msgstr "Заказ контента с помощью перетаскивания"
+
+#: inc/view/Lang.php:96
+msgid "Reset order"
+msgstr "Сброс порядка"
+
+#: inc/view/Lang.php:97
+msgid "Apply order once..."
+msgstr "Сортировать один раз ..."
+
+#: inc/view/Lang.php:98
+msgid "Last"
+msgstr "Последний"
+
+#: inc/view/Lang.php:99
+msgid "Deactivate automatic ordering"
+msgstr "Деактивировать автоматическую сортировку"
+
+#: inc/view/Lang.php:100
+msgid "Apply automatic order..."
+msgstr "Автоматическая сортировка..."
+
+#: inc/view/Lang.php:101
+msgid "Latest"
+msgstr "Новейший"
+
+#: inc/view/Lang.php:102
+msgid "Reindex order"
+msgstr "Переиндексировать порядок"
+
+#: inc/view/Lang.php:103
+msgid "Reset to last order"
+msgstr "Сбросить до последнего порядка"
+
+#: inc/view/Lang.php:104
+msgid "All files"
+msgstr "Все файлы"
+
+#: inc/view/Lang.php:106
+msgid "Move {count} files"
+msgstr "Переместить {count} файлов"
+
+#: inc/view/Lang.php:107
+msgid "Move one file"
+msgstr "Переместить один файл"
+
+#: inc/view/Lang.php:108
+msgid "Copy {count} files"
+msgstr "Скопировано {count} файлов"
+
+#: inc/view/Lang.php:109
+msgid "Copy one file"
+msgstr "Скопирован один файл"
+
+#: inc/view/Lang.php:110
+msgid "Moving {count} files..."
+msgstr "Перемещение {count} файлов..."
+
+#: inc/view/Lang.php:111
+msgid "Moving one file..."
+msgstr "Перемещение одного файла..."
+
+#: inc/view/Lang.php:112
+msgid "Copying {count} files..."
+msgstr "Копирование {count} файлов..."
+
+#: inc/view/Lang.php:113
+msgid "Copying one file..."
+msgstr "Копирование одного файла..."
+
+#: inc/view/Lang.php:114
+msgid "Successfully moved {count} files"
+msgstr "Успешно перемещены {count} файлов"
+
+#: inc/view/Lang.php:115
+msgid "Successfully moved one file"
+msgstr "Успешно перемещён один файл"
+
+#: inc/view/Lang.php:116
+msgid "Successfully copied {count} files"
+msgstr "Успешно скопированы {count} файлов"
+
+#: inc/view/Lang.php:117
+msgid "Successfully copied one file"
+msgstr "Успешно скопирован один файл"
+
+#: inc/view/Lang.php:118
+msgid "Hold any key to create a shortcut"
+msgstr "Удерживайте любую клавишу для создания ярлыка"
+
+#: inc/view/Lang.php:119
+msgid "Release key to move file"
+msgstr "Отпустите клавишу для перемещения файла"
+
+#: inc/view/Lang.php:120
+msgid "Click this to create a new folder"
+msgstr "Нажмите для создания новой папки"
+
+#: inc/view/Lang.php:121
+msgid "A folder can contain any file type and collection, but not galleries. If you want to create a subfolder, select a folder and click this button."
+msgstr "Папка может содержать любой тип файла или коллекцию, но не галерею. Если вы хотите создать подпапку просто выберите папку из списка и нажмите на эту кнопку."
+
+#: inc/view/Lang.php:125
+msgid "Click this to create a new collection"
+msgstr "Нажмите для создания галереи"
+
+#: inc/view/Lang.php:126
+msgid ""
+"A collection cannot contain files. However, you can create additional collections and *galleries* there. This gallery is only a *gallery data folder*, i.e. they are not automatically visible on the website.\n"
+"\n"
+"You can create a *visual gallery* by using a shortcode in the Visual Editor on your pages/postings."
+msgstr ""
+"Коллекция не может содержать файлы. Но вы можете создавать в ней другие коллекции и *галереи*. Упомянутая выше галерея является лишь *папкой данных галереи*, это означает, что они не находятся автоматически в вашем фронтэнде (ваш веб-сайт).\n"
+"\n"
+"Вы можете создать *визуальную галерею* из этой *папки данной галереи* через Визуальный Редактор на вашей странице/посте."
+
+#: inc/view/Lang.php:132
+msgid "Click this to create a *new gallery data folder*"
+msgstr "Нажмите для создания *новой папки галереи*"
+
+#: inc/view/Lang.php:133
+msgid ""
+"A *gallery data folder* can only contain images. It is easier for you to distinguish where your visual galleries are located.\n"
+"\n"
+"You can also order the images into *a custom image order* per drag&drop."
+msgstr ""
+"*Папка галереи* может содержать только изображения. Так проще найти визуальные галереи.\n"
+"\n"
+"Также вы можете сортировать изображения *в произвольном порядке*."
+
+#: inc/view/Lang.php:139
+msgid "Settings"
+msgstr "Насткройки"
+
+#: inc/view/Lang.php:140
+msgid "General settings for the current logged in user."
+msgstr "Общие настройки для текущего пользователя онлайн."
+
+#: inc/view/Lang.php:141
+msgid "Permissions"
+msgstr "Разрешения"
+
+#: inc/view/Lang.php:142
+msgid "Reorder files in this folder"
+msgstr "Изменить порядок файлов в этой папке"
+
+#: inc/view/Lang.php:143
+msgid "Start to reorder the files / images by *title, filename, ID, ...*"
+msgstr "Начать, чтобы изменить порядок файлов / изображений по *названию, имени файла, ID, ...*"
+
+#: inc/view/Lang.php:144
+msgid "Refresh"
+msgstr "Обновить"
+
+#: inc/view/Lang.php:145
+msgid "Refreshes the current folder view."
+msgstr "Обновление текущего вида папок."
+
+#: inc/view/Lang.php:146
+msgid "Rename"
+msgstr "Переименовать"
+
+#: inc/view/Lang.php:147
+msgid "Rename the current selected folder."
+msgstr "Переименовать выбранную папку."
+
+#: inc/view/Lang.php:148
+msgid "Delete"
+msgstr "Удалить"
+
+#: inc/view/Lang.php:149
+msgid "Delete the current selected folder."
+msgstr "Удалить выбранную папку."
+
+#: inc/view/Lang.php:150
+msgid "Delete the current selected folders."
+msgstr "Удалить текущие выбранные папки."
+
+#: inc/view/Lang.php:151
+msgid "Rearrange"
+msgstr "Перегруппировать"
+
+#: inc/view/Lang.php:152
+msgid "Change the hierarchical order of the folders."
+msgstr "Изменение иерархического порядка папок."
+
+#: inc/view/Lang.php:153
+msgid "Folder details"
+msgstr "Сведения о папке"
+
+#: inc/view/Lang.php:154
+msgid "Select a folder and view more details about it."
+msgstr "Выберите папку и просмотрите дополнительные сведения о ней."
+
+#: inc/view/Lang.php:156
+msgid "Product license not yet activated."
+msgstr "Лицензия на продукт ещё не активирована."
+
+#: inc/view/Lang.php:157
+msgid "Enter license"
+msgstr "Введите лицензию"
+
+#: inc/view/Lang.php:158
+msgid "Dismiss notice"
+msgstr "Убрать уведомление"
+
+#: inc/view/Lang.php:159
+msgid "It looks like you have already used another plugin for folders in the media library."
+msgstr "Похоже, что вы уже использовали другой плагин для папок в мультимедийной библиотеке."
+
+#: inc/view/Lang.php:163
+msgid "Start importing"
+msgstr "Начать импорт"
+
+#: inc/view/Lang.php:164
+msgid "Dismiss"
+msgstr "Отклонить"
+
+#: inc/view/Lang.php:169
+msgid "You will be redirected to the external website of PRO version. Please confirm to continue!"
+msgstr "Вы будете перенаправлены на внешний сайт версии PRO. Пожалуйста, подтвердите продолжение!"
+
+#: inc/view/Lang.php:173
+msgid "PRO Feature"
+msgstr "PRO-функция"
+
+#: inc/view/Lang.php:175
+msgid "Thanks for using the free version of Real Media Library."
+msgstr "Спасибо за использование бесплатной версии Real Media Library."
+
+#: inc/view/Lang.php:177
+msgid "Get PRO!"
+msgstr "Получи PRO!"
+
+#: inc/view/Lang.php:178
+msgid "I want to learn more!"
+msgstr "Я хочу узнать больше!"
+
+#: inc/view/Lang.php:179
+msgid "No, not interested..."
+msgstr "Нет, не интересно..."
+
+#: inc/view/Lang.php:184
+msgid "Get more organized with different types of folders: Collections and galleries help you to easily recognize where your image galleries are located."
+msgstr "Станьте более организованными с помощью различных типов папок: Коллекции и галереи помогут Вам легко распознать, где находятся Ваши галереи изображений."
+
+#: inc/view/Lang.php:192
+msgid "Get your folder contents in order and arrange your files according to a criterion (e.g. name descending) or by drag & drop."
+msgstr "Получите содержимое папки по порядку и расположите файлы в соответствии с критерием (например, имя по убыванию) или перетащив его мышью."
+
+#: inc/view/Lang.php:200
+msgid "Organize the nodes within your folder tree according to a criterion (e.g. name descending) or by drag & drop."
+msgstr "Организуйте узлы в дереве папок в соответствии с критерием (например, имя по убыванию) или перетаскиванием."
+
+#: inc/view/Lang.php:208
+msgid "You can create up to 10 folders in the free version of Real Media Library. Get the Pro version and create unlimited folders."
+msgstr "Вы можете создать до 10 папок в бесплатной версии Real Media Library. Получите версию Pro и создайте неограниченное количество папок."
+
+#: inc/view/Options.php:35
+msgid "RealMediaLibrary:General"
+msgstr "RealMediaLibrary:Общие"
+
+#: inc/view/Options.php:40
+msgid "Load RML functionality in frontend"
+msgstr "Загрузить функциональность RML в фронтэнд"
+
+#: inc/view/Options.php:71
+msgid "RealMediaLibrary:Reset"
+msgstr "RealMediaLibrary:Сбросить"
+
+#: inc/view/Options.php:75
+msgid "Reset the order of all galleries"
+msgstr "Сбросить порядок для всех галерей"
+
+#: inc/view/Options.php:84
+msgid "Wipe all settings (folders, attachment relations)"
+msgstr "Стереть все настройки (папки, связи вложений)"
+
+#: inc/view/Options.php:92
+msgid "Reset folder count cache"
+msgstr "Сброс кэша подсчета папок"
+
+#: inc/view/Options.php:99
+msgid "Reset names, slugs and absolute pathes"
+msgstr "Сброс имён, слагов и абсолютных путей"
+
+#: inc/view/Options.php:122
+msgid "Wipe attachment relations"
+msgstr "Стереть связи вложений"
+
+#: inc/view/Options.php:125
+msgid "Wipe all"
+msgstr "Стереть все"
+
+#: inc/view/Options.php:133
+msgid "Reset count"
+msgstr "Сбросить счётчик"
+
+#: inc/view/Options.php:141 inc/view/Options.php:165
+msgid "Reset"
+msgstr "Cбросить"
+
+#: inc/view/Options.php:154
+msgid "Activate this option if you are using a page builder like Divi Page Builder, WPBakery Page Builder or Elementor."
+msgstr "Активируйте эту опцию, если вы используете конструктор страниц, например, Divi Page Builder, WPBakery Page Builder или Elementor."
+
+#: inc/view/Options.php:168
+msgid "You can also reset an single folder in its folder details."
+msgstr "Вы можете также сбросить одну папку при переходе к сведениям о папке."
+
+#: inc/view/View.php:99
+msgid "All"
+msgstr "Все"
+
+#: inc/view/View.php:189
+msgid "Unorganized pictures"
+msgstr "Неорганизованные изображения"

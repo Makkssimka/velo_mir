@@ -1,0 +1,40 @@
+2021-01-28T11:56:25+00:00 CRITICAL Uncaught Error: Call to undefined method Call_Form_Action::action1() in /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/admin/class_call_form_action.php:23
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/admin/class-call-form-free-admin.php(120): Call_Form_Action->run_action()
+#1 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(287): Call_Form_Free_Admin->call_form_menage('')
+#2 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#3 /Users/maksimzukovic/Sites/velo/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /Users/maksimzukovic/Sites/velo/wp-admin/admin.php(259): do_action('toplevel_page_c...')
+#5 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/admin/class_call_form_action.php на строке 23
+
+2021-01-28T15:50:57+00:00 CRITICAL Uncaught Error: Call to undefined function Call_Form_HelpergetTemplate() in /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/admin/class-call-form-free-admin.php:139
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(287): Call_Form_Free_Admin->call_form_menage('')
+#1 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#2 /Users/maksimzukovic/Sites/velo/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#3 /Users/maksimzukovic/Sites/velo/wp-admin/admin.php(259): do_action('toplevel_page_c...')
+#4 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/admin/class-call-form-free-admin.php на строке 139
+
+2021-01-28T16:10:48+00:00 CRITICAL Cannot redeclare get_template() (previously declared in /Users/maksimzukovic/Sites/velo/wp-includes/theme.php:307) в /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/includes/class-call-form-helper.php на строке 3
+
+2021-01-28T17:04:29+00:00 CRITICAL Uncaught Error: Class 'Call_Form_Helper' not found in /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/admin/partials/call-form-menu-view.php:12
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/admin/class-call-form-free-admin.php(145): include_once()
+#1 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(287): Call_Form_Free_Admin->call_form_menage('')
+#2 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#3 /Users/maksimzukovic/Sites/velo/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#4 /Users/maksimzukovic/Sites/velo/wp-admin/admin.php(259): do_action('toplevel_page_c...')
+#5 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/admin/partials/call-form-menu-view.php на строке 12
+
+2021-01-28T17:05:32+00:00 CRITICAL Uncaught Error: Class 'Call_Form_Helper' not found in /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/admin/class-call-form-free-admin.php:135
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(287): Call_Form_Free_Admin->call_form_menage('')
+#1 /Users/maksimzukovic/Sites/velo/wp-includes/class-wp-hook.php(311): WP_Hook->apply_filters('', Array)
+#2 /Users/maksimzukovic/Sites/velo/wp-includes/plugin.php(484): WP_Hook->do_action(Array)
+#3 /Users/maksimzukovic/Sites/velo/wp-admin/admin.php(259): do_action('toplevel_page_c...')
+#4 {main}
+  thrown в /Users/maksimzukovic/Sites/velo/wp-content/plugins/call-form-free/admin/class-call-form-free-admin.php на строке 135
+
