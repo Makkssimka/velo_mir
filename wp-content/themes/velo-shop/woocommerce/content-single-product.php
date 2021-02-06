@@ -58,7 +58,7 @@ $is_compare = in_array($product->get_id(), $compare_array)?'Добавлен к 
 <div id="product-<?php the_ID(); ?>" class="content-main product">
     <h1>Велосипед
         <?= $product->get_name() ?>,
-        <?= $product->get_attribute('wheel_size') ?>",
+        <?= get_wheel_size_string($product->get_attribute('wheel_size')) ?>,
         <?= $default_variable->get_attribute('color') ?>
         <?= get_frame_size_string($default_variable->get_attribute('frame_size')) ?></h1>
     <div class="product-articul">Артикул <?= $default_variable->get_sku() ?></div>
