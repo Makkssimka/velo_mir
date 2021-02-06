@@ -32,24 +32,20 @@ if ( post_password_required() ) {
 }
 
 $variations = $product->get_available_variations();
-$variation_size = isset($_GET['size'])?$_GET['size']:null;
-$variation_color = isset($_GET['color'])?$_GET['color']:null;
-$default_variable = null;
+$filter_variations = array();
+$colors_variation = array();
 
-foreach ($variations as $var) {
-    $var = new WC_Product_Variation($var['variation_id']);
+// Задаем размер по умолчанию
+$frame_size = isset($_GET['size']) ? $_GET['size'] : explode(', ', $product->get_attribute('frame_size'))[0];
 
-    $attr = $var->get_variation_attributes();
-    if ($attr['attribute_pa_size'] == $variation_size && $attr['attribute_pa_color'] == $variation_color) {
-        $default_variable = $var;
-    } elseif ($attr['attribute_pa_size'] == $variation_size && !$variation_color) {
-        $default_variable = $var;
-    }
+foreach ($variations as $variation) {
+    if ($frame_size && $frame_size != $variation['attributes']['attribute_pa_frame_size']) continue;
+    $colors_variation[] = $variation['attributes']['attribute_pa_color'];
+    if (isset($_GET['color']) && $_GET['color'] != $variation['attributes']['attribute_pa_color']) continue;
+    $filter_variations[] = $variation;
 }
 
-if(!$default_variable){
-    $default_variable = wc_get_product($variations[0]['variation_id']);
-}
+$default_variable = wc_get_product($filter_variations[0]['variation_id']);
 
 $favorites_array = isset($_SESSION['favorites'])?json_decode($_SESSION['favorites']):array();
 $is_favorites = in_array($product->get_id(), $favorites_array)?'Добавлен в избранное':'В избранное';
@@ -60,13 +56,17 @@ $is_compare = in_array($product->get_id(), $compare_array)?'Добавлен к 
 ?>
 
 <div id="product-<?php the_ID(); ?>" class="content-main product">
-    <h1>Велосипед <?= $default_variable->get_name()  ?></h1>
+    <h1>Велосипед
+        <?= $product->get_name() ?>,
+        <?= $product->get_attribute('wheel_size') ?>",
+        <?= $default_variable->get_attribute('color') ?>
+        <?= get_frame_size_string($default_variable->get_attribute('frame_size')) ?></h1>
     <div class="product-articul">Артикул <?= $default_variable->get_sku() ?></div>
     <div class="product-heder">
         <?php require_once "blocks/product_gallery.php" ?>
         <div class="product-price">
             <div class="product-have">
-                <?php if($product->get_stock_status() == 'instock'){ ?>
+                <?php if($default_variable->get_stock_status() == 'instock'){ ?>
                 <div class="product-have-item">В наличии</div>
                 <?php } else {?>
                 <div class="product-have-item">Нет в наличии</div>

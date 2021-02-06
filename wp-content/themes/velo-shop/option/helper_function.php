@@ -23,6 +23,14 @@ function get_current_url(){
     return $url[0];
 }
 
+function get_current_request($request){
+    $url = $_SERVER['REQUEST_URI'];
+    $url = explode('?', $url);
+    $url = $url[0];
+
+    return $url."?".http_build_query($request);
+}
+
 function get_url_data(){
     $query = $_SERVER['QUERY_STRING'];
     $query_array = explode('&', $query);
@@ -49,4 +57,25 @@ function get_max_and_min_price(){
         'min' => $min_price,
         'max' => $max_price,
     );
+}
+
+function get_frame_size_string($frame_size, $is_prefix = true){
+    $prefix = $is_prefix?', рама ':'';
+    if (strlen($frame_size) == 3) {
+        return $prefix.$frame_size.' мм';
+    } elseif (strlen($frame_size) < 3 && ctype_digit($frame_size)) {
+        return $prefix.$frame_size.'"';
+    } elseif (!$frame_size) {
+        return '';
+    } else {
+        return $prefix.$frame_size;
+    }
+}
+
+function get_wheel_size_string($wheel_size){
+    if (strlen($wheel_size) == 3) {
+        return $wheel_size.' мм';
+    } else {
+        return $wheel_size.'"';
+    }
 }
