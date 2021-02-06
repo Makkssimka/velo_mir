@@ -11,10 +11,8 @@ $products_slider = wc_get_products(array('include' => $ids_array));
         <? foreach ($products_slider as $product_slider): ?>
             <?php
             $category = current(get_the_terms( $product_slider->get_id(), 'product_cat'));
-            $variations = $product_slider->get_available_variations();
-            $variation = wc_get_product($variations[0]['variation_id']);
-            $price = $variation->get_price();
-            $price_regular = $variation->get_regular_price();
+            $price = $product_slider->get_price();
+            $price_regular = $product_slider->get_variation_regular_price();
             $sale = round(100 - $price/$price_regular*100);
             $image_url = wp_get_attachment_url($product_slider->get_image_id());
             ?>
