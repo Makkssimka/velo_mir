@@ -8,6 +8,8 @@ foreach ($similar_product_ids as $product_id) {
 }
 
 ?>
+
+<?php if (count($similar_products)) : ?>
 <div class="product-similar-header">
     <h3>Похожие товары</h3>
     <ul>
@@ -17,6 +19,7 @@ foreach ($similar_product_ids as $product_id) {
 </div>
 <ul id="similar-carousel" class="owl-carousel owl-theme">
 <?php foreach ($similar_products as $similar_product) : ?>
-    <?php bike_widget($similar_product, true) ?>
+    <?php bike_widget($similar_product) ?>
 <?php endforeach; ?>
 </ul>
+<?php endif ?>
