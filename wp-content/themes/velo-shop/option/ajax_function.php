@@ -60,3 +60,44 @@ function add_compare_callback(){
     wp_die();
 }
 
+//Получаем количество велосипедов для главной страницы
+add_action('wp_ajax_get_products_count', 'get_products_count_callback');
+add_action('wp_ajax_nopriv_get_products_count', 'get_products_count_callback');
+
+function get_products_count_callback(){
+    $query = $_POST['query'];
+
+    //начало создания запроса
+    $result = '';
+    $args = array(
+        'paginate' => false,
+        'limit' => -1,
+        'tax_query' => array(
+            'relation' => 'AND'
+        )
+    );
+
+    //перебираем все отправленные данные
+    foreach($query as $item){
+        //если не цена добавляем критерии, если цена добавляем фильтер по цене
+        if ($item['type'] != 'price') {
+            $filter = array(
+                'taxonomy' => "pa_".$item['type'],
+                'field' => 'slug',
+                'terms' => $item['value']
+            );
+            array_push($args['tax_query'], $filter);
+        } else {
+            $args['price_rage'] = array(
+                $item['value']['from'],
+                $item['value']['to']
+            );
+        }
+    }
+
+    //получаем и отправляем количество продуктов
+    echo(count(wc_get_products($args)));
+    wp_die();
+}
+
+

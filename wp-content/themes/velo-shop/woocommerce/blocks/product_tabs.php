@@ -43,7 +43,11 @@ foreach ($description as $row) {
                 <?= $product->get_short_description(); ?>
             </li>
             <li data-tabcontent="3" class="product-tabs-video">
+                <?php if ($product->get_meta('youtube_link', true)) : ?>
                 <iframe src="<?= $product->get_meta('youtube_link', true); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <?php else : ?>
+                <p>Видео-обзор пока не добавлен на сайт</p>
+                <?php endif ?>
             </li>
         </ul>
     </div>

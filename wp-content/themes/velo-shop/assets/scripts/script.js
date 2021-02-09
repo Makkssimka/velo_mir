@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
     var parent = $(this).parents('.select-input');
     parent.find(".select-input-value span").text(valOption);
     parent.removeClass('open-input-select');
-    var result = $(this).data('select');
+    var result = $(this).data('value');
     parent.trigger("change", [result]);
   });
   $(document).click(function (e) {
@@ -52,7 +52,6 @@ jQuery(document).ready(function ($) {
       var tabs = $(this).data('tab');
       $('.product-tabs-body .active').removeClass('active');
       $('[data-tabcontent=' + tabs + ']').addClass('active');
-      console.log(tabs);
     }); // Similar owl carousel
 
     var owlSimilar = $('#similar-carousel').owlCarousel({
@@ -93,11 +92,84 @@ jQuery(document).ready(function ($) {
       }
     });
     var priceFrom = $('#homeRange').data('price-from');
-    var priceTo = $('#homeRange').data('price-to');
+    var priceTo = $('#homeRange').data('price-to'); // отслеживаем изменения в выборе велосипедов
+
     $('#homeRange').ionRangeSlider({
       skin: 'round',
       type: 'double',
-      step: 10
+      step: 10,
+      onFinish: function onFinish(data) {
+        updateResult('price', {
+          from: data.from,
+          to: data.to
+        });
+      }
+    });
+    $('.home-bike-select .select-input').on('change', function (e, data) {
+      var type = $(this).data('type');
+      updateResult(type, data);
+    });
+  } //заносим данные в массив объектов
+
+
+  var result_select = [];
+
+  function updateResult(type, value) {
+    // ищем есть ли в массиве уже такой объект
+    var typeIndex = result_select.findIndex(function (val) {
+      return val.type == type;
+    }); // если пердается пустое значение удаляем объект
+
+    if (typeIndex != -1 && !value) {
+      result_select.splice(typeIndex, 1);
+      getProductsCount(); // вызываем функцию запроса на сервер
+
+      return false;
+    } // если есть обновляем, если нет создаем
+
+
+    if (typeIndex != -1) {
+      result_select[typeIndex].type = type;
+      result_select[typeIndex].value = value;
+    } else {
+      result_select.push({
+        type: type,
+        value: value
+      });
+    }
+
+    getProductsCount(); // вызываем функцию запроса на сервер
+  } // Функция запроса на сервер
+
+
+  function getProductsCount() {
+    $.ajax({
+      type: 'POST',
+      url: window.wp_data.ajax_url,
+      dataType: "json",
+      data: {
+        action: 'get_products_count',
+        query: result_select
+      },
+      beforeSend: function beforeSend() {
+        $('.home-bike-select-wrapper').addClass('inactive-element');
+        $('.show-bike-select-btn .btn').addClass('invisible-element');
+        $('.load-progress').removeClass('invisible-element');
+      },
+      success: function success(response) {
+        var result = response;
+        $('.count-product span').text(result);
+
+        if (result == 0) {
+          $('.count-product').addClass('inactive-element');
+        } else {
+          $('.count-product').removeClass('inactive-element');
+        }
+
+        $('.home-bike-select-wrapper').removeClass('inactive-element');
+        $('.show-bike-select-btn .btn').removeClass('invisible-element');
+        $('.load-progress').addClass('invisible-element');
+      }
     });
   } // Catalog page script
 

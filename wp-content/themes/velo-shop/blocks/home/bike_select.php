@@ -3,12 +3,11 @@
 $brands = get_terms('pa_brand');
 $types = get_terms('pa_type_velo');
 $colors = get_terms('pa_color');
-$sizes = get_terms('pa_size');
-$amorts = get_terms('pa_amort');
-$tormozs = get_terms('pa_tormaoz');
+$sizes = get_terms('pa_wheel_size');
+$speeds = get_terms('pa_speed');
+$tormozs = get_terms('pa_tormoz');
 
-$min_price = (int)$wpdb->get_var("SELECT MIN(min_price) FROM velo_wc_product_meta_lookup WHERE min_price > 0");
-$max_price = (int)$wpdb->get_var("SELECT MAX(min_price) FROM velo_wc_product_meta_lookup WHERE min_price > 0");
+$select_price = get_max_and_min_price();
 
 $products_count = count($products);
 
@@ -18,7 +17,7 @@ $products_count = count($products);
         <h2>Какой велосипед <span>вам подходит?</span></h2>
         <div class="flex-wrapper">
             <div class="small-flex">
-                <div class="select-input">
+                <div class="select-input" data-type="brand">
                     <div class="select-input-value">
                         <span></span>
                         <i class="las la-angle-down"></i>
@@ -32,7 +31,7 @@ $products_count = count($products);
                 </div>
             </div>
             <div class="small-flex">
-                <div class="select-input">
+                <div class="select-input" data-type="type_velo">
                     <div class="select-input-value">
                         <span></span>
                         <i class="las la-angle-down"></i>
@@ -46,7 +45,7 @@ $products_count = count($products);
                 </div>
             </div>
             <div class="small-flex">
-                <div class="select-input">
+                <div class="select-input" data-type="color">
                     <div class="select-input-value">
                         <span></span>
                         <i class="las la-angle-down"></i>
@@ -62,7 +61,7 @@ $products_count = count($products);
         </div>
         <div class="flex-wrapper">
             <div class="small-flex">
-                <div class="select-input">
+                <div class="select-input" data-type="wheel_size">
                     <div class="select-input-value">
                         <span></span>
                         <i class="las la-angle-down"></i>
@@ -76,21 +75,21 @@ $products_count = count($products);
                 </div>
             </div>
             <div class="small-flex">
-                <div class="select-input">
+                <div class="select-input" data-type="speed">
                     <div class="select-input-value">
                         <span></span>
                         <i class="las la-angle-down"></i>
                     </div>
                     <div class="select-input-option">
-                        <div class="select-option-item option-item-select" data-value="">Амортизаторы</div>
-                        <?php foreach ($amorts as $amort): ?>
-                            <div class="select-option-item" data-value="<?= $amort->slug ?>"><?= $amort->name ?></div>
+                        <div class="select-option-item option-item-select" data-value="">Кол-во скоростей</div>
+                        <?php foreach ($speeds as $speed): ?>
+                            <div class="select-option-item" data-value="<?= $speed->slug ?>"><?= $speed->name ?></div>
                         <?php endforeach; ?>
                     </div>
                 </div>
             </div>
             <div class="small-flex">
-                <div class="select-input">
+                <div class="select-input" data-type="tormoz">
                     <div class="select-input-value">
                         <span></span>
                         <i class="las la-angle-down"></i>
@@ -105,10 +104,13 @@ $products_count = count($products);
             </div>
         </div>
         <div class="home-range-wrapper">
-            <input type="text" id="homeRange" class="js-range-slider" data-min="<?= $min_price ?>" data-max="<?= $max_price ?>" data-from="<?= $min_price ?>" data-to="<?= $max_price ?>"/>
+            <input type="text" id="homeRange" class="js-range-slider" data-min="<?= $select_price['min'] ?>" data-max="<?= $select_price['max'] ?>" data-from="<?= $select_price['min'] ?>" data-to="<?= $select_price['max'] ?>"/>
         </div>
-        <div class="home-bike-select-btn">
-            <a class="btn btn-blue" href="#">Показать <?= $products_count ?></a>
+        <div class="home-bike-select-btn show-bike-select-btn">
+            <div class="load-progress invisible-element">
+                <i class="las la-spinner"></i><span>идет загрузка...</span>
+            </div>
+            <a class="btn btn-blue count-product" href="#">Показать <span><?= $products_count ?></span></a>
         </div>
         <div class="home-bike-select-desc">
             <p>или</p>
