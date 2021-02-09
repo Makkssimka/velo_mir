@@ -27,7 +27,7 @@ $products_slider = wc_get_products(array('include' => $ids_array));
                             <div class="home-slider-oldprice"><?= price_form($price_regular) ?> руб</div>
                         </div>
                         <div class="home-slider-button-wrapper">
-                            <a href="#" class="btn btn-orange">Перейти к товару</a>
+                            <a href="<?= get_permalink($product_slider->get_id()) ?>" class="btn btn-orange">Перейти к товару</a>
                         </div>
                     </div>
                 </div>

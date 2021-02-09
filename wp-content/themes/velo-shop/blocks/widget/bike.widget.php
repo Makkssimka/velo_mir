@@ -64,7 +64,7 @@ function bike_widget($bike) {
             </div>
             <div class="widget-bike-button">
                 <a href="#" class="btn btn-blue">В корзину</a>
-                <a href="'.get_permalink($bike->get_id()) .'" class="btn btn-green">Подробнее</a>
+                <a href="'. get_permalink($bike->get_id()) .'" class="btn btn-green">Подробнее</a>
             </div>
         </div>
     ';
