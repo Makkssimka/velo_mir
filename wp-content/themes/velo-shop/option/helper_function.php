@@ -64,7 +64,9 @@ function get_frame_size_string($frame_size, $is_prefix = true){
     if (strlen($frame_size) == 3) {
         return $prefix.$frame_size.' мм';
     } elseif (strlen($frame_size) < 3 && ctype_digit($frame_size)) {
-        return $prefix.$frame_size.'"';
+        return $prefix . $frame_size . '"';
+    } elseif (strlen($frame_size) >= 4) {
+        return $prefix . $frame_size . '"';
     } elseif (!$frame_size) {
         return '';
     } else {
@@ -78,4 +80,13 @@ function get_wheel_size_string($wheel_size){
     } else {
         return $wheel_size.'"';
     }
+}
+
+function count_sort($array)
+{
+    usort($array, function($a, $b) {
+        return $a->count < $b->count ? 1 : -1;
+    });
+
+    return $array;
 }

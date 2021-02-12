@@ -1,7 +1,7 @@
 <?php
 
 $price_filter = get_max_and_min_price();
-$price = isset($_SESSION['price'])?json_decode($_SESSION['price']):null;
+$price = property_exists($filter_value, 'price')?$filter_value->price:null;
 
 $price_from = $price?$price[0]:$price_filter['min'];
 $price_to = $price?$price[1]:$price_filter['max'];

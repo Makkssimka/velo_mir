@@ -16,7 +16,7 @@ function bike_widget($bike) {
     if($bike->get_stock_status() == 'instock') {
         $have = '<div class="widget-bike-have widget-bike-have-item" > В наличии </div >';
     } else {
-        $have = '<div class="widget-bike-have widget-bike-nohave-item" > Нет в наличии </div >';
+        $have = '<div class="widget-bike-have widget-bike-nohave-item" > Под заказ </div >';
     }
 
     $bike_colors_list = '<ul>';

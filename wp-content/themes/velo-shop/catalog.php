@@ -17,12 +17,13 @@ $args = array(
 );
 
 // Получаем значения фильтра из сессий
-$price = isset($_SESSION['price']) ? json_decode($_SESSION['price']) : '';
-if ($price) {
-    $args['price_rage'] = $price;
+$filter_value = isset($_SESSION['filter']) ? json_decode($_SESSION['filter']) : '';
+
+if (property_exists($filter_value, 'price')) {
+    $args['price_rage'] = $filter_value->price;
 }
 
-$sort = isset($_SESSION['sort']) ? json_decode($_SESSION['sort'])[0] : '';
+$sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : '';
 
 switch ($sort) {
     case 'new':
@@ -47,14 +48,20 @@ switch ($sort) {
         $args['orderby'] = 'post_date';
 }
 
-foreach ($_SESSION as $key => $value) {
-    if ($key == 'sort' || $key == 'price' || $key == 'have' || $key == 'favorites' || $key == 'compare') continue;
-    $query = array(
-        'taxonomy' => "pa_$key",
-        'field' => 'slug',
-        'terms' => json_decode($value)
-    );
-    array_push($args['tax_query'], $query);
+if (property_exists($filter_value, 'have')) {
+    $args['stock_status'] = $filter_value->have;
+}
+
+if ($filter_value) {
+    foreach ($filter_value as $key => $value) {
+        if (in_array($key, array('price', 'have'))) continue;
+        $query = array(
+            'taxonomy' => "pa_$key",
+            'field' => 'slug',
+            'terms' => $value
+        );
+        array_push($args['tax_query'], $query);
+    }
 }
 
 $products_obj = wc_get_products($args);
@@ -70,12 +77,16 @@ $products = $products_obj->products;
             <?php require_once "blocks/catalog/select_sort.php" ?>
         </div>
         <div class="catalog-list-body">
-           <?php foreach ($products as $key => $bike): ?>
+            <?php if (count($products)) : ?>
+            <?php foreach ($products as $key => $bike): ?>
                <?php bike_widget($bike, true) ?>
                <?php if ($key == 3 || $key == 13): ?>
                    <?php catalog_banner_widget($key) ?>
                <?php endif; ?>
-           <?php endforeach; ?>
+            <?php endforeach; ?>
+            <?php else: ?>
+                <p class="empty-query">По данным параметрам не найдено велосипедов</p>
+            <?php endif ?>
         </div>
         <?php require "blocks/catalog/pagination.php" ?>
     </div>

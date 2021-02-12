@@ -352,7 +352,7 @@ jQuery(document).ready(function ($) {
     list_checkbox.each(function (index, item) {
       if ($(item).is(":checked")) {
         var key = $(item).attr('name');
-        var value = $(item).attr('id');
+        var value = $(item).val();
 
         if (key in value_array) {
           value_array[key].push(value);
@@ -362,7 +362,7 @@ jQuery(document).ready(function ($) {
       }
     });
     var price = [$('#priceFrom').val().replace(/[^\d.\-]/g, ''), $('#priceTo').val().replace(/[^\d.\-]/g, '')];
-    var link = '?session_add';
+    var link = '?session_filter';
 
     for (var key in value_array) {
       link += '&' + key + '=' + value_array[key].join(',');
@@ -372,7 +372,7 @@ jQuery(document).ready(function ($) {
     window.location.href = window.location.pathname + link;
   });
   $('#sort').on("change", function (e, result) {
-    var link = '?session_add&sort=' + result;
+    var link = '?session_sort=' + result;
     window.location.href = window.location.pathname + link;
   }); //Ajax
   //Добавляем в избранное

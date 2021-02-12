@@ -3,7 +3,7 @@
 $sort = 'new';
 
 if (isset($_SESSION['sort'])) {
-    $sort = json_decode($_SESSION['sort'])[0];
+    $sort = $_SESSION['sort'];
 }
 
 $value_list = [
@@ -22,7 +22,7 @@ $value_list = [
         </div>
         <div class="select-input-option">
             <?php foreach ($value_list as $key => $value): ?>
-            <div data-select="<?= $key ?>" class="select-option-item <?= $key == $sort ? 'option-item-select' : ''  ?>"><?= $value ?></div>
+            <div data-value="<?= $key ?>" class="select-option-item <?= $key == $sort ? 'option-item-select' : ''  ?>"><?= $value ?></div>
             <?php endforeach; ?>
         </div>
     </div>
