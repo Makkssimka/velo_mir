@@ -414,6 +414,28 @@ jQuery(document).ready(function ($) {
         }
       }
     });
+  }); //Удаляем из избранного
+
+  $('.favorite-delete').click(function (e) {
+    e.preventDefault();
+    var elem = $(this);
+    var parent = $(this).parents('.widget-bike-item');
+    $.ajax({
+      type: 'POST',
+      url: window.wp_data.ajax_url,
+      data: {
+        action: 'add_favorites',
+        id: elem.data('id')
+      },
+      beforeSend: function beforeSend() {
+        elem.addClass('flicker-anim');
+      },
+      success: function success(response) {
+        var result = JSON.parse(response);
+        $('#favorites').text(result.counter);
+        parent.remove();
+      }
+    });
   }); //Дабавляем в сравнение
 
   $('.add-compare').click(function (e) {

@@ -62,29 +62,36 @@ if ($compare_ids) {
     <div class="content-main article compare">
         <h1><?= $post->post_title; ?></h1>
         <div class="article-subheader"><?= $post->post_excerpt; ?></div>
-        <div class="compare-wrapper">
-        <?php if (count($compare_ids)) : ?>
-            <table>
-                <?= $image_table ?>
-                <?= $title_table ?>
-                <?= $price_table ?>
-                <?= $add_table ?>
-                <?= $color_table ?>
-                <?= $brand_table ?>
-                <?= $type_velo_table ?>
-                <?= $size_wheel_table ?>
-                <?= $size_frame_table ?>
-                <?= $material_table ?>
-                <?= $speed_table ?>
-                <?= $tormoz_table ?>
-                <?= $remove_table ?>
-            </table>
-        <?php else : ?>
-            <div class="compare-empty">
-                <img src="<?= get_asset_path('images', 'not_found.svg') ?>" alt="">
-                <p>Вы еще не выбрали товары для сравнения</p>
+        <div class="article-content">
+            <div class="article-text">
+                <div class="compare-wrapper">
+                <?php if (count($compare_ids)) : ?>
+                    <table>
+                        <?= $image_table ?>
+                        <?= $title_table ?>
+                        <?= $price_table ?>
+                        <?= $add_table ?>
+                        <?= $color_table ?>
+                        <?= $brand_table ?>
+                        <?= $type_velo_table ?>
+                        <?= $size_wheel_table ?>
+                        <?= $size_frame_table ?>
+                        <?= $material_table ?>
+                        <?= $speed_table ?>
+                        <?= $tormoz_table ?>
+                        <?= $remove_table ?>
+                    </table>
+                <?php else : ?>
+                    <div class="compare-empty">
+                        <img src="<?= get_asset_path('images', 'not_found.svg') ?>" alt="">
+                        <p>Вы еще не выбрали товары для сравнения</p>
+                    </div>
+                <?php endif ?>
+                </div>
             </div>
-        <?php endif ?>
+            <div class="article-navbar">
+                <?php expert_widget() ?>
+            </div>
         </div>
     </div>
 

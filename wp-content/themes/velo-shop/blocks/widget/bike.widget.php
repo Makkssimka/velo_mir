@@ -1,6 +1,6 @@
 <?php
 
-function bike_widget($bike) {
+function bike_widget($bike, $delete_btn = false) {
     $bike_colors = wc_get_product_terms( $bike->get_id(), 'pa_color');
     $bike_wheel_size = $bike->get_attribute('wheel_size');
 
@@ -16,6 +16,12 @@ function bike_widget($bike) {
         $have = '<div class="widget-bike-have widget-bike-have-item" > В наличии </div >';
     } else {
         $have = '<div class="widget-bike-have widget-bike-nohave-item" > Под заказ </div >';
+    }
+
+    if($delete_btn){
+        $btn = '<a href="#" data-id="'.$bike->get_id().'" class="btn btn-green favorite-delete">Удалить</a>';
+    } else {
+        $btn = '<a href="'. get_permalink($bike->get_id()) .'" class="btn btn-green">Подробнее</a>';
     }
 
     $bike_colors_list = '<ul>';
@@ -63,7 +69,7 @@ function bike_widget($bike) {
             </div>
             <div class="widget-bike-button">
                 <a href="#" class="btn btn-blue">В корзину</a>
-                <a href="'. get_permalink($bike->get_id()) .'" class="btn btn-green">Подробнее</a>
+                '.$btn.'
             </div>
         </div>
     ';
