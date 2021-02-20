@@ -2,7 +2,6 @@
 
 function bike_widget($bike) {
     $bike_colors = wc_get_product_terms( $bike->get_id(), 'pa_color');
-    $bike_frame_sizes = wc_get_product_terms( $bike->get_id(), 'pa_frame_size');
     $bike_wheel_size = $bike->get_attribute('wheel_size');
 
     $image = $bike->get_available_variations()[0]['image']['url'];

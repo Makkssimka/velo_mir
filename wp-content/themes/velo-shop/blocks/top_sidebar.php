@@ -26,16 +26,16 @@ $compare_array = isset($_SESSION['compare'])?json_decode($_SESSION['compare']):a
             <li><a href="/compare">
                     <i class="las la-balance-scale-left"></i>
                     <span>Сравнение</span>
-                    <?php if (count($compare_array)) : ?>
-                        <div id="compare" class="label-number"><?= count($compare_array)?></div>
-                    <? endif; ?>
+                        <div id="compare" class="label-number <?= count($compare_array)?'':'hidden-block' ?>">
+                            <?= count($compare_array)?>
+                        </div>
                 </a></li>
             <li><a href="/favorites">
                     <i class="lar la-star"></i>
                     <span>Избранное</span>
-                    <?php if (count($favorites_array)) : ?>
-                    <div id="favorites" class="label-number"><?= count($favorites_array)?></div>
-                    <? endif; ?>
+                    <div id="favorites" class="label-number <?= count($favorites_array)?'':'hidden-block' ?>">
+                        <?= count($favorites_array)?>
+                    </div>
                 </a></li>
             <li><a href="#">
                     <i class="las la-shopping-cart"></i>

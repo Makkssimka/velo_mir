@@ -55,11 +55,21 @@ add_action('init', 'sortAddSession', 1);
 //Регистрация дополнительных запросов
 require_once "wc_custom_query.php";
 
-//Очитка сесии
-function myCleanSession() {
-    $session_data = $_SESSION;
-    foreach ($session_data as $key=>$value) {
-        if ($key == 'sort') continue;
-        unset($_SESSION[$key]);
+//Удаляем из сравнения
+function compareRemove(){
+    if (isset($_GET['compare_remove'])) {
+        $id = $_GET['id'];
+
+        $compare_array = isset($_SESSION['compare'])?json_decode($_SESSION['compare']):array();
+        $index = array_search($id, $compare_array);
+        array_splice($compare_array, $index, 1);
+
+        $_SESSION['compare'] = json_encode($compare_array);
+
+        $url = get_current_url();
+        wp_redirect($url);
+        die();
     }
 }
+
+add_action('init', 'compareRemove', 1);

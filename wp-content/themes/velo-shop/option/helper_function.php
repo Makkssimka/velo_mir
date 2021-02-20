@@ -74,6 +74,17 @@ function get_frame_size_string($frame_size, $is_prefix = true){
     }
 }
 
+function get_frame_size_one_string($frame_sizes) {
+    if (!$frame_sizes) {
+        return 'Нет';
+    }
+    $size_array = explode(', ', $frame_sizes);
+    foreach ($size_array as $index => $item) {
+        $size_array[$index] = get_frame_size_string($item, false);
+    }
+    return implode(', ', $size_array);
+}
+
 function get_wheel_size_string($wheel_size){
     if (strlen($wheel_size) == 3) {
         return $wheel_size.' мм';

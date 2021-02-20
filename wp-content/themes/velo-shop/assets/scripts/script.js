@@ -275,7 +275,8 @@ jQuery(document).ready(function ($) {
     } else {
       $('.article-anchor-nav').css('display', 'none');
     }
-  } // Modal script
+  } // Compare page script
+  // Modal script
 
 
   if ($('.modal-wrapper').length) {
@@ -400,7 +401,13 @@ jQuery(document).ready(function ($) {
           elem.removeClass('added-item');
         }
 
-        $('#favorites').text(result.counter);
+        if (result.counter) {
+          $('#favorites').text(result.counter);
+          $('#favorites').removeClass('hidden-block');
+        } else {
+          $('#favorites').text(result.counter);
+          $('#favorites').addClass('hidden-block');
+        }
 
         if (elem.find('.result-text')) {
           elem.find('.result-text').text(result.status ? 'Добавлен в избранное' : 'В избранное');
@@ -432,7 +439,13 @@ jQuery(document).ready(function ($) {
           elem.removeClass('added-item');
         }
 
-        $('#compare').text(result.counter);
+        if (result.counter) {
+          $('#compare').text(result.counter);
+          $('#compare').removeClass('hidden-block');
+        } else {
+          $('#compare').text(result.counter);
+          $('#compare').addClass('hidden-block');
+        }
 
         if (elem.find('.result-text')) {
           elem.find('.result-text').text(result.status ? 'Добавлен к сравнению' : 'В сравнение');
