@@ -15,7 +15,7 @@ if ($favorites_ids) {
 
 <?php get_header(); ?>
 
-<div class="content-main article">
+<div class="content-main article favorites">
     <h1><?= $post->post_title; ?></h1>
     <div class="article-subheader"><?= $post->post_excerpt; ?></div>
     <div class="article-content">
@@ -27,9 +27,9 @@ if ($favorites_ids) {
                 <?php endforeach ?>
                 </div>
             <?php else : ?>
-                <div class="compare-empty">
+                <div class="favorites-empty">
                     <img src="<?= get_asset_path('images', 'not_found.svg') ?>" alt="">
-                    <p>Вы еще не выбрали товары для сравнения</p>
+                    <p>Вы еще не выбрали избранные товары</p>
                 </div>
             <?php endif ?>
         </div>

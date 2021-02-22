@@ -79,7 +79,7 @@ $products = $products_obj->products;
         <div class="catalog-list-body">
             <?php if (count($products)) : ?>
             <?php foreach ($products as $key => $bike): ?>
-               <?php bike_widget($bike, true) ?>
+               <?php bike_widget($bike, false) ?>
                <?php if ($key == 3 || $key == 13): ?>
                    <?php catalog_banner_widget($key) ?>
                <?php endif; ?>

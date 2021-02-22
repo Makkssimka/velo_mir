@@ -100,4 +100,19 @@ function get_products_count_callback(){
     wp_die();
 }
 
+//Добавляем в корзину
+add_action('wp_ajax_add_to_cart', 'add_to_cart_callback');
+add_action('wp_ajax_nopriv_add_to_cart', 'add_to_cart_callback');
+
+function add_to_cart_callback(){
+    $id = $_POST['id'];
+    global $woocommerce;
+
+    $cart = $woocommerce->cart;
+    $cart->add_to_cart($id);
+
+    echo $cart->get_cart_contents_count();
+}
+
+
 

@@ -1,4 +1,9 @@
 <?php
+global $woocommerce;
+$cart = $woocommerce->cart;
+
+$cart_count = $cart->get_cart_contents_count();
+
 $telephone_array = explode(', ', get_option('telephone_num'));
 $time_job_array = time_to_array(get_option('time_job'));
 
@@ -27,19 +32,22 @@ $compare_array = isset($_SESSION['compare'])?json_decode($_SESSION['compare']):a
                     <i class="las la-balance-scale-left"></i>
                     <span>Сравнение</span>
                         <div id="compare" class="label-number <?= count($compare_array)?'':'hidden-block' ?>">
-                            <?= count($compare_array)?>
+                            <?= count($compare_array) ?>
                         </div>
                 </a></li>
             <li><a href="/favorites">
                     <i class="lar la-star"></i>
                     <span>Избранное</span>
                     <div id="favorites" class="label-number <?= count($favorites_array)?'':'hidden-block' ?>">
-                        <?= count($favorites_array)?>
+                        <?= count($favorites_array) ?>
                     </div>
                 </a></li>
             <li><a href="#">
                     <i class="las la-shopping-cart"></i>
                     <span>Корзина</span>
+                    <div id="cart" class="label-number <?= $cart_count?'':'hidden-block' ?>">
+                        <?= $cart_count ?>
+                    </div>
                 </a></li>
         </ul>
     </div>

@@ -434,6 +434,10 @@ jQuery(document).ready(function ($) {
         var result = JSON.parse(response);
         $('#favorites').text(result.counter);
         parent.remove();
+
+        if (!result.counter) {
+          window.location.reload();
+        }
       }
     });
   }); //Дабавляем в сравнение
@@ -474,11 +478,40 @@ jQuery(document).ready(function ($) {
         }
       }
     });
-  }); //Появление сообщений
+  }); //Добавление в корзину
 
-  $('.add-cart').click(function () {
+  $('.add-cart').click(function (e) {
+    e.preventDefault(); //Ajax добавить в корзину
+
+    var id = $(this).data('id');
+    var name = $(this).data('name');
+    var elem = $(this);
+    $.ajax({
+      type: 'POST',
+      url: window.wp_data.ajax_url,
+      data: {
+        action: 'add_to_cart',
+        id: id
+      },
+      beforeSend: function beforeSend() {
+        elem.addClass('inactive-element');
+        elem.text('Добавляем');
+      },
+      success: function success(response) {
+        notification_add(name);
+        var count = JSON.parse(response);
+        $('#cart').text(count / 10);
+        $('#cart').removeClass('hidden-block');
+        elem.removeClass('inactive-element').removeClass('add-cart');
+        elem.text('Товар в корзине');
+        elem.unbind('click');
+      }
+    });
+  }); // Добавление уведомлений
+
+  function notification_add(name) {
     var item = '<div class="notification-item">';
-    item += '<div class="notification-message">Велосипед Stels Nav.500 добавлен в корзину!</div>';
+    item += '<div class="notification-message">Велосипед ' + name + ' добавлен в корзину!</div>';
     item += '</div>';
     $('.notification-item').each(function (index, item) {
       var top = (index + 1) * 50 + 20;
@@ -488,6 +521,5 @@ jQuery(document).ready(function ($) {
     setTimeout(function () {
       $('.notification-item').first().addClass('notification-show');
     }, 300);
-  });
-  $('.notification-list').on('click', '.notification-close', function () {});
+  }
 });
