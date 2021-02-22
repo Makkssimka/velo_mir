@@ -474,5 +474,20 @@ jQuery(document).ready(function ($) {
         }
       }
     });
+  }); //Появление сообщений
+
+  $('.add-cart').click(function () {
+    var item = '<div class="notification-item">';
+    item += '<div class="notification-message">Велосипед Stels Nav.500 добавлен в корзину!</div>';
+    item += '</div>';
+    $('.notification-item').each(function (index, item) {
+      var top = (index + 1) * 50 + 20;
+      $(item).css('top', top + 'px');
+    });
+    $('.notification-list').prepend(item);
+    setTimeout(function () {
+      $('.notification-item').first().addClass('notification-show');
+    }, 300);
   });
+  $('.notification-list').on('click', '.notification-close', function () {});
 });
