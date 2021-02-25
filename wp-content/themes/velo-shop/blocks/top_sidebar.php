@@ -1,6 +1,5 @@
 <?php
-global $woocommerce;
-$cart = $woocommerce->cart;
+$cart = WC()->cart;
 
 $cart_count = $cart->get_cart_contents_count();
 

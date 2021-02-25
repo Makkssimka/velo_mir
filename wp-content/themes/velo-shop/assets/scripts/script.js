@@ -484,7 +484,7 @@ jQuery(document).ready(function ($) {
     e.preventDefault(); //Ajax добавить в корзину
 
     var id = $(this).data('id');
-    var name = $(this).data('name');
+    var message = 'Велосипед ' + $(this).data('name') + ' добавлен в корзину!';
     var elem = $(this);
     $.ajax({
       type: 'POST',
@@ -498,7 +498,7 @@ jQuery(document).ready(function ($) {
         elem.text('Добавляем');
       },
       success: function success(response) {
-        notification_add(name);
+        notification_add(message);
         var count = JSON.parse(response);
         $('#cart').text(count / 10);
         $('#cart').removeClass('hidden-block');
@@ -509,9 +509,9 @@ jQuery(document).ready(function ($) {
     });
   }); // Добавление уведомлений
 
-  function notification_add(name) {
+  function notification_add(message) {
     var item = '<div class="notification-item">';
-    item += '<div class="notification-message">Велосипед ' + name + ' добавлен в корзину!</div>';
+    item += '<div class="notification-message">' + message + '</div>';
     item += '</div>';
     $('.notification-item').each(function (index, item) {
       var top = (index + 1) * 50 + 20;
@@ -521,5 +521,67 @@ jQuery(document).ready(function ($) {
     setTimeout(function () {
       $('.notification-item').first().addClass('notification-show');
     }, 300);
-  }
+  } // Работа с корзиной
+
+
+  $('.up').click(function (e) {
+    e.preventDefault();
+    var parent = $(this).parents('.quantity-wrapper');
+    var counter = parent.find('.cart-counter');
+    var oldVal = Number(counter.val());
+
+    if (oldVal + 1 > 10) {
+      notification_add("Количество товаров не может привышать 10");
+      return false;
+    }
+
+    counter.val(oldVal + 1);
+    counter.trigger('change', {
+      type: 'up'
+    });
+  });
+  $('.down').click(function (e) {
+    e.preventDefault();
+    var parent = $(this).parents('.quantity-wrapper');
+    var counter = parent.find('.cart-counter');
+    var oldVal = Number(counter.val());
+
+    if (oldVal - 1 == 0) {
+      notification_add("Количество товаров не может быть меньше 1");
+      return false;
+    }
+
+    counter.val(oldVal - 1);
+    counter.trigger('change', {
+      type: 'down'
+    });
+  });
+  $('.cart-counter').on('change', function (e, param) {
+    var key = $(this).data('key');
+    var method = param.type == 'up' ? 'up' : 'down';
+    var parent = $(this).parents('tr');
+    var item_subtotal = parent.find('.cart-item-total');
+    $.ajax({
+      type: 'POST',
+      url: window.wp_data.ajax_url,
+      data: {
+        action: 'up_down_cart',
+        method: method,
+        key: key
+      },
+      beforeSend: function beforeSend() {
+        $('.cart-loading').addClass('loading-show');
+      },
+      success: function success(response) {
+        var result = JSON.parse(response);
+        $('#cart').text(result.count);
+        $('.cart-total-subtotal span').html(result.subtotal);
+        $('.cart-subtotal').html(result.subtotal);
+        $('.cart-total-sale span').html(result.sale);
+        $('.cart-total-sum span').html(result.total);
+        $('.cart-loading').removeClass('loading-show');
+        item_subtotal.html(result.item_subtotal);
+      }
+    });
+  });
 });

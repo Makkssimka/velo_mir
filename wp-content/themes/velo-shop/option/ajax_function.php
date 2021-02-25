@@ -106,12 +106,41 @@ add_action('wp_ajax_nopriv_add_to_cart', 'add_to_cart_callback');
 
 function add_to_cart_callback(){
     $id = $_POST['id'];
-    global $woocommerce;
 
-    $cart = $woocommerce->cart;
+    $cart = WC()->cart;
     $cart->add_to_cart($id);
 
     echo $cart->get_cart_contents_count();
+    wp_die();
+}
+
+//Увеличиваем корзину
+add_action('wp_ajax_up_down_cart', 'up_down_cart_callback');
+add_action('wp_ajax_nopriv_up_down_cart', 'up_down_cart_callback');
+
+function up_down_cart_callback(){
+    $key = $_POST['key'];
+    $method = $_POST['method'];
+    $cart = WC()->cart;
+    $item = $cart->get_cart_item($key);
+    $quantity = $item['quantity'];
+
+    if ($method == 'up') {
+        $cart->set_quantity($key, $quantity+1);
+    } else {
+        $cart->set_quantity($key, $quantity-1);
+    }
+
+    $new_item = $cart->get_cart_item($key);
+
+    echo json_encode(array(
+        'count' => $cart->get_cart_contents_count(),
+        'subtotal' => $cart->get_cart_subtotal(),
+        'sale' => wc_price($cart->get_cart_discount_total()),
+        'total' => $cart->get_cart_total(),
+        'item_subtotal' => wc_price($new_item['line_subtotal'])
+    ));
+    wp_die();
 }
 
 

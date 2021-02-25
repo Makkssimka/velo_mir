@@ -1,8 +1,7 @@
 <?php
 
 function add_cart_btn($product, $class = 'btn-green') {
-    global $woocommerce;
-    $cart = $woocommerce->cart;
+    $cart = WC()->cart;
 
     $name = $product->get_title();
     $id = $product->get_id();
