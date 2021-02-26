@@ -353,14 +353,4 @@ abstract class BaseFolder implements \MatthiasWeb\RealMediaLibrary\api\IFolder {
         return \in_array($restriction, $this->restrictions, \true) ||
             \in_array($restriction . '>', $this->restrictions, \true);
     }
-    // Documented in IFolder
-    public function isValidChildrenType($type) {
-        $allowed = $this->getAllowedChildrenTypes();
-        $this->debug(
-            "Check if children type '{$type}' of {$this->id}... is allowed here: " .
-                ($allowed === \true ? 'All is allowed here' : 'Only ' . \json_encode($allowed) . ' is allowed here'),
-            __METHOD__
-        );
-        return $allowed === \true ? \true : \in_array($type, $allowed, \true);
-    }
 }

@@ -40,7 +40,7 @@ class Upload {
      */
     public function getFolderFromRequest() {
         $rmlFolder = isset($_REQUEST['rmlFolder']) ? $_REQUEST['rmlFolder'] : null;
-        // Recursively creating folders is only allowed in PRO version as in lite version there is a folder limit
+        // Recursively creating folders is only allowed in PRO version as in Lite version there are no subfolders supported
         $allowRecursively = $this->isPro();
         // Do not allow recursively creation of folders for non-folder types
         if ($rmlFolder !== null && $allowRecursively) {

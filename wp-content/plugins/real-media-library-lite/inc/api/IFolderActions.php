@@ -39,6 +39,7 @@ interface IFolderActions {
      * @param integer $nextFolderId The next folder id it should be prepend or false for the end
      * @throws Exception
      * @return boolean|string[] true or array with errors
+     * @since 4.12.1 This function ignores the `$parentId` parameter in Lite version as creating subfolders is no longer supported
      */
     public function relocate($parentId, $nextFolderId = \false);
     /**
@@ -60,9 +61,12 @@ interface IFolderActions {
      */
     public function resetSubfolderOrder();
     /**
-     * Reindex the children folders so the "ord" number is set right.
+     * (Pro only) Reindex the children folders so the "ord" number is set right.
      *
+     * @since 4.12.1 This function is only available in PRO-Version.
      * @param boolean $resetData If true, the structure is reset
+     * @return boolean
+     * @since 4.12.1 This function is only available in PRO-Version
      */
     public function reindexChildrens($resetData = \false);
     /**
@@ -122,6 +126,7 @@ interface IFolderActions {
      * @param int $ord The order number
      * @param boolean $force If true no permission checks are executed
      * @throws \Exception
+     * @since 4.12.1 This function ignores the `$id` parameter in Lite version as creating subfolders is no longer supported
      * @return boolean
      */
     public function setParent($id, $ord = -1, $force = \false);

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.6.6 (2021-02-24)
+
+
+### chore
+
+* rename go-links to new syntax (#en621h)
+* **release :** publish [ci skip]
+* **release :** publish [ci skip]
+
+
+
+
+
 ## 1.6.5 (2021-01-11)
 
 

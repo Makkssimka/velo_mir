@@ -60,13 +60,6 @@ class AdInitiator extends \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\
                     : [
                         ['Lite', \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\WelcomePage::COLOR_BADGE_LITE],
                         ['Pro', \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\WelcomePage::COLOR_BADGE_PRO]
-                    ],
-                'highlight_badge' => $isPro
-                    ? null
-                    : [
-                        'Pro',
-                        \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\WelcomePage::COLOR_BADGE_PRO,
-                        __('In the PRO version you can create more than 10 folders (unlimited).', RML_TD)
                     ]
             ],
             [
@@ -78,9 +71,13 @@ class AdInitiator extends \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\
                 ),
                 'available_in' => $isPro
                     ? null
+                    : [['Pro', \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\WelcomePage::COLOR_BADGE_PRO]],
+                'highlight_badge' => $isPro
+                    ? null
                     : [
-                        ['Lite', \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\WelcomePage::COLOR_BADGE_LITE],
-                        ['Pro', \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\WelcomePage::COLOR_BADGE_PRO]
+                        'Lite',
+                        \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\WelcomePage::COLOR_BADGE_LITE,
+                        __('In the Lite version you can only select the folder by a simple dropdown.', RML_TD)
                     ]
             ],
             [

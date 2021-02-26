@@ -43,7 +43,7 @@ Also, add the following constants:
 ```php
 define("RML_SLUG_LITE", "real-media-library-lite");
 define("RML_SLUG_PRO", "real-media-library-pro");
-define("RML_PRO_VERSION", "https://devowl.io/go/codecanyon/real-media-library?source=rml-lite");
+define("RML_PRO_VERSION", "https://devowl.io/go/real-media-library?source=rml-lite");
 ```
 
 -   `RML_SLUG_LITE`: Define the public slug on wordpress.org of your plugin

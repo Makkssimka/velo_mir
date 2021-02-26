@@ -22,8 +22,27 @@ class Lang {
      * @return array
      */
     public function getItems($assets) {
+        global $wpdb;
+        // Check if already subfolder exist (in Lite Version)
+        $liteSubfolderAdditionalText = '';
+        if (!$this->isPro()) {
+            $table_name = $this->getTableName();
+            // phpcs:disable WordPress.DB.PreparedSQL
+            $result = $wpdb->get_var("SELECT COUNT(*) FROM {$table_name} WHERE parent > -1");
+            // phpcs:enable WordPress.DB.PreparedSQL
+            if ($result > 0) {
+                $liteSubfolderAdditionalText = \sprintf(
+                    "\n\n*%s*",
+                    __(
+                        'Subfolders are only available in the PRO version. But you can now create an unlimited number of folders on the main level (instead of the previous max. 10 folders).',
+                        RML_TD
+                    )
+                );
+            }
+        }
         return [
             'noneSelected' => __('No folder selected', RML_TD),
+            'selectFolder' => __('Select folder', RML_TD),
             'reloadContent' => __('Reload content', RML_TD),
             'folder' => __('Folder', RML_TD),
             'subfolders' => __('Subfolders', RML_TD),
@@ -202,11 +221,20 @@ You can also order the images into *a custom image order* per drag&drop.',
                         RML_TD
                     )
                 ],
-                'limit' => [
-                    'title' => __('Want to create more folders?', RML_TD),
-                    'image' => 'limit.jpg',
+                'subfolder' => [
+                    'title' => __('Want to create subfolders?', RML_TD),
+                    'image' => 'full-control.gif',
+                    'description' =>
+                        __(
+                            'Subfolders offer you the possibility to bring more structure into your media library. They help you to keep the overview, even if you really have many files in your media library.',
+                            RML_TD
+                        ) . $liteSubfolderAdditionalText
+                ],
+                'insert-media-tree-view' => [
+                    'title' => __('Want to switch between folders more comfortably?', RML_TD),
+                    'image' => 'inserting-media-dialog.gif',
                     'description' => __(
-                        'You can create up to 10 folders in the free version of Real Media Library. Get the Pro version and create unlimited folders.',
+                        'Let the complete folder tree as in your media library also be displayed in this dialog instead of searching each time in the dropdown. It is simply more comfortable!',
                         RML_TD
                     )
                 ],

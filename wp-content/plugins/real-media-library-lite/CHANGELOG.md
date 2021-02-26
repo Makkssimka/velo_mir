@@ -3,6 +3,84 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.13.0 (2021-02-24)
+
+
+### chore
+
+* rename go-links to new syntax (#en621h)
+
+
+### docs
+
+* rename test drive to sanbox (#ef26y8)
+
+
+### feat
+
+* translation intro Croatian (#eq11w3)
+
+
+### fix
+
+* allow to refresh modal attachments browser e.g. Divi page builder does not do this automatically
+* newly uploaded files are not visible after reopening the folder in Free version (CU-epyvt7)
+* reset folder correctly when reopening a modal dialog
+
+
+
+
+
+## 4.12.4 (2021-02-16)
+
+
+### docs
+
+* correctly generated JSDoc for Real Media Library (CU-e8zuj3)
+* update README to be compatible with Requires at least (CU-df2wb4)
+
+
+### fix
+
+* compatiblity with Beaver Builder and responsive settings for a block e.g. mobile
+
+
+
+
+
+## 4.12.3 (2021-02-05)
+
+
+### fix
+
+* button 'Set featured image' is not active after direct upload after new PRO features were introduced (#7am682)
+
+
+
+
+
+## 4.12.2 (2021-02-02)
+
+
+### chore
+
+* move default startup folder functionality to PRO features (CU-d6z2u6)
+* removed folder limit of 10 folders, new PRO features (CU-d6z2u6)
+
+
+### docs
+
+* improved product description for wordpress.org (#d6z2u6)
+
+
+### fix
+
+* compatibility with Media Library Assistant (CU-d0w8f7)
+
+
+
+
+
 ## 4.12.1 (2021-01-24)
 
 **Note:** Version bump only for package @devowl-wp/real-media-library

@@ -15,7 +15,6 @@
         <?php foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) : ?>
             <?php $product = wc_get_product($cart_item['variation_id']) ?>
             <?php $parent = wc_get_product($cart_item['product_id']) ?>
-            <?php print_r(WC()->cart->get_cart_item($cart_item['key'])['line_subtotal']); ?>
             <tr>
                 <td class="cart-item-image">
                     <img src="<?= wp_get_attachment_url($product->get_image_id()) ?>">
@@ -49,7 +48,7 @@
                     <?= wc_price($cart_item['line_subtotal']) ?>
                 </td>
                 <td class="cart-item-remove">
-                    <i class="las la-times"></i>
+                    <i data-key="<?= $cart_item['key'] ?>" class="las la-times item-remove"></i>
                 </td>
             </tr>
         <?php endforeach; ?>

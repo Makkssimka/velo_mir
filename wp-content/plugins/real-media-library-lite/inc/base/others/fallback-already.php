@@ -17,7 +17,7 @@ add_action('admin_notices', 'rml_skip_already_admin_notice');
 
 if (!function_exists('rml_skip_already_deactivate_lite')) {
     /**
-     * Automatically deactivate lite version when we try to activate the PRO version.
+     * Automatically deactivate Lite version when we try to activate the PRO version.
      */
     function rml_skip_already_deactivate_lite() {
         // Avoid doing this in local stack as we do not have pro and lite difference in slug

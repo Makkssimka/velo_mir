@@ -14,7 +14,7 @@ use MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\UtilsProvider;
 class CrossRealCategoryLibrary extends
     \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\cross\AbstractCrossSelling {
     const SLUG = 'real-category-library';
-    const PRO_LINK = 'https://devowl.io/go/codecanyon/real-category-management?source=cross-rcm';
+    const PRO_LINK = 'https://devowl.io/go/real-category-management?source=cross-rcm';
     const FILE_LITE = 'real-category-library-lite/index.php';
     const FILE_PRO = 'real-category-library/index.php';
     /**

@@ -87,6 +87,7 @@ if (!\function_exists('wp_rml_create')) {
      * @param boolean $return_existing_id If true and the folder already exists, then return the ID of the existing folder
      * @return int|string[] int (ID) when successfully array with error strings
      * @throws OnlyInProVersionException
+     * @since 4.12.1 This function ignores the `$parent` parameter in Lite version as creating subfolders is no longer supported
      */
     function wp_rml_create(
         $name,
@@ -108,7 +109,7 @@ if (!\function_exists('wp_rml_create')) {
 }
 if (!\function_exists('wp_rml_create_p')) {
     /**
-     * Creates multiple folders like "test/test2". At first it checks if a folder in parent already exists.
+     * (Pro only) Creates multiple folders like "test/test2". At first it checks if a folder in parent already exists.
      * Then it checks if the given type is allowed in the parent.
      *
      * It is highly recommend, to use wp_rml_structure_reset after you created your folders.
@@ -121,25 +122,16 @@ if (!\function_exists('wp_rml_create_p')) {
      * @return int|string[] int (ID) when successfully array with error strings
      * @throws OnlyInProVersionException
      * @since 4.12.0
+     * @since 4.12.1 This function is no longer available in PRO version
      */
     function wp_rml_create_p($name, $parent, $type, $restrictions = [], $supress_validation = \false) {
-        $name = \trim(\trim($name), '/');
-        $names = \explode('/', $name);
-        $parent = $parent;
-        foreach ($names as $folderName) {
-            $parent = \MatthiasWeb\RealMediaLibrary\folder\CRUD::getInstance()->create(
-                $folderName,
-                $parent,
-                $type,
-                $restrictions,
-                $supress_validation,
-                \true
-            );
-            if (\is_array($parent)) {
-                return $parent;
-            }
-        }
-        return $parent;
+        return \MatthiasWeb\RealMediaLibrary\folder\CRUD::getInstance()->createRecursively(
+            $name,
+            $parent,
+            $type,
+            $restrictions,
+            $supress_validation
+        );
     }
 }
 if (!\function_exists('wp_rml_create_or_return_existing_id')) {
@@ -152,6 +144,7 @@ if (!\function_exists('wp_rml_create_or_return_existing_id')) {
      * @param string[] $restrictions Restrictions for this folder
      * @param boolean $supress_validation Supress the permission validation
      * @return int|string[] int (ID) when successfully array with error strings
+     * @since 4.12.1 This function ignores the `$parent` parameter in Lite version as creating subfolders is no longer supported
      */
     function wp_rml_create_or_return_existing_id(
         $name,

@@ -59,10 +59,6 @@ msgstr ""
 "yöneticisi, ama WordPress için."
 
 #: inc/AdInitiator.php:1
-msgid "In the PRO version you can create more than 10 folders (unlimited)."
-msgstr "PRO sürümünde 10'dan fazla klasör (sınırsız) oluşturabilirsiniz."
-
-#: inc/AdInitiator.php:1
 msgid "Filter in insert media dialog"
 msgstr "Medya ekle iletişim kutusunda filtrele"
 
@@ -75,6 +71,12 @@ msgstr ""
 "Nerede olursanız olun, Real Media Library'nin klasör yapısı her zaman "
 "dosyaları seçebileceğiniz yerdir. Örneğin, bir \"Öne Çıkan Resim\" seçme "
 "iletişim kutusunda."
+
+#: inc/AdInitiator.php:1
+#, fuzzy
+msgid ""
+"In the Lite version you can only select the folder by a simple dropdown."
+msgstr "PRO sürümünde 10'dan fazla klasör (sınırsız) oluşturabilirsiniz."
 
 #: inc/AdInitiator.php:1
 msgid "Custom image order"
@@ -254,7 +256,8 @@ msgstr "Verileri içe aktar:"
 msgid "Importing data is only available in PRO version."
 msgstr "Verileri içe aktarma yalnızca PRO sürümünde mevcuttur."
 
-#: inc/comp/ExImport.php:1 inc/view/Lang.php:1
+#: inc/comp/ExImport.php:1 inc/usersettings/DefaultFolder.php:1
+#: inc/view/Lang.php:1
 msgid "Learn more about PRO"
 msgstr "PRO hakkında daha fazla bilgi edinin"
 
@@ -305,19 +308,9 @@ msgstr "'%s' zaten bu klasörde var."
 msgid "This functionality is not available in the free version (%s)."
 msgstr "Bu işlevsellik ücretsiz sürümde (%s) kullanılamaz."
 
-#: inc/folder/Creatable.php:1 inc/overrides/pro/order/Sortable.php:1
-#: inc/rest/Attachment.php:1
-msgid "Something went wrong."
-msgstr "Bir şeyler yanlış gitti."
-
 #: inc/folder/Creatable.php:1
 msgid "You need to provide a set of files."
 msgstr "Bir dizi dosya sağlamanız gerekiyor."
-
-#. translators:
-#: inc/folder/Creatable.php:1
-msgid "The parent %d does not exist."
-msgstr "%d üst öğesi mevcut değil."
 
 #: inc/folder/Creatable.php:1
 msgid "The folder could not be created in the database."
@@ -333,19 +326,6 @@ msgid ""
 msgstr ""
 "Bir klasör her tür dosyayı veya koleksiyonu içerebilir, ancak galeriyi "
 "içermez."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not exist to set the parent for this folder."
-msgstr ""
-"Belirtilen üst öğe, bu klasörün üst öğesini ayarlamak için mevcut değil."
-
-#: inc/folder/Creatable.php:1
-msgid "You are not allowed to change the parent for this folder."
-msgstr "Bu klasörün üst öğesini değiştirme izniniz yok."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not allow the folder type."
-msgstr "Belirtilen üst öğe klasör türüne izin vermiyor."
 
 #. translators:
 #: inc/folder/Creatable.php:1
@@ -450,6 +430,16 @@ msgstr "Artan dosya adına göre doğal sıralama"
 msgid "Natural order by filename descending"
 msgstr "Azalan dosya adına göre doğal sıralama"
 
+#: inc/overrides/lite/folder/Creatable.php:1
+#: inc/overrides/pro/folder/Creatable.php:1
+#: inc/overrides/pro/order/Sortable.php:1 inc/rest/Attachment.php:1
+msgid "Something went wrong."
+msgstr "Bir şeyler yanlış gitti."
+
+#: inc/overrides/lite/rest/Service.php:1 inc/overrides/pro/rest/Service.php:1
+msgid "Folder not found."
+msgstr "Klasör bulunamadı."
+
 #: inc/overrides/pro/Core.php:1
 msgid ""
 "<strong>You have not yet entered the license key</strong>. To receive "
@@ -473,6 +463,24 @@ msgid ""
 msgstr ""
 "Bir koleksiyon dosya içeremez. Ancak orada başka koleksiyonlar ve <strong> "
 "galeriler </strong> de oluşturabilirsiniz."
+
+#. translators:
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The parent %d does not exist."
+msgstr "%d üst öğesi mevcut değil."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not exist to set the parent for this folder."
+msgstr ""
+"Belirtilen üst öğe, bu klasörün üst öğesini ayarlamak için mevcut değil."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "You are not allowed to change the parent for this folder."
+msgstr "Bu klasörün üst öğesini değiştirme izniniz yok."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not allow the folder type."
+msgstr "Belirtilen üst öğe klasör türüne izin vermiyor."
 
 #: inc/overrides/pro/folder/Gallery.php:1
 msgid "You can only move images to a gallery."
@@ -499,13 +507,13 @@ msgid "This folder has an automatic order. Please deactivate that first."
 msgstr ""
 "Bu klasörün otomatik bir sırası var. Lütfen önce bunu devre dışı bırakın."
 
+#: inc/overrides/pro/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
+msgid "Please select a folder to show items."
+msgstr "Lütfen öğeleri göstermek için bir klasör seçin."
+
 #: inc/rest/Attachment.php:1
 msgid "Fetch only media in a folder by folder id."
 msgstr "Yalnızca klasör kimliğini klasör kimliğine göre alır."
-
-#: inc/rest/Service.php:1
-msgid "Folder not found."
-msgstr "Klasör bulunamadı."
 
 #: inc/rest/Service.php:1
 msgid "Forbidden"
@@ -523,10 +531,6 @@ msgstr "\"Tüm dosyalar\" daki kısayolları gizle"
 msgid "The count always includes shortcuts"
 msgstr "Sayı her zaman kısayol içerir"
 
-#: inc/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
-msgid "Please select a folder to show items."
-msgstr "Lütfen öğeleri göstermek için bir klasör seçin."
-
 #: inc/usersettings/DefaultFolder.php:1
 msgid "Default startup folder"
 msgstr "Varsayılan başlangıç klasörü"
@@ -538,6 +542,12 @@ msgstr "Başlangıçta klasör yok"
 #: inc/usersettings/DefaultFolder.php:1
 msgid "Last opened folder"
 msgstr "Son açılan klasör"
+
+#: inc/usersettings/DefaultFolder.php:1
+msgid ""
+"Your media library can always open in the last opened folder or a folder you "
+"choose. This saves you time every time you open the media library!"
+msgstr ""
 
 #: inc/view/FolderShortcode.php:1
 msgid "Gallery from Media Folder"
@@ -595,8 +605,20 @@ msgid "Full Size"
 msgstr "Tam Boyut"
 
 #: inc/view/Lang.php:1
+msgid ""
+"Subfolders are only available in the PRO version. But you can now create an "
+"unlimited number of folders on the main level (instead of the previous max. "
+"10 folders)."
+msgstr ""
+
+#: inc/view/Lang.php:1
 msgid "No folder selected"
 msgstr "Hiçbir klasör seçilmedi"
+
+#: inc/view/Lang.php:1
+#, fuzzy
+msgid "Select folder"
+msgstr "Hedef klasörünü seçin"
 
 #: inc/view/Lang.php:1
 msgid "Reload content"
@@ -1144,16 +1166,26 @@ msgstr ""
 
 #: inc/view/Lang.php:1
 #, fuzzy
-msgid "Want to create more folders?"
+msgid "Want to create subfolders?"
 msgstr "Yeni bir klasör oluşturmak için burayı tıklayın"
 
 #: inc/view/Lang.php:1
 msgid ""
-"You can create up to 10 folders in the free version of Real Media Library. "
-"Get the Pro version and create unlimited folders."
+"Subfolders offer you the possibility to bring more structure into your media "
+"library. They help you to keep the overview, even if you really have many "
+"files in your media library."
 msgstr ""
-"Real Media Library'nin ücretsiz sürümünde en fazla 10 klasör "
-"oluşturabilirsiniz. Pro sürümünü edinin ve sınırsız klasör oluşturun."
+
+#: inc/view/Lang.php:1
+msgid "Want to switch between folders more comfortably?"
+msgstr ""
+
+#: inc/view/Lang.php:1
+msgid ""
+"Let the complete folder tree as in your media library also be displayed in "
+"this dialog instead of searching each time in the dropdown. It is simply "
+"more comfortable!"
+msgstr ""
 
 #: inc/view/Lang.php:1
 #, fuzzy
@@ -1230,6 +1262,13 @@ msgstr "Tümü"
 #: inc/view/View.php:1
 msgid "Unorganized pictures"
 msgstr "Organize edilmemiş resimler"
+
+#~ msgid ""
+#~ "You can create up to 10 folders in the free version of Real Media "
+#~ "Library. Get the Pro version and create unlimited folders."
+#~ msgstr ""
+#~ "Real Media Library'nin ücretsiz sürümünde en fazla 10 klasör "
+#~ "oluşturabilirsiniz. Pro sürümünü edinin ve sınırsız klasör oluşturun."
 
 #~ msgid "Rearrange tree by drag & drop"
 #~ msgstr "Ağacı sürükleyip bırakarak yeniden düzenleme"

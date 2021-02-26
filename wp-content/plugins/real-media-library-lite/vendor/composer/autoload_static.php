@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit13ccde61a508cdd49e5ad948a10e6c63
+class ComposerStaticInitae5a33ff4424c4940cca395e32580f37
 {
     public static $prefixLengthsPsr4 = array (
         'M' => 
@@ -125,8 +125,12 @@ class ComposerStaticInit13ccde61a508cdd49e5ad948a10e6c63
         'MatthiasWeb\\RealMediaLibrary\\overrides\\interfce\\IOverrideCore' => __DIR__ . '/../..' . '/inc/overrides/interfce/IOverrideCore.php',
         'MatthiasWeb\\RealMediaLibrary\\overrides\\interfce\\comp\\IOverrideExImport' => __DIR__ . '/../..' . '/inc/overrides/interfce/comp/IOverrideExImport.php',
         'MatthiasWeb\\RealMediaLibrary\\overrides\\interfce\\comp\\IOverrideWPML' => __DIR__ . '/../..' . '/inc/overrides/interfce/comp/IOverrideWPML.php',
+        'MatthiasWeb\\RealMediaLibrary\\overrides\\interfce\\folder\\IOverrideCRUD' => __DIR__ . '/../..' . '/inc/overrides/interfce/folder/IOverrideCRUD.php',
         'MatthiasWeb\\RealMediaLibrary\\overrides\\interfce\\folder\\IOverrideCreatable' => __DIR__ . '/../..' . '/inc/overrides/interfce/folder/IOverrideCreatable.php',
         'MatthiasWeb\\RealMediaLibrary\\overrides\\interfce\\order\\IOverrideSortable' => __DIR__ . '/../..' . '/inc/overrides/interfce/order/IOverrideSortable.php',
+        'MatthiasWeb\\RealMediaLibrary\\overrides\\interfce\\rest\\IOverrideFolder' => __DIR__ . '/../..' . '/inc/overrides/interfce/rest/IOverrideFolder.php',
+        'MatthiasWeb\\RealMediaLibrary\\overrides\\interfce\\rest\\IOverrideService' => __DIR__ . '/../..' . '/inc/overrides/interfce/rest/IOverrideService.php',
+        'MatthiasWeb\\RealMediaLibrary\\overrides\\interfce\\usersettings\\IOverrideDefaultFolder' => __DIR__ . '/../..' . '/inc/overrides/interfce/usersettings/IOverrideDefaultFolder.php',
         'MatthiasWeb\\RealMediaLibrary\\rest\\Attachment' => __DIR__ . '/../..' . '/inc/rest/Attachment.php',
         'MatthiasWeb\\RealMediaLibrary\\rest\\Folder' => __DIR__ . '/../..' . '/inc/rest/Folder.php',
         'MatthiasWeb\\RealMediaLibrary\\rest\\Reset' => __DIR__ . '/../..' . '/inc/rest/Reset.php',
@@ -145,9 +149,9 @@ class ComposerStaticInit13ccde61a508cdd49e5ad948a10e6c63
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit13ccde61a508cdd49e5ad948a10e6c63::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit13ccde61a508cdd49e5ad948a10e6c63::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit13ccde61a508cdd49e5ad948a10e6c63::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitae5a33ff4424c4940cca395e32580f37::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitae5a33ff4424c4940cca395e32580f37::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitae5a33ff4424c4940cca395e32580f37::$classMap;
 
         }, null, ClassLoader::class);
     }

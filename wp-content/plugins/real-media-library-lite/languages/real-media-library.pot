@@ -42,15 +42,15 @@ msgid "Real Media Library is a WordPress plugin that empowers you with advanced 
 msgstr ""
 
 #: inc/AdInitiator.php:1
-msgid "In the PRO version you can create more than 10 folders (unlimited)."
-msgstr ""
-
-#: inc/AdInitiator.php:1
 msgid "Filter in insert media dialog"
 msgstr ""
 
 #: inc/AdInitiator.php:1
 msgid "No matter where you are, the folder structure of Real Media Library is always where you can select files. For example in the dialog for selecting a \"Featured Image\"."
+msgstr ""
+
+#: inc/AdInitiator.php:1
+msgid "In the Lite version you can only select the folder by a simple dropdown."
 msgstr ""
 
 #: inc/AdInitiator.php:1
@@ -194,6 +194,7 @@ msgstr ""
 
 #: inc/comp/ExImport.php:1
 #: inc/comp/ExImport.php:1
+#: inc/usersettings/DefaultFolder.php:1
 #: inc/view/Lang.php:1
 msgid "Learn more about PRO"
 msgstr ""
@@ -242,18 +243,7 @@ msgid "This functionality is not available in the free version (%s)."
 msgstr ""
 
 #: inc/folder/Creatable.php:1
-#: inc/overrides/pro/order/Sortable.php:1
-#: inc/rest/Attachment.php:1
-msgid "Something went wrong."
-msgstr ""
-
-#: inc/folder/Creatable.php:1
 msgid "You need to provide a set of files."
-msgstr ""
-
-#. translators:
-#: inc/folder/Creatable.php:1
-msgid "The parent %d does not exist."
 msgstr ""
 
 #: inc/folder/Creatable.php:1
@@ -266,18 +256,6 @@ msgstr ""
 
 #: inc/folder/Creatable.php:1
 msgid "A folder can contain every type of file or a collection, but not gallery."
-msgstr ""
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not exist to set the parent for this folder."
-msgstr ""
-
-#: inc/folder/Creatable.php:1
-msgid "You are not allowed to change the parent for this folder."
-msgstr ""
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not allow the folder type."
 msgstr ""
 
 #. translators:
@@ -384,6 +362,18 @@ msgstr ""
 msgid "Natural order by filename descending"
 msgstr ""
 
+#: inc/overrides/lite/folder/Creatable.php:1
+#: inc/overrides/pro/folder/Creatable.php:1
+#: inc/overrides/pro/order/Sortable.php:1
+#: inc/rest/Attachment.php:1
+msgid "Something went wrong."
+msgstr ""
+
+#: inc/overrides/lite/rest/Service.php:1
+#: inc/overrides/pro/rest/Service.php:1
+msgid "Folder not found."
+msgstr ""
+
 #: inc/overrides/pro/Core.php:1
 msgid "<strong>You have not yet entered the license key</strong>. To receive automatic updates, please enter the key in \"Enter license\"."
 msgstr ""
@@ -398,6 +388,23 @@ msgstr ""
 
 #: inc/overrides/pro/folder/Collection.php:1
 msgid "A collection cannot contain files. But you can create other collections and <strong> galleries</strong> there."
+msgstr ""
+
+#. translators:
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The parent %d does not exist."
+msgstr ""
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not exist to set the parent for this folder."
+msgstr ""
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "You are not allowed to change the parent for this folder."
+msgstr ""
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not allow the folder type."
 msgstr ""
 
 #: inc/overrides/pro/folder/Gallery.php:1
@@ -420,12 +427,13 @@ msgstr ""
 msgid "This folder has an automatic order. Please deactivate that first."
 msgstr ""
 
-#: inc/rest/Attachment.php:1
-msgid "Fetch only media in a folder by folder id."
+#: inc/overrides/pro/usersettings/DefaultFolder.php:1
+#: inc/view/Lang.php:1
+msgid "Please select a folder to show items."
 msgstr ""
 
-#: inc/rest/Service.php:1
-msgid "Folder not found."
+#: inc/rest/Attachment.php:1
+msgid "Fetch only media in a folder by folder id."
 msgstr ""
 
 #: inc/rest/Service.php:1
@@ -445,11 +453,6 @@ msgid "The count always includes shortcuts"
 msgstr ""
 
 #: inc/usersettings/DefaultFolder.php:1
-#: inc/view/Lang.php:1
-msgid "Please select a folder to show items."
-msgstr ""
-
-#: inc/usersettings/DefaultFolder.php:1
 msgid "Default startup folder"
 msgstr ""
 
@@ -459,6 +462,10 @@ msgstr ""
 
 #: inc/usersettings/DefaultFolder.php:1
 msgid "Last opened folder"
+msgstr ""
+
+#: inc/usersettings/DefaultFolder.php:1
+msgid "Your media library can always open in the last opened folder or a folder you choose. This saves you time every time you open the media library!"
 msgstr ""
 
 #: inc/view/FolderShortcode.php:1
@@ -514,7 +521,15 @@ msgid "Full Size"
 msgstr ""
 
 #: inc/view/Lang.php:1
+msgid "Subfolders are only available in the PRO version. But you can now create an unlimited number of folders on the main level (instead of the previous max. 10 folders)."
+msgstr ""
+
+#: inc/view/Lang.php:1
 msgid "No folder selected"
+msgstr ""
+
+#: inc/view/Lang.php:1
+msgid "Select folder"
 msgstr ""
 
 #: inc/view/Lang.php:1
@@ -986,11 +1001,19 @@ msgid "Organize the nodes within your folder tree according to a criterion (e.g.
 msgstr ""
 
 #: inc/view/Lang.php:1
-msgid "Want to create more folders?"
+msgid "Want to create subfolders?"
 msgstr ""
 
 #: inc/view/Lang.php:1
-msgid "You can create up to 10 folders in the free version of Real Media Library. Get the Pro version and create unlimited folders."
+msgid "Subfolders offer you the possibility to bring more structure into your media library. They help you to keep the overview, even if you really have many files in your media library."
+msgstr ""
+
+#: inc/view/Lang.php:1
+msgid "Want to switch between folders more comfortably?"
+msgstr ""
+
+#: inc/view/Lang.php:1
+msgid "Let the complete folder tree as in your media library also be displayed in this dialog instead of searching each time in the dropdown. It is simply more comfortable!"
 msgstr ""
 
 #: inc/view/Lang.php:1

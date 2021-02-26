@@ -4,7 +4,8 @@ namespace MatthiasWeb\RealMediaLibrary\usersettings;
 
 use MatthiasWeb\RealMediaLibrary\api\IUserSettings;
 use MatthiasWeb\RealMediaLibrary\base\UtilsProvider;
-use WP_Query;
+use MatthiasWeb\RealMediaLibrary\lite\usersettings\DefaultFolder as LiteDefaultFolder;
+use MatthiasWeb\RealMediaLibrary\overrides\interfce\usersettings\IOverrideDefaultFolder;
 // @codeCoverageIgnoreStart
 \defined('ABSPATH') or die('No script kiddies please!');
 // Avoid direct file request
@@ -15,9 +16,12 @@ use WP_Query;
  *
  * @since 4.6.0
  */
-class DefaultFolder implements \MatthiasWeb\RealMediaLibrary\api\IUserSettings {
+class DefaultFolder implements
+    \MatthiasWeb\RealMediaLibrary\api\IUserSettings,
+    \MatthiasWeb\RealMediaLibrary\overrides\interfce\usersettings\IOverrideDefaultFolder {
     use CommonUserSettingsTrait;
     use UtilsProvider;
+    use LiteDefaultFolder;
     const FIELD_NAME = 'defaultFolder';
     const OPTION_NAME = 'rmlDefaultFolder';
     const ID_NONE = -2;
@@ -26,61 +30,20 @@ class DefaultFolder implements \MatthiasWeb\RealMediaLibrary\api\IUserSettings {
      * C'tor.
      */
     public function __construct() {
-        add_filter('RML/Localize', [$this, 'localize']);
-        add_filter('RML/Filter/PostsClauses', [$this, 'posts_clauses'], 10, 4);
-        if (isset($_GET['rml_folder']) && \intval($_GET['rml_folder']) === self::ID_NONE) {
-            add_filter('gettext', [$this, 'gettext'], 10, 3);
-        }
-    }
-    /**
-     * Modify text in list table.
-     *
-     * @param string[] $translation
-     * @param string $text
-     * @param string $domain
-     * @return string
-     */
-    public function gettext($translation, $text, $domain) {
-        return $text === 'No media files found.' && $domain === 'default'
-            ? __('Please select a folder to show items.', RML_TD)
-            : $translation;
-    }
-    /**
-     * Modify fields to a fast select query when the setting "None at startup" is configured.
-     *
-     * @param array $clauses
-     * @param WP_Query $query
-     * @param int $folderId
-     * @param int $root
-     * @return array
-     */
-    public function posts_clauses($clauses, $query, $folderId, $root) {
-        if ($folderId === self::ID_NONE) {
-            $clauses['where'] = ' AND 1=0';
-            $clauses['limits'] = 'LIMIT 0, 1';
-            $clauses['_restrictRML'] = \true;
-        }
-        return $clauses;
-    }
-    /**
-     * Localize frontend.
-     *
-     * @param array $arr
-     * @return array
-     */
-    public function localize($arr) {
-        $arr['defaultFolder'] = self::getDefaultFolder();
-        return $arr;
+        $this->overrideConstruct();
     }
     // Documented in IMetadata
     public function content($content, $user) {
         $default = $this->getDefaultFolder();
         $selectedNone = $default === self::ID_NONE ? 'selected="selected"' : '';
         $selectedLastQueried = $default === self::ID_LAST_QUERIED ? 'selected="selected"' : '';
+        $disabled = $this->isPro() ? '' : 'disabled="disabled" ';
         $content .=
             '<label>' .
             __('Default startup folder', RML_TD) .
-            '</label><select name="' .
+            '</label><select ' .
+            $disabled .
+            ' name="' .
             self::FIELD_NAME .
             '"><option value="' .
             self::ID_NONE .
@@ -97,13 +60,24 @@ class DefaultFolder implements \MatthiasWeb\RealMediaLibrary\api\IUserSettings {
             '</option>' .
             wp_rml_dropdown($default, []) .
             '</select>';
+        if (!$this->isPro()) {
+            $content .=
+                '<p class="description">' .
+                __(
+                    'Your media library can always open in the last opened folder or a folder you choose. This saves you time every time you open the media library!',
+                    RML_TD
+                ) .
+                ' <a href="' .
+                (RML_PRO_VERSION . '&feature=start-up-folder') .
+                '" target="_blank">' .
+                __('Learn more about PRO', RML_TD) .
+                '</a></p>';
+        }
         return $content;
     }
     // Documented in IMetadata
     public function save($response, $user, $request) {
-        self::getDefaultFolder($request->get_param(self::FIELD_NAME));
-        $response['data']['lastQueried'] = wp_rml_last_queried_folder();
-        return $response;
+        return $this->overrideSave($response, $user, $request);
     }
     // Documented in IMetadata
     public function scripts($assets) {

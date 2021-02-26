@@ -66,11 +66,6 @@ msgstr ""
 "Mac Finder, aber für WordPress."
 
 #: inc/AdInitiator.php:1
-msgid "In the PRO version you can create more than 10 folders (unlimited)."
-msgstr ""
-"In der PRO-Version kannst du mehr als 10 Ordner (unbegrenzt) erstellen."
-
-#: inc/AdInitiator.php:1
 msgid "Filter in insert media dialog"
 msgstr "Filter im Dialog “Medien einfügen”"
 
@@ -83,6 +78,13 @@ msgstr ""
 "Egal, wo du dich befindest, die Ordnerstruktur von Real Media Library ist "
 "immer dort, wo du Dateien auswählen kannst. Zum Beispiel im Dialog zur "
 "Auswahl eines “Beitragsbild”."
+
+#: inc/AdInitiator.php:1
+msgid ""
+"In the Lite version you can only select the folder by a simple dropdown."
+msgstr ""
+"In der Lite Version kannst du den Ordner nur über ein einfaches Dropdown "
+"auswählen."
 
 #: inc/AdInitiator.php:1
 msgid "Custom image order"
@@ -266,7 +268,8 @@ msgstr "Importieren:"
 msgid "Importing data is only available in PRO version."
 msgstr "Das Importieren von Daten ist nur in der PRO-Version verfügbar."
 
-#: inc/comp/ExImport.php:1 inc/view/Lang.php:1
+#: inc/comp/ExImport.php:1 inc/usersettings/DefaultFolder.php:1
+#: inc/view/Lang.php:1
 msgid "Learn more about PRO"
 msgstr "Erfahre mehr über PRO"
 
@@ -319,19 +322,9 @@ msgid "This functionality is not available in the free version (%s)."
 msgstr ""
 "Diese Funktionalität ist in der kostenlosen Version (%s) nicht verfügbar."
 
-#: inc/folder/Creatable.php:1 inc/overrides/pro/order/Sortable.php:1
-#: inc/rest/Attachment.php:1
-msgid "Something went wrong."
-msgstr "Etwas ist schiefgelaufen."
-
 #: inc/folder/Creatable.php:1
 msgid "You need to provide a set of files."
 msgstr "Du musst mehrere Dateien bereitstellen."
-
-#. translators:
-#: inc/folder/Creatable.php:1
-msgid "The parent %d does not exist."
-msgstr "Das übergeordnete Ordner %d existiert nicht."
 
 #: inc/folder/Creatable.php:1
 msgid "The folder could not be created in the database."
@@ -347,20 +340,6 @@ msgid ""
 msgstr ""
 "Ein Ordner kann alle Typen von Dateien enthalten oder eine Kollektion, aber "
 "keine Galerie."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not exist to set the parent for this folder."
-msgstr "Der übergeordnete Ordner existiert nicht."
-
-#: inc/folder/Creatable.php:1
-msgid "You are not allowed to change the parent for this folder."
-msgstr ""
-"Du hast keine Berechtigung den übergeordneten Ordner für diesen Ordner zu "
-"ändern."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not allow the folder type."
-msgstr "Der übergeordnete Ordner erlaubt diesen Ordner-Typ nicht."
 
 #. translators:
 #: inc/folder/Creatable.php:1
@@ -468,6 +447,16 @@ msgstr "Natürliche Ordnung nach Dateinamen aufsteigend"
 msgid "Natural order by filename descending"
 msgstr "Natürliche Ordnung nach Dateinamen absteigend"
 
+#: inc/overrides/lite/folder/Creatable.php:1
+#: inc/overrides/pro/folder/Creatable.php:1
+#: inc/overrides/pro/order/Sortable.php:1 inc/rest/Attachment.php:1
+msgid "Something went wrong."
+msgstr "Etwas ist schiefgelaufen."
+
+#: inc/overrides/lite/rest/Service.php:1 inc/overrides/pro/rest/Service.php:1
+msgid "Folder not found."
+msgstr "Ordner nicht gefunden."
+
 #: inc/overrides/pro/Core.php:1
 msgid ""
 "<strong>You have not yet entered the license key</strong>. To receive "
@@ -491,6 +480,25 @@ msgid ""
 msgstr ""
 "Eine Kollektion kann keine Dateien enthalten. Aber es können dort neue "
 "Kollektionen und <strong>Galerien</strong> angelegt werden."
+
+#. translators:
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The parent %d does not exist."
+msgstr "Das übergeordnete Ordner %d existiert nicht."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not exist to set the parent for this folder."
+msgstr "Der übergeordnete Ordner existiert nicht."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "You are not allowed to change the parent for this folder."
+msgstr ""
+"Du hast keine Berechtigung den übergeordneten Ordner für diesen Ordner zu "
+"ändern."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not allow the folder type."
+msgstr "Der übergeordnete Ordner erlaubt diesen Ordner-Typ nicht."
 
 #: inc/overrides/pro/folder/Gallery.php:1
 msgid "You can only move images to a gallery."
@@ -519,13 +527,13 @@ msgid "This folder has an automatic order. Please deactivate that first."
 msgstr ""
 "Dieser Ordner hat eine automatische Sortierung. Bitte deaktiviere diese erst."
 
+#: inc/overrides/pro/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
+msgid "Please select a folder to show items."
+msgstr "Bitte wähle einen Ordner aus, um die Artikel anzuzeigen."
+
 #: inc/rest/Attachment.php:1
 msgid "Fetch only media in a folder by folder id."
 msgstr "Lade nur Medien in einem Ordner nach Ordnerkennung."
-
-#: inc/rest/Service.php:1
-msgid "Folder not found."
-msgstr "Ordner nicht gefunden."
 
 #: inc/rest/Service.php:1
 msgid "Forbidden"
@@ -543,10 +551,6 @@ msgstr "Verknüpfungen in \"Alle Dateien\" ausblenden"
 msgid "The count always includes shortcuts"
 msgstr "Die Anzahl ist immer inklusive Verknüpfungen"
 
-#: inc/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
-msgid "Please select a folder to show items."
-msgstr "Bitte wähle einen Ordner aus, um die Artikel anzuzeigen."
-
 #: inc/usersettings/DefaultFolder.php:1
 msgid "Default startup folder"
 msgstr "Standard Ordner beim Start"
@@ -558,6 +562,15 @@ msgstr "Keinen Ordner öffnen"
 #: inc/usersettings/DefaultFolder.php:1
 msgid "Last opened folder"
 msgstr "Zuletzt geöffneter Ordner"
+
+#: inc/usersettings/DefaultFolder.php:1
+msgid ""
+"Your media library can always open in the last opened folder or a folder you "
+"choose. This saves you time every time you open the media library!"
+msgstr ""
+"Deine Mediathek kann sich immer im zuletzt geöffneten Ordner oder einem von "
+"dir gewählten Ordner öffnen. So sparst du jedes Mal Zeit, wenn du die "
+"Mediathek öffnest!"
 
 #: inc/view/FolderShortcode.php:1
 msgid "Gallery from Media Folder"
@@ -615,8 +628,22 @@ msgid "Full Size"
 msgstr "Volle Größe"
 
 #: inc/view/Lang.php:1
+msgid ""
+"Subfolders are only available in the PRO version. But you can now create an "
+"unlimited number of folders on the main level (instead of the previous max. "
+"10 folders)."
+msgstr ""
+"Unterordner sind nur in der PRO Version verfügbar. Aber du kannst jetzt eine "
+"unbegrenzte Anzahl von Ordnern auf der Hauptebene erstellen (statt der "
+"bisherigen max. 10 Ordner)."
+
+#: inc/view/Lang.php:1
 msgid "No folder selected"
 msgstr "Kein Ordner ausgewählt"
+
+#: inc/view/Lang.php:1
+msgid "Select folder"
+msgstr "Zielordner auswählen"
 
 #: inc/view/Lang.php:1
 msgid "Reload content"
@@ -1172,16 +1199,32 @@ msgstr ""
 "B. Name absteigend) oder per Drag & Drop an."
 
 #: inc/view/Lang.php:1
-msgid "Want to create more folders?"
-msgstr "Du möchtest mehr Ordner anlegen?"
+msgid "Want to create subfolders?"
+msgstr "Unterordner erstellen?"
 
 #: inc/view/Lang.php:1
 msgid ""
-"You can create up to 10 folders in the free version of Real Media Library. "
-"Get the Pro version and create unlimited folders."
+"Subfolders offer you the possibility to bring more structure into your media "
+"library. They help you to keep the overview, even if you really have many "
+"files in your media library."
 msgstr ""
-"In der kostenlosen Version von Real Media Library kannst Du bis zu 10 Ordner "
-"erstellen. Hol Dir die Pro-Version und erstelle unbegrenzt viele Ordner."
+"Unterordner bieten dir die Möglichkeit, mehr Struktur in deine "
+"Medienbibliothek zu bringen. Sie helfen dir, den Überblick zu behalten, auch "
+"wenn du wirklich viele Dateien in deiner Mediathek hast."
+
+#: inc/view/Lang.php:1
+msgid "Want to switch between folders more comfortably?"
+msgstr "Komfortabler zwischen den Ordnern wechseln?"
+
+#: inc/view/Lang.php:1
+msgid ""
+"Let the complete folder tree as in your media library also be displayed in "
+"this dialog instead of searching each time in the dropdown. It is simply "
+"more comfortable!"
+msgstr ""
+"Lass dir den kompletten Ordnerbaum wie in deiner Medienbibliothek auch in "
+"diesem Dialog anzeigen, anstatt jedes Mal im Dropdown zu suchen. Das ist "
+"einfach komfortabler!"
 
 #: inc/view/Lang.php:1
 msgid "Want to upload entire folders?"
@@ -1195,8 +1238,8 @@ msgid ""
 msgstr ""
 "Mit Real Media Library kannst du ganze Ordner per Drag & Drop hochladen. "
 "Alle Ordner, Unterordner und Dateien werden hochgeladen und in deiner "
-"Medienbibliothek in der gleichen Struktur angezeigt. Hol dir PRO zum Hochladen "
-"von Ordnern!"
+"Medienbibliothek in der gleichen Struktur angezeigt. Hol dir PRO zum "
+"Hochladen von Ordnern!"
 
 #: inc/view/Options.php:1
 msgid "RealMediaLibrary:General"
@@ -1262,6 +1305,14 @@ msgstr "Alles"
 #: inc/view/View.php:1
 msgid "Unorganized pictures"
 msgstr "Unorganisierte Bilder"
+
+#~ msgid ""
+#~ "You can create up to 10 folders in the free version of Real Media "
+#~ "Library. Get the Pro version and create unlimited folders."
+#~ msgstr ""
+#~ "In der kostenlosen Version von Real Media Library kannst Du bis zu 10 "
+#~ "Ordner erstellen. Hol Dir die Pro-Version und erstelle unbegrenzt viele "
+#~ "Ordner."
 
 #~ msgid "Rearrange tree by drag & drop"
 #~ msgstr "Ordne Baum via Drag&Drop"

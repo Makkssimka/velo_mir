@@ -4,7 +4,9 @@ namespace MatthiasWeb\RealMediaLibrary\rest;
 
 use MatthiasWeb\RealMediaLibrary\attachment\Structure;
 use MatthiasWeb\RealMediaLibrary\base\UtilsProvider;
+use MatthiasWeb\RealMediaLibrary\lite\rest\Service as LiteService;
 use MatthiasWeb\RealMediaLibrary\metadata\Meta;
+use MatthiasWeb\RealMediaLibrary\overrides\interfce\rest\IOverrideService;
 use WP_Error;
 use WP_REST_Response;
 // @codeCoverageIgnoreStart
@@ -14,8 +16,9 @@ use WP_REST_Response;
 /**
  * Create a REST Service.
  */
-class Service {
+class Service implements \MatthiasWeb\RealMediaLibrary\overrides\interfce\rest\IOverrideService {
     use UtilsProvider;
+    use LiteService;
     private static $responseModifier = [];
     /**
      * Legacy namespace while switched from 4.5.4 to 4.6.0 in a new boilerplate.
@@ -57,37 +60,6 @@ class Service {
     public function permission_callback() {
         $permit = \MatthiasWeb\RealMediaLibrary\rest\Service::permit();
         return $permit === null ? \true : $permit;
-    }
-    /**
-     * See API docs.
-     *
-     * @param WP_REST_Request $request
-     * @return WP_REST_Response|WP_Error
-     *
-     * @api {put} /realmedialibrary/v1/hierarchy/:id Change a folder position within the hierarchy
-     * @apiParam {int} id The folder id
-     * @apiParam {int} parent The parent
-     * @apiParam {int} nextId The next id to the folder
-     * @apiName PutHierarchy
-     * @apiGroup Tree
-     * @apiVersion 1.0.0
-     * @apiPermission upload_files
-     */
-    public function routeHierarchy($request) {
-        $id = $request->get_param('id');
-        $parent = $request->get_param('parent');
-        $nextId = $request->get_param('nextId');
-        $folder = wp_rml_get_object_by_id($id);
-        if (is_rml_folder($folder)) {
-            $result = $folder->relocate($parent, $nextId);
-            if ($result === \true) {
-                return new \WP_REST_Response(['success' => \true]);
-            } else {
-                return new \WP_Error('rest_rml_hierarchy_failed', \implode(' ', $result), ['status' => 500]);
-            }
-        } else {
-            return new \WP_Error('rest_rml_hierarchy_not_found', __('Folder not found.', RML_TD), ['status' => 500]);
-        }
     }
     /**
      * See API docs.

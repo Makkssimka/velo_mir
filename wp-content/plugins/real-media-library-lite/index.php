@@ -8,7 +8,7 @@
  * Description: 	Organize uploaded media in folders, collections and galleries: A file manager for WordPress. Media management made easy!
  * Author:          devowl.io
  * Author URI:		https://devowl.io
- * Version: 		4.12.1
+ * Version: 		4.13.0
  * Text Domain:		real-media-library
  * Domain Path:		/languages
  */
@@ -40,7 +40,7 @@ define('RML_SLUG_CAMELCASE', lcfirst(str_replace('-', '', ucwords(RML_SLUG, '-')
 
 define('RML_SLUG_LITE', 'real-media-library-lite');
 define('RML_SLUG_PRO', 'real-media-library');
-define('RML_PRO_VERSION', 'https://devowl.io/go/codecanyon/real-media-library?source=rml-lite');
+define('RML_PRO_VERSION', 'https://devowl.io/go/real-media-library?source=rml-lite');
 
 define('RML_TYPE_FOLDER', 0);
 define('RML_TYPE_COLLECTION', 1);

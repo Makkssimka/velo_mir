@@ -5,6 +5,8 @@ namespace MatthiasWeb\RealMediaLibrary\folder;
 use MatthiasWeb\RealMediaLibrary\base\UtilsProvider;
 use MatthiasWeb\RealMediaLibrary\exception\FolderAlreadyExistsException;
 use MatthiasWeb\RealMediaLibrary\exception\OnlyInProVersionException;
+use MatthiasWeb\RealMediaLibrary\overrides\interfce\folder\IOverrideCRUD;
+use MatthiasWeb\RealMediaLibrary\lite\folder\CRUD as LiteCRUD;
 use Exception;
 // @codeCoverageIgnoreStart
 \defined('ABSPATH') or die('No script kiddies please!');
@@ -16,8 +18,9 @@ use Exception;
  * The R (Read) is not implemented here because updates should be executed through the API functions.
  * It also holds the registered creatables.
  */
-class CRUD {
+class CRUD implements \MatthiasWeb\RealMediaLibrary\overrides\interfce\folder\IOverrideCRUD {
     use UtilsProvider;
+    use LiteCRUD;
     private static $me = null;
     /**
      * Available creatables.

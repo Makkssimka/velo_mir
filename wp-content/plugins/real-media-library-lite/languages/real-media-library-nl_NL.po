@@ -53,10 +53,6 @@ msgid ""
 msgstr ""
 
 #: inc/AdInitiator.php:1
-msgid "In the PRO version you can create more than 10 folders (unlimited)."
-msgstr ""
-
-#: inc/AdInitiator.php:1
 msgid "Filter in insert media dialog"
 msgstr ""
 
@@ -65,6 +61,11 @@ msgid ""
 "No matter where you are, the folder structure of Real Media Library is "
 "always where you can select files. For example in the dialog for selecting a "
 "\"Featured Image\"."
+msgstr ""
+
+#: inc/AdInitiator.php:1
+msgid ""
+"In the Lite version you can only select the folder by a simple dropdown."
 msgstr ""
 
 #: inc/AdInitiator.php:1
@@ -246,7 +247,8 @@ msgstr "Gegevensimport:"
 msgid "Importing data is only available in PRO version."
 msgstr "Het importeren van gegevens is alleen beschikbaar in de PRO-versie."
 
-#: inc/comp/ExImport.php:1 inc/view/Lang.php:1
+#: inc/comp/ExImport.php:1 inc/usersettings/DefaultFolder.php:1
+#: inc/view/Lang.php:1
 msgid "Learn more about PRO"
 msgstr "Leer meer over PRO"
 
@@ -298,19 +300,9 @@ msgstr "'%s' bestaat al in deze map."
 msgid "This functionality is not available in the free version (%s)."
 msgstr "Deze functionaliteit is niet beschikbaar in de gratis versie (%s)."
 
-#: inc/folder/Creatable.php:1 inc/overrides/pro/order/Sortable.php:1
-#: inc/rest/Attachment.php:1
-msgid "Something went wrong."
-msgstr "Er ging iets mis."
-
 #: inc/folder/Creatable.php:1
 msgid "You need to provide a set of files."
 msgstr "U moet een aantal bestanden opgeven."
-
-#. translators:
-#: inc/folder/Creatable.php:1
-msgid "The parent %d does not exist."
-msgstr "De moeder %d bestaat niet."
 
 #: inc/folder/Creatable.php:1
 msgid "The folder could not be created in the database."
@@ -324,19 +316,6 @@ msgstr "De map kan niet aangemaakt worden omdat hij al bestaat."
 msgid ""
 "A folder can contain every type of file or a collection, but not gallery."
 msgstr "Een map kan elk type bestand of collectie bevatten, maar geen galerij."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not exist to set the parent for this folder."
-msgstr ""
-"De gegeven parent bestaat niet om deze parent voor de map in te stellen."
-
-#: inc/folder/Creatable.php:1
-msgid "You are not allowed to change the parent for this folder."
-msgstr "U heeft geen toestemming om de parent in deze map te wijzigen."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not allow the folder type."
-msgstr "De gegeven parent staat dit type map niet toe."
 
 #. translators:
 #: inc/folder/Creatable.php:1
@@ -440,6 +419,16 @@ msgstr "Natuurlijke volgorde van oplopende bestandsnaam"
 msgid "Natural order by filename descending"
 msgstr "Natuurlijke volgorde van aflopende bestandsnaam"
 
+#: inc/overrides/lite/folder/Creatable.php:1
+#: inc/overrides/pro/folder/Creatable.php:1
+#: inc/overrides/pro/order/Sortable.php:1 inc/rest/Attachment.php:1
+msgid "Something went wrong."
+msgstr "Er ging iets mis."
+
+#: inc/overrides/lite/rest/Service.php:1 inc/overrides/pro/rest/Service.php:1
+msgid "Folder not found."
+msgstr "Map niet gevonden."
+
 #: inc/overrides/pro/Core.php:1
 msgid ""
 "<strong>You have not yet entered the license key</strong>. To receive "
@@ -463,6 +452,24 @@ msgid ""
 msgstr ""
 "Een collectie kan geen bestanden bevatten, maar u kunt er wel andere "
 "collecties en <strong>galerijen</strong> maken."
+
+#. translators:
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The parent %d does not exist."
+msgstr "De moeder %d bestaat niet."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not exist to set the parent for this folder."
+msgstr ""
+"De gegeven parent bestaat niet om deze parent voor de map in te stellen."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "You are not allowed to change the parent for this folder."
+msgstr "U heeft geen toestemming om de parent in deze map te wijzigen."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not allow the folder type."
+msgstr "De gegeven parent staat dit type map niet toe."
 
 #: inc/overrides/pro/folder/Gallery.php:1
 msgid "You can only move images to a gallery."
@@ -488,13 +495,13 @@ msgstr "De gegeven map laat het niet toe om de bestanden te herordenen."
 msgid "This folder has an automatic order. Please deactivate that first."
 msgstr "Deze map heeft een automatische volgorde, deactiveer dit eerst."
 
+#: inc/overrides/pro/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
+msgid "Please select a folder to show items."
+msgstr "Selecteer een map om items te tonen."
+
 #: inc/rest/Attachment.php:1
 msgid "Fetch only media in a folder by folder id."
 msgstr "Haal alleen media op uit een map van map id."
-
-#: inc/rest/Service.php:1
-msgid "Folder not found."
-msgstr "Map niet gevonden."
 
 #: inc/rest/Service.php:1
 msgid "Forbidden"
@@ -512,10 +519,6 @@ msgstr "Verberg shortcuts in \"Alle bestanden\""
 msgid "The count always includes shortcuts"
 msgstr "De telling is altijd met shortcuts inbegrepen"
 
-#: inc/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
-msgid "Please select a folder to show items."
-msgstr "Selecteer een map om items te tonen."
-
 #: inc/usersettings/DefaultFolder.php:1
 msgid "Default startup folder"
 msgstr "Standaard opstartmap"
@@ -528,6 +531,12 @@ msgstr "Geen map bij het opstarten"
 #, fuzzy
 msgid "Last opened folder"
 msgstr "Laatst opgevraagde map"
+
+#: inc/usersettings/DefaultFolder.php:1
+msgid ""
+"Your media library can always open in the last opened folder or a folder you "
+"choose. This saves you time every time you open the media library!"
+msgstr ""
 
 #: inc/view/FolderShortcode.php:1
 msgid "Gallery from Media Folder"
@@ -585,8 +594,20 @@ msgid "Full Size"
 msgstr "Volledige grootte"
 
 #: inc/view/Lang.php:1
+msgid ""
+"Subfolders are only available in the PRO version. But you can now create an "
+"unlimited number of folders on the main level (instead of the previous max. "
+"10 folders)."
+msgstr ""
+
+#: inc/view/Lang.php:1
 msgid "No folder selected"
 msgstr "Geen map geselecteerd"
+
+#: inc/view/Lang.php:1
+#, fuzzy
+msgid "Select folder"
+msgstr "Selecteer een doelmap"
 
 #: inc/view/Lang.php:1
 msgid "Reload content"
@@ -1139,16 +1160,26 @@ msgstr ""
 
 #: inc/view/Lang.php:1
 #, fuzzy
-msgid "Want to create more folders?"
+msgid "Want to create subfolders?"
 msgstr "Klik hier om een nieuwe map aan te maken"
 
 #: inc/view/Lang.php:1
 msgid ""
-"You can create up to 10 folders in the free version of Real Media Library. "
-"Get the Pro version and create unlimited folders."
+"Subfolders offer you the possibility to bring more structure into your media "
+"library. They help you to keep the overview, even if you really have many "
+"files in your media library."
 msgstr ""
-"U kunt tot 10 mappen aanmaken in de gratis versie van Real Media Library. "
-"Haal de Pro-versie en maak een onbeperkt aantal mappen aan."
+
+#: inc/view/Lang.php:1
+msgid "Want to switch between folders more comfortably?"
+msgstr ""
+
+#: inc/view/Lang.php:1
+msgid ""
+"Let the complete folder tree as in your media library also be displayed in "
+"this dialog instead of searching each time in the dropdown. It is simply "
+"more comfortable!"
+msgstr ""
 
 #: inc/view/Lang.php:1
 #, fuzzy
@@ -1226,6 +1257,13 @@ msgstr "Alle"
 #: inc/view/View.php:1
 msgid "Unorganized pictures"
 msgstr "Ongeordende foto's"
+
+#~ msgid ""
+#~ "You can create up to 10 folders in the free version of Real Media "
+#~ "Library. Get the Pro version and create unlimited folders."
+#~ msgstr ""
+#~ "U kunt tot 10 mappen aanmaken in de gratis versie van Real Media Library. "
+#~ "Haal de Pro-versie en maak een onbeperkt aantal mappen aan."
 
 #~ msgid "OK"
 #~ msgstr "OK"

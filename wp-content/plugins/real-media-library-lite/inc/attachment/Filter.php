@@ -3,6 +3,7 @@
 namespace MatthiasWeb\RealMediaLibrary\attachment;
 
 use MatthiasWeb\RealMediaLibrary\Activator;
+use MatthiasWeb\RealMediaLibrary\Assets;
 use MatthiasWeb\RealMediaLibrary\base\UtilsProvider;
 use MatthiasWeb\RealMediaLibrary\usersettings\DefaultFolder;
 use WP_Post;
@@ -158,11 +159,11 @@ class Filter {
         if (\in_array('snax_map_meta_caps', $wp_current_filter, \true)) {
             return;
         }
+        $assets = $this->getCore()->getAssets();
         $folder = $this->getFolder(
             $query,
-            $this->getCore()
-                ->getAssets()
-                ->isScreenBase('upload')
+            $assets->isScreenBase('upload') ||
+                $assets->isScreenBase(\MatthiasWeb\RealMediaLibrary\Assets::MLA_SCREEN_BASE)
         );
         $folder = isset($folder) ? $folder : 0;
         $query->set('parsed_rml_folder', $folder);
@@ -290,10 +291,10 @@ class Filter {
             \constant('DOING_AJAX') &&
             isset($_REQUEST['action']) &&
             $_REQUEST['action'] === 'query-attachments';
-        $isListMode = $this->getCore()
-            ->getAssets()
-            ->isScreenBase('upload');
-        return $isGridMode || $isListMode;
+        $assets = $this->getCore()->getAssets();
+        $isListMode = $assets->isScreenBase('upload');
+        $isMLAPage = $assets->isScreenBase(\MatthiasWeb\RealMediaLibrary\Assets::MLA_SCREEN_BASE);
+        return $isGridMode || $isListMode || $isMLAPage;
     }
     /**
      * Get instance.

@@ -2,7 +2,7 @@
 Contributors: devowl, mguenter, jankarres
 Tags: wordpress media library folders, media library folders, file manager, media folder, media library folder, media library category, media library categories, media category, subfolders, file manager, directories, folder, folders, organize, media library, enhanced Media, enhanced media library, media management, media directory, folder manager, wordpress, media library wizard, folders manager, media library folder, media folders, media directories, media categories, wordpress media library folders, wordpress media folder, wordpress media folders, wordpress media library
 Stable tag: trunk
-Requires at least: 5.0.0
+Requires at least: 5.0
 Requires PHP: 7.0.0
 Tested up to: 5.6
 License: GPLv2 or later
@@ -16,13 +16,15 @@ Organize uploaded media in folders, collections and galleries: A file manager fo
 
 Real Media Library helps you with media management. Organize thousands of uploaded **files into folders, collections and galleries**. A real file manager that allows you to **manage large amounts of files such as pictures, videos or documents in WordPress.** Media library folders for everyone!
 
+Create **UNLIMITED main folders** in the free version!
+
 [youtube https://www.youtube.com/watch?v=INJ_sS81ua8]
 
-=== Free Test Drive ===
+=== Free Sandbox ===
 
-You want to try Real Media Library before installing? **Take a free test drive** and play around!
+You want to try Real Media Library before installing? **Take a free sandbox** and play around!
 
-[Create test drive](https://try.devowl.io/?product=RML)
+[Create sandbox](https://try.devowl.io/?product=RML)
 
 === Features ===
 
@@ -63,6 +65,7 @@ Real Media Library is **in multiple languages available**:
 * Chinese
 * Russian
 * Persian
+* Croatian
 
 === All Features of Real Media Library ===
 
@@ -185,9 +188,9 @@ We like to work with other WordPress developers. If you need assistants to use o
 
 === Go PRO of Real Media Library ===
 
-You will download the free version of this plugin, which **contains all the core features and the ability to create up to 10 folders**.
+You will download the free version of this plugin, which **contains all the core features and the ability to create unlimited main folders**.
 
-Our PRO version offers even more useful features and unlimited folders to help you manage your media library in WordPress. [**Learn more about the PRO version.**](https://devowl.io/go/codecanyon/real-media-library?source=wordpress-org-description)
+Our PRO version offers even more useful features and subfolders to help you manage your media library in WordPress. [**Learn more about the PRO version.**](https://devowl.io/go/real-media-library?source=wordpress-org-description)
 
 == Installation ==
 
@@ -204,7 +207,7 @@ Our PRO version offers even more useful features and unlimited folders to help y
 
 = Does the plugin touch the file structure of my uploads? =
 **No, only a virtual folder structure is created.** If you want to rearrange the file structure, please have a look at our add-on 
-[Real Physical Media](https://devowl.io/go/codecanyon/real-physical-media?source=wordpress-org-description).
+[Real Physical Media](https://devowl.io/go/real-physical-media?source=wordpress-org-description).
 
 = Whats happens then I uninstall Real Media Library? =
 **Don't worry, you won't have any problems.** We're just creating a virtual folder structure. As a result of uninstalling, your media library will be the same as before the installation.
@@ -213,7 +216,7 @@ Our PRO version offers even more useful features and unlimited folders to help y
 We offer a [knowledge base and fast support](https://devowl.io/support/) on our website. **Please feel free to open a support ticket if you have questions, issues or feedback about the plugin.** We love to make Real Media Library better!
 
 = Is Real Media Library free? =
-**Yes, all core features of Real Media Library are free** and you are able to create up to 10 folders. You want more? [**Learn more about the PRO version.**](https://devowl.io/go/codecanyon/real-media-library?source=wordpress-org-description)
+**Yes, all core features of Real Media Library are free and you are able to create unlimited main folders.** You want more features like subfolders? [**Learn more about the PRO version.**](https://devowl.io/go/real-media-library?source=wordpress-org-description)
 
 == Screenshots ==
 

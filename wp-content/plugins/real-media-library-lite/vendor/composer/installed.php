@@ -7,7 +7,7 @@ return [
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
         'aliases' => [],
-        'reference' => 'f43445d26b00d4fd4734ff3f80a129c36a7c26af',
+        'reference' => 'a37619639d638df917a68388367990629e2168e6',
         'name' => '__root__'
     ],
     'versions' => [
@@ -15,7 +15,7 @@ return [
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
             'aliases' => [],
-            'reference' => 'f43445d26b00d4fd4734ff3f80a129c36a7c26af'
+            'reference' => 'a37619639d638df917a68388367990629e2168e6'
         ],
         'devowl-wp/freemium' => [
             'pretty_version' => 'dev-develop',

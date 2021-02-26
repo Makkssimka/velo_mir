@@ -146,6 +146,7 @@ class PageBuilders {
      */
     private function bbuilder() {
         add_action('fl_before_sortable_enqueue', [$this, 'fl_before_sortable_enqueue']);
+        add_filter('fl_builder_responsive_ignore', [$this, 'fl_builder_responsive_ignore']);
     }
     /**
      * Beaver Builder.
@@ -156,6 +157,16 @@ class PageBuilders {
             ->admin_enqueue_scripts('fl_before_sortable_enqueue');
         /* class-fl-builder.php#enqueue_ui_styles_scripts: We have a custom version of sortable that fixes a bug. */
         wp_deregister_script('jquery-ui-sortable');
+    }
+    /**
+     * Show media library sidebar also in responsive settings for mobile.
+     *
+     * @param string[] $ignore
+     */
+    public function fl_builder_responsive_ignore($ignore) {
+        $ignore[] = RML_SLUG_LITE;
+        $ignore[] = RML_SLUG_PRO;
+        return \array_unique($ignore);
     }
     /**
      * Tailor page builder.

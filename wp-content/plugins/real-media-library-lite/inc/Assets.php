@@ -24,6 +24,10 @@ class Assets {
     use FreemiumAssets;
     public static $TYPE_CUSTOMIZE = 'customize_controls_print_scripts';
     /**
+     * Media Library Assistant screen base.
+     */
+    const MLA_SCREEN_BASE = 'media_page_mla-menu';
+    /**
      * Enqueue gutenberg specific files.
      */
     public function enqueue_block_editor_assets() {
@@ -132,7 +136,7 @@ class Assets {
         // Localize script with server-side variables (RML_SLUG_CAMELCASE can not be used in lite environment, use LEGACY rmlOpts)
         wp_localize_script($handle, RML_OPT_PREFIX . 'Opts', $this->localizeScript($type));
         // Add inline-style to avoid flickering effect
-        if ($this->isScreenBase('upload')) {
+        if ($this->isScreenBase('upload') || $this->isScreenBase(self::MLA_SCREEN_BASE)) {
             wp_add_inline_style($handle, '#wpbody { display: none; }');
         }
         /**
@@ -165,12 +169,16 @@ class Assets {
     public function overrideLocalizeScript($context) {
         $mode = get_user_option('media_library_mode', get_current_user_id());
         $mode = $mode ? $mode : 'grid';
+        // Compatibility with MLA plugin
+        if ($this->isScreenBase(self::MLA_SCREEN_BASE)) {
+            $mode = 'list';
+        }
         $core = $this->getCore();
         $isLicenseActivated = $this->isPro() ? $core->getUpdater()->isActivated() : \true;
         $isLicenseNoticeDismissed = $core->isLicenseNoticeDismissed();
         $exImport = \MatthiasWeb\RealMediaLibrary\comp\ExImport::getInstance();
         // Media Library notices
-        if ($this->isScreenBase('upload')) {
+        if ($this->isScreenBase('upload') || $this->isScreenBase(self::MLA_SCREEN_BASE)) {
             $mlNotices = [
                 'showLicenseNotice' =>
                     !$isLicenseActivated && !$isLicenseNoticeDismissed && current_user_can('install_plugins'),

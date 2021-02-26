@@ -15,8 +15,7 @@
  * @version 3.8.0
  */
 global $post;
-defined( 'ABSPATH' ) || exit;
-do_action( 'woocommerce_before_cart' ); ?>
+defined( 'ABSPATH' ) || exit; ?>
 
 <div class="content-main article cart">
     <h1><?= $post->post_title; ?></h1>

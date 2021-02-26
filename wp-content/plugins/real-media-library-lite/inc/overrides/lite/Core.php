@@ -20,7 +20,7 @@ trait Core {
     // Documented in IOverrideCore
     public function isLicenseNoticeDismissed($set = null) {
         return \true;
-        // Always dismissed in lite version
+        // Always dismissed in Lite version
     }
     // Documented in IOverrideCore
     public function getUpdater() {

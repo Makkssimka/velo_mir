@@ -64,10 +64,6 @@ msgid ""
 msgstr ""
 
 #: inc/AdInitiator.php:1
-msgid "In the PRO version you can create more than 10 folders (unlimited)."
-msgstr ""
-
-#: inc/AdInitiator.php:1
 msgid "Filter in insert media dialog"
 msgstr ""
 
@@ -76,6 +72,11 @@ msgid ""
 "No matter where you are, the folder structure of Real Media Library is "
 "always where you can select files. For example in the dialog for selecting a "
 "\"Featured Image\"."
+msgstr ""
+
+#: inc/AdInitiator.php:1
+msgid ""
+"In the Lite version you can only select the folder by a simple dropdown."
 msgstr ""
 
 #: inc/AdInitiator.php:1
@@ -261,7 +262,8 @@ msgstr "Importer données:"
 msgid "Importing data is only available in PRO version."
 msgstr "L'importation de données n'est disponible que dans la version PRO."
 
-#: inc/comp/ExImport.php:1 inc/view/Lang.php:1
+#: inc/comp/ExImport.php:1 inc/usersettings/DefaultFolder.php:1
+#: inc/view/Lang.php:1
 msgid "Learn more about PRO"
 msgstr "En savoir plus sur PRO"
 
@@ -314,19 +316,9 @@ msgid "This functionality is not available in the free version (%s)."
 msgstr ""
 "Cette fonctionnalité n'est pas disponible dans la version gratuite (%s)."
 
-#: inc/folder/Creatable.php:1 inc/overrides/pro/order/Sortable.php:1
-#: inc/rest/Attachment.php:1
-msgid "Something went wrong."
-msgstr "Une erreur s'est produite."
-
 #: inc/folder/Creatable.php:1
 msgid "You need to provide a set of files."
 msgstr "Vous devez indiquer un ensemble de fichiers."
-
-#. translators:
-#: inc/folder/Creatable.php:1
-msgid "The parent %d does not exist."
-msgstr "Le %d du parent n'existe pas."
 
 #: inc/folder/Creatable.php:1
 msgid "The folder could not be created in the database."
@@ -342,18 +334,6 @@ msgid ""
 msgstr ""
 "Un fichier peut contenir tout type de fichiers ou une collection, mais pas "
 "de galerie."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not exist to set the parent for this folder."
-msgstr "Le dossier parent indiqué n'existe pas pour l'attribuer à ce dossier."
-
-#: inc/folder/Creatable.php:1
-msgid "You are not allowed to change the parent for this folder."
-msgstr "Vous n'êtes pas autorisé à changer le parent de ce dossier."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not allow the folder type."
-msgstr "Le parent indiqué ne permet pas ce type de dossier."
 
 #. translators:
 #: inc/folder/Creatable.php:1
@@ -458,6 +438,16 @@ msgstr "Ordre naturel par nom de fichier croissant"
 msgid "Natural order by filename descending"
 msgstr "Ordre naturel par nom de fichier décroissant"
 
+#: inc/overrides/lite/folder/Creatable.php:1
+#: inc/overrides/pro/folder/Creatable.php:1
+#: inc/overrides/pro/order/Sortable.php:1 inc/rest/Attachment.php:1
+msgid "Something went wrong."
+msgstr "Une erreur s'est produite."
+
+#: inc/overrides/lite/rest/Service.php:1 inc/overrides/pro/rest/Service.php:1
+msgid "Folder not found."
+msgstr "Dossier non trouvé."
+
 #: inc/overrides/pro/Core.php:1
 msgid ""
 "<strong>You have not yet entered the license key</strong>. To receive "
@@ -483,6 +473,23 @@ msgstr ""
 "Une collection ne peut contenir d'images. Mais vous pouvez y créer d'autres "
 "collections et des <strong>galeries</strong>."
 
+#. translators:
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The parent %d does not exist."
+msgstr "Le %d du parent n'existe pas."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not exist to set the parent for this folder."
+msgstr "Le dossier parent indiqué n'existe pas pour l'attribuer à ce dossier."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "You are not allowed to change the parent for this folder."
+msgstr "Vous n'êtes pas autorisé à changer le parent de ce dossier."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not allow the folder type."
+msgstr "Le parent indiqué ne permet pas ce type de dossier."
+
 #: inc/overrides/pro/folder/Gallery.php:1
 msgid "You can only move images to a gallery."
 msgstr "Vous pouvez uniquement déplacer les images vers une galerie."
@@ -507,14 +514,14 @@ msgstr "Le dossier indiqué ne permet pas la réorganisation des fichiers."
 msgid "This folder has an automatic order. Please deactivate that first."
 msgstr "Ce dossier a un ordre automatique. Veuillez d'abord le désactiver."
 
+#: inc/overrides/pro/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
+msgid "Please select a folder to show items."
+msgstr "Veuillez sélectionner un dossier pour afficher les éléments."
+
 #: inc/rest/Attachment.php:1
 msgid "Fetch only media in a folder by folder id."
 msgstr ""
 "Permet de récupérer uniquement les médias d’un dossier par ID de dossier."
-
-#: inc/rest/Service.php:1
-msgid "Folder not found."
-msgstr "Dossier non trouvé."
 
 #: inc/rest/Service.php:1
 msgid "Forbidden"
@@ -532,10 +539,6 @@ msgstr "Masquer les raccourcis dans \"Tous les fichiers\""
 msgid "The count always includes shortcuts"
 msgstr "Le décompte est comprend toujours des raccourcis"
 
-#: inc/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
-msgid "Please select a folder to show items."
-msgstr "Veuillez sélectionner un dossier pour afficher les éléments."
-
 #: inc/usersettings/DefaultFolder.php:1
 msgid "Default startup folder"
 msgstr "Dossier de démarrage par défaut"
@@ -548,6 +551,12 @@ msgstr "Pas de dossier au démarrage"
 #, fuzzy
 msgid "Last opened folder"
 msgstr "Dernier dossier consulté"
+
+#: inc/usersettings/DefaultFolder.php:1
+msgid ""
+"Your media library can always open in the last opened folder or a folder you "
+"choose. This saves you time every time you open the media library!"
+msgstr ""
 
 #: inc/view/FolderShortcode.php:1
 msgid "Gallery from Media Folder"
@@ -605,8 +614,20 @@ msgid "Full Size"
 msgstr "Taille entière"
 
 #: inc/view/Lang.php:1
+msgid ""
+"Subfolders are only available in the PRO version. But you can now create an "
+"unlimited number of folders on the main level (instead of the previous max. "
+"10 folders)."
+msgstr ""
+
+#: inc/view/Lang.php:1
 msgid "No folder selected"
 msgstr "Aucun dossier sélectionné"
+
+#: inc/view/Lang.php:1
+#, fuzzy
+msgid "Select folder"
+msgstr "Sélectionner le dossier de destination"
 
 #: inc/view/Lang.php:1
 msgid "Reload content"
@@ -1163,17 +1184,26 @@ msgstr ""
 
 #: inc/view/Lang.php:1
 #, fuzzy
-msgid "Want to create more folders?"
+msgid "Want to create subfolders?"
 msgstr "Cliquez ici pour créer un dossier"
 
 #: inc/view/Lang.php:1
 msgid ""
-"You can create up to 10 folders in the free version of Real Media Library. "
-"Get the Pro version and create unlimited folders."
+"Subfolders offer you the possibility to bring more structure into your media "
+"library. They help you to keep the overview, even if you really have many "
+"files in your media library."
 msgstr ""
-"Vous pouvez créer jusqu'à 10 dossiers dans la version gratuite de Real Media "
-"Library. Procurez-vous la version Pro et créez un nombre illimité de "
-"dossiers."
+
+#: inc/view/Lang.php:1
+msgid "Want to switch between folders more comfortably?"
+msgstr ""
+
+#: inc/view/Lang.php:1
+msgid ""
+"Let the complete folder tree as in your media library also be displayed in "
+"this dialog instead of searching each time in the dropdown. It is simply "
+"more comfortable!"
+msgstr ""
 
 #: inc/view/Lang.php:1
 #, fuzzy
@@ -1252,6 +1282,14 @@ msgstr "Tout"
 #: inc/view/View.php:1
 msgid "Unorganized pictures"
 msgstr "Images non classées"
+
+#~ msgid ""
+#~ "You can create up to 10 folders in the free version of Real Media "
+#~ "Library. Get the Pro version and create unlimited folders."
+#~ msgstr ""
+#~ "Vous pouvez créer jusqu'à 10 dossiers dans la version gratuite de Real "
+#~ "Media Library. Procurez-vous la version Pro et créez un nombre illimité "
+#~ "de dossiers."
 
 #~ msgid "OK"
 #~ msgstr "OK"

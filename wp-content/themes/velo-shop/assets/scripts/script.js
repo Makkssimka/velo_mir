@@ -500,7 +500,7 @@ jQuery(document).ready(function ($) {
       success: function success(response) {
         notification_add(message);
         var count = JSON.parse(response);
-        $('#cart').text(count / 10);
+        $('#cart').text(count);
         $('#cart').removeClass('hidden-block');
         elem.removeClass('inactive-element').removeClass('add-cart');
         elem.text('Товар в корзине');
@@ -581,6 +581,97 @@ jQuery(document).ready(function ($) {
         $('.cart-total-sum span').html(result.total);
         $('.cart-loading').removeClass('loading-show');
         item_subtotal.html(result.item_subtotal);
+      }
+    });
+  }); // Применение купона
+
+  $('.btn-coupon').click(function (e) {
+    e.preventDefault();
+    var input_coupon = $('#coupon');
+    var coupon = input_coupon.val().trim();
+
+    if (!coupon) {
+      input_coupon.addClass('error-input');
+      notification_add('Сначала введите код купона');
+      return false;
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: window.wp_data.ajax_url,
+      data: {
+        action: 'add_coupon',
+        coupon: coupon
+      },
+      beforeSend: function beforeSend() {
+        $('.cart-loading').addClass('loading-show');
+      },
+      success: function success(response) {
+        var result = JSON.parse(response);
+        $('.cart-loading').removeClass('loading-show');
+
+        if (result.error.code) {
+          input_coupon.addClass('error-input');
+          notification_add(result.error.message);
+        } else {
+          $('.cart-total-my-coupon span').text(result.cart.coupon);
+          $('.cart-total-sale span').html(result.cart.sale);
+          $('.cart-total-sum span').html(result.cart.total);
+          notification_add('Купон применен');
+        }
+      }
+    });
+  });
+  $('#coupon').on('input', function () {
+    $(this).removeClass('error-input');
+  }); //Удаляем купон
+
+  $('.cart-coupon-remove').click(function () {
+    $.ajax({
+      type: 'POST',
+      url: window.wp_data.ajax_url,
+      data: {
+        action: 'remove_coupon'
+      },
+      beforeSend: function beforeSend() {
+        $('.cart-loading').addClass('loading-show');
+      },
+      success: function success(response) {
+        var result = JSON.parse(response);
+        $(this).removeClass('error-input');
+        $('.cart-loading').removeClass('loading-show');
+        $('.cart-total-my-coupon span').text('нет');
+        $('.cart-total-sale span').html(result.cart.sale);
+        $('.cart-total-sum span').html(result.cart.total);
+        $('#coupon').val('');
+        notification_add('Купон удален');
+      }
+    });
+  }); //Удаляем товар из корзины
+
+  $('.item-remove').click(function () {
+    var key = $(this).data('key');
+    var parent = $(this).parents('tr');
+    $.ajax({
+      type: 'POST',
+      url: window.wp_data.ajax_url,
+      data: {
+        action: 'cart_item_remove',
+        key: key
+      },
+      beforeSend: function beforeSend() {
+        $('.cart-loading').addClass('loading-show');
+      },
+      success: function success(response) {
+        var result = JSON.parse(response);
+        $('.cart-loading').removeClass('loading-show');
+        $('#cart').text(result.cart.count);
+        $('.cart-total-subtotal span').html(result.cart.subtotal);
+        $('.cart-subtotal').html(result.cart.subtotal);
+        $('.cart-total-sale span').html(result.cart.sale);
+        $('.cart-total-sum span').html(result.cart.total);
+        notification_add('Товар удален из корзины');
+        parent.remove();
       }
     });
   });

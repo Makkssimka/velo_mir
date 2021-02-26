@@ -4,7 +4,6 @@ namespace MatthiasWeb\RealMediaLibrary\folder;
 
 use MatthiasWeb\RealMediaLibrary\attachment\Shortcut;
 use MatthiasWeb\RealMediaLibrary\exception\FolderAlreadyExistsException;
-use MatthiasWeb\RealMediaLibrary\exception\OnlyInProVersionException;
 use MatthiasWeb\RealMediaLibrary\lite\folder\Creatable as FolderCreatable;
 use MatthiasWeb\RealMediaLibrary\order\Sortable;
 use MatthiasWeb\RealMediaLibrary\overrides\interfce\folder\IOverrideCreatable;
@@ -87,69 +86,6 @@ abstract class Creatable extends \MatthiasWeb\RealMediaLibrary\folder\BaseFolder
     // Documented in IFolderActions
     public function read($order = null, $orderby = null) {
         return self::xread($this->id, $order, $orderby);
-    }
-    // Documented in IFolderActions
-    public function relocate($parentId, $nextFolderId = \false) {
-        global $wpdb;
-        // Collect data
-        $table_name = $this->getTableName();
-        $this->debug(
-            $parentId === $this->id
-                ? "Start to relocate folder {$this->id} inside parent..."
-                : "Start to relocate folder {$this->id} to parent {$parentId}...",
-            __METHOD__
-        );
-        $this->debug(
-            $nextFolderId === \false
-                ? 'The folder should take place at the end of the list...'
-                : "The folder should take place before folder id {$nextFolderId}...",
-            __METHOD__
-        );
-        $parent = $parentId === $this->id ? $this : wp_rml_get_object_by_id($parentId);
-        $next = $nextFolderId === \false ? null : wp_rml_get_object_by_id($nextFolderId);
-        // At end of the list
-        try {
-            if ($next === null && is_rml_folder($parent)) {
-                // Only set the parent
-                $this->setParent($parent->id);
-            } elseif (is_rml_folder($next) && is_rml_folder($parent)) {
-                // Reindex and reget
-                $parent->reindexChildrens();
-                $_this = wp_rml_structure_reset(null, \false, $this->id);
-                $next = wp_rml_get_object_by_id($next->id);
-                // Get the order of the next folder
-                $newOrder = $next->order;
-                // Count up the next ids
-                // phpcs:disable WordPress.DB.PreparedSQL
-                $sql = "UPDATE {$table_name} SET ord = ord + 1 WHERE parent = {$parent->id} AND ord >= {$newOrder}";
-                $wpdb->query($sql);
-                // phpcs:enable WordPress.DB.PreparedSQL
-                // Set the new parent
-                $_this->setParent($parent->id, $newOrder);
-            } else {
-                // There is nothing given
-                throw new \Exception(__('Something went wrong.', RML_TD));
-            }
-            $this->debug('Successfully relocated', __METHOD__);
-            return \true;
-        } catch (\Exception $e) {
-            $this->debug('Error: ' . $e->getMessage(), __METHOD__);
-            return [$e->getMessage()];
-        }
-    }
-    // Documented in IFolderActions
-    public function reindexChildrens($resetData = \false) {
-        global $wpdb;
-        $table_name = $this->getTableName();
-        // phpcs:disable WordPress.DB.PreparedSQL
-        $sql = "UPDATE {$table_name} AS rml2\n            LEFT JOIN (\n                SELECT @rownum := @rownum + 1 AS nr, t.ID\n                FROM ( SELECT rml.id\n                    FROM {$table_name} AS rml\n                    WHERE rml.parent = {$this->id}\n                    ORDER BY rml.ord )\n                    AS t, (SELECT @rownum := 0) AS r\n            ) AS rmlnew ON rml2.id = rmlnew.id\n            SET rml2.ord = rmlnew.nr\n            WHERE rml2.parent = {$this->id}";
-        $wpdb->query($sql);
-        // phpcs:enable WordPress.DB.PreparedSQL
-        $this->debug("Reindexed the childrens order of {$this->id}", __METHOD__);
-        if ($resetData) {
-            wp_rml_structure_reset(null, \false);
-        }
-        return \true;
     }
     // Documented in IFolderActions
     public function insert($ids, $supress_validation = \false, $isShortcut = \false) {
@@ -271,15 +207,7 @@ abstract class Creatable extends \MatthiasWeb\RealMediaLibrary\folder\BaseFolder
         $this->debug('Persist to database...', __METHOD__);
         if ($this->id === -1) {
             global $wpdb;
-            // Check, if the parent exists
-            $parentObj = wp_rml_get_object_by_id($this->parent);
-            if (!is_rml_folder($parentObj)) {
-                // translators:
-                throw new \Exception(\sprintf(__('The parent %d does not exist.', RML_TD), $this->parent));
-            }
-            if (!$this->isPro() && \count(wp_rml_objects()) >= 5 * 2) {
-                throw new \MatthiasWeb\RealMediaLibrary\exception\OnlyInProVersionException(__METHOD__);
-            }
+            $parentObj = $this->persistCheckParent();
             // Create it!
             $table_name = $this->getTableName();
             $insert = $wpdb->insert($table_name, [
@@ -398,121 +326,6 @@ abstract class Creatable extends \MatthiasWeb\RealMediaLibrary\folder\BaseFolder
     // Documented in IFolderActions
     public function setVisible($visible) {
         $this->visible = $visible;
-    }
-    // Documented in IFolderActions
-    public function setParent($id, $ord = -1, $force = \false) {
-        // Get the parent id
-        $this->debug("Try to set parent of {$this->id} from {$this->parent} to {$id}...", __METHOD__);
-        // Get the parent object
-        $parent = wp_rml_get_object_by_id($id);
-        if ($id === $this->parent) {
-            $this->debug('The parent is the same, probably only the order is changed...', __METHOD__);
-        } else {
-            // Check if parent folder is given
-            if ($parent === null) {
-                throw new \Exception(__('The given parent does not exist to set the parent for this folder.', RML_TD));
-            }
-            // Check if allowed to change the parent
-            if (!$force && $this->isRestrictFor('par')) {
-                throw new \Exception(__('You are not allowed to change the parent for this folder.', RML_TD));
-            }
-            // Check, if the folder type is allowed here
-            if (!$force && !$parent->isValidChildrenType($this->getType())) {
-                throw new \Exception(__('The given parent does not allow the folder type.', RML_TD));
-            }
-            // Check, if the parent has already the given folder name
-            if ($parent->hasChildren($this->name)) {
-                throw new \MatthiasWeb\RealMediaLibrary\exception\FolderAlreadyExistsException($id, $this->name);
-            }
-        }
-        $newOrder = $ord > -1 ? $ord : $parent->getMaxOrder() + 1;
-        $isRelocate = $id === $this->parent;
-        /**
-         * This action is called when a folder was relocated in the folder tree. That
-         * means the parent was not changed, only the order was changed.
-         *
-         * @param {IFolder} $folder The folder object
-         * @param {int} $id The new parent folder id
-         * @param {int} $order The (new) order number
-         * @param {boolean} $force If true the relocating was forced
-         * @hook RML/Folder/Relocate
-         * @since 4.0.7
-         */
-        /**
-         * This action is called when a folder was moved in the folder tree. That
-         * means the parent and order was changed.
-         *
-         * @param {IFolder} $folder The folder object
-         * @param {int} $id The new parent folder id
-         * @param {int} $order The (new) order number
-         * @param {boolean} $force If true the relocating was forced
-         * @hook RML/Folder/Move
-         * @since 4.0.7
-         */
-        do_action($isRelocate ? 'RML/Folder/Relocate' : 'RML/Folder/Move', $this, $id, $newOrder, $force);
-        $oldData = $this->getRowData();
-        $beforeId = $this->parent;
-        $this->parent = $id;
-        $this->order = $newOrder;
-        $this->debug("Use {$this->order} (passed {$ord} as parameter) as new order value", __METHOD__);
-        // Save in database
-        if ($this->id > -1) {
-            global $wpdb;
-            // Update childrens
-            if ($beforeId !== $this->parent) {
-                $this->updateThisAndChildrensAbsolutePath();
-            }
-            // Update order
-            // phpcs:disable WordPress.DB.PreparedSQL
-            $table_name = $this->getTableName();
-            $wpdb->query(
-                $wpdb->prepare("UPDATE {$table_name} SET parent=%d, ord=%d WHERE id = %d", $id, $this->order, $this->id)
-            );
-            // phpcs:enable WordPress.DB.PreparedSQL
-            /**
-             * This action is called when a folder was relocated in the folder tree. That
-             * means the parent was not changed, only the order was changed.
-             *
-             * @param {IFolder} $folder The folder object
-             * @param {int} $id The new parent folder id
-             * @param {int} $order The (new) order number
-             * @param {boolean} $force If true the relocating was forced
-             * @param {object} $oldData The old SQL row data (raw) of the folder
-             * @hook RML/Folder/Relocated
-             */
-            /**
-             * This action is called when a folder was moved in the folder tree. That
-             * means the parent and order was changed.
-             *
-             * @param {IFolder} $folder The folder object
-             * @param {int} $id The new parent folder id
-             * @param {int} $order The (new) order number
-             * @param {boolean} $force If true the relocating was forced
-             * @param {object} $oldData The old SQL row data (raw) of the folder
-             * @hook RML/Folder/Moved
-             */
-            do_action(
-                $isRelocate ? 'RML/Folder/Relocated' : 'RML/Folder/Moved',
-                $this,
-                $id,
-                $this->order,
-                $force,
-                $oldData
-            );
-            $this->debug('Successfully moved and saved in database', __METHOD__);
-            \MatthiasWeb\RealMediaLibrary\Util::getInstance()->doActionAnyParentHas($this, 'Folder/RelocatedOrMoved', [
-                $this,
-                $id,
-                $this->order,
-                $force,
-                $oldData
-            ]);
-            $this->applySubfolderOrderBy();
-        } else {
-            $this->debug('Successfully setted the new parent', __METHOD__);
-            $this->getAbsolutePath(\true, \true);
-        }
-        return \true;
     }
     // Documented in IFolder
     public function setName($name, $supress_validation = \false) {

@@ -283,6 +283,7 @@ interface IFolder extends
      * @param int $type The type
      * @return boolean
      * @see IFolder::getAllowedChildrenTypes()
+     * @since 4.12.1 This function returns always `true` in Lite version
      */
     public function isValidChildrenType($type);
 }

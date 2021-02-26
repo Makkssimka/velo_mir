@@ -13,7 +13,7 @@ use MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\UtilsProvider;
  */
 class CrossRealPhysicalMedia extends \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\cross\AbstractCrossSelling {
     const SLUG = 'real-physical-media';
-    const PRO_LINK = 'https://devowl.io/go/codecanyon/real-physical-media?source=cross-rpm';
+    const PRO_LINK = 'https://devowl.io/go/real-physical-media?source=cross-rpm';
     const FILE_PRO = 'real-physical-media/index.php';
     /**
      * Documented in AbstractCrossSelling.

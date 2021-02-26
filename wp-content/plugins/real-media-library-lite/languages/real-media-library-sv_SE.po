@@ -60,10 +60,6 @@ msgid ""
 msgstr ""
 
 #: inc/AdInitiator.php:1
-msgid "In the PRO version you can create more than 10 folders (unlimited)."
-msgstr ""
-
-#: inc/AdInitiator.php:1
 msgid "Filter in insert media dialog"
 msgstr ""
 
@@ -72,6 +68,11 @@ msgid ""
 "No matter where you are, the folder structure of Real Media Library is "
 "always where you can select files. For example in the dialog for selecting a "
 "\"Featured Image\"."
+msgstr ""
+
+#: inc/AdInitiator.php:1
+msgid ""
+"In the Lite version you can only select the folder by a simple dropdown."
 msgstr ""
 
 #: inc/AdInitiator.php:1
@@ -248,7 +249,8 @@ msgstr "Importerade data:"
 msgid "Importing data is only available in PRO version."
 msgstr "Importera data är endast tillgängligt i PRO-versionen."
 
-#: inc/comp/ExImport.php:1 inc/view/Lang.php:1
+#: inc/comp/ExImport.php:1 inc/usersettings/DefaultFolder.php:1
+#: inc/view/Lang.php:1
 msgid "Learn more about PRO"
 msgstr "Lär dig mer om PRO"
 
@@ -300,19 +302,9 @@ msgstr "’%s’ finns redan i denna mapp."
 msgid "This functionality is not available in the free version (%s)."
 msgstr "Den funktionen finns inte i gratisversionen (%s)."
 
-#: inc/folder/Creatable.php:1 inc/overrides/pro/order/Sortable.php:1
-#: inc/rest/Attachment.php:1
-msgid "Something went wrong."
-msgstr "Något gick fel."
-
 #: inc/folder/Creatable.php:1
 msgid "You need to provide a set of files."
 msgstr "Du måste tillhandahålla ett antal filer."
-
-#. translators:
-#: inc/folder/Creatable.php:1
-msgid "The parent %d does not exist."
-msgstr "Den angivna mappen finns inte."
 
 #: inc/folder/Creatable.php:1
 msgid "The folder could not be created in the database."
@@ -326,18 +318,6 @@ msgstr "Mappen finns redan och kan därför inte skapas."
 msgid ""
 "A folder can contain every type of file or a collection, but not gallery."
 msgstr "En mapp kan innehålla alla sorters filer men inte ett galleri."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not exist to set the parent for this folder."
-msgstr "Den angivna övermappen finns inte."
-
-#: inc/folder/Creatable.php:1
-msgid "You are not allowed to change the parent for this folder."
-msgstr "Du får inte ändra den överliggande mappen."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not allow the folder type."
-msgstr "Den överliggande mappen tillåter inte den angivna filtypen."
 
 #. translators:
 #: inc/folder/Creatable.php:1
@@ -441,6 +421,16 @@ msgstr "Naturlig sortering stigande efter filnamn"
 msgid "Natural order by filename descending"
 msgstr "Naturlig sortering fallande efter filnamn"
 
+#: inc/overrides/lite/folder/Creatable.php:1
+#: inc/overrides/pro/folder/Creatable.php:1
+#: inc/overrides/pro/order/Sortable.php:1 inc/rest/Attachment.php:1
+msgid "Something went wrong."
+msgstr "Något gick fel."
+
+#: inc/overrides/lite/rest/Service.php:1 inc/overrides/pro/rest/Service.php:1
+msgid "Folder not found."
+msgstr "Mappen hittades inte."
+
 #: inc/overrides/pro/Core.php:1
 msgid ""
 "<strong>You have not yet entered the license key</strong>. To receive "
@@ -464,6 +454,23 @@ msgid ""
 msgstr ""
 "En samling kan inte innehålla filer. Men du kan skapa andra samlingar och "
 "<strong>gallerier</strong>där."
+
+#. translators:
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The parent %d does not exist."
+msgstr "Den angivna mappen finns inte."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not exist to set the parent for this folder."
+msgstr "Den angivna övermappen finns inte."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "You are not allowed to change the parent for this folder."
+msgstr "Du får inte ändra den överliggande mappen."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not allow the folder type."
+msgstr "Den överliggande mappen tillåter inte den angivna filtypen."
 
 #: inc/overrides/pro/folder/Gallery.php:1
 msgid "You can only move images to a gallery."
@@ -489,13 +496,13 @@ msgstr "Den angivna mappen tillåter inte omsortering av filerna."
 msgid "This folder has an automatic order. Please deactivate that first."
 msgstr "Denna mapp har automatisk sortering. Stäng av den sorteringen först."
 
+#: inc/overrides/pro/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
+msgid "Please select a folder to show items."
+msgstr "Välj en mapp för att visa objekt."
+
 #: inc/rest/Attachment.php:1
 msgid "Fetch only media in a folder by folder id."
 msgstr "Hämta bara media i en mapp via mapp id."
-
-#: inc/rest/Service.php:1
-msgid "Folder not found."
-msgstr "Mappen hittades inte."
 
 #: inc/rest/Service.php:1
 msgid "Forbidden"
@@ -513,10 +520,6 @@ msgstr "Dölj länkar i ”Alla filer”"
 msgid "The count always includes shortcuts"
 msgstr "I antalet ingår alltid länkar"
 
-#: inc/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
-msgid "Please select a folder to show items."
-msgstr "Välj en mapp för att visa objekt."
-
 #: inc/usersettings/DefaultFolder.php:1
 msgid "Default startup folder"
 msgstr "Normal startmapp"
@@ -529,6 +532,12 @@ msgstr "Ingen mapp är vald"
 #, fuzzy
 msgid "Last opened folder"
 msgstr "Senast frågade mapp"
+
+#: inc/usersettings/DefaultFolder.php:1
+msgid ""
+"Your media library can always open in the last opened folder or a folder you "
+"choose. This saves you time every time you open the media library!"
+msgstr ""
 
 #: inc/view/FolderShortcode.php:1
 msgid "Gallery from Media Folder"
@@ -584,8 +593,20 @@ msgid "Full Size"
 msgstr "Full storlek"
 
 #: inc/view/Lang.php:1
+msgid ""
+"Subfolders are only available in the PRO version. But you can now create an "
+"unlimited number of folders on the main level (instead of the previous max. "
+"10 folders)."
+msgstr ""
+
+#: inc/view/Lang.php:1
 msgid "No folder selected"
 msgstr "Ingen mapp är vald"
+
+#: inc/view/Lang.php:1
+#, fuzzy
+msgid "Select folder"
+msgstr "Välj målmapp"
 
 #: inc/view/Lang.php:1
 msgid "Reload content"
@@ -1129,16 +1150,26 @@ msgstr ""
 
 #: inc/view/Lang.php:1
 #, fuzzy
-msgid "Want to create more folders?"
+msgid "Want to create subfolders?"
 msgstr "Klicka här för att skapa en ny mapp"
 
 #: inc/view/Lang.php:1
 msgid ""
-"You can create up to 10 folders in the free version of Real Media Library. "
-"Get the Pro version and create unlimited folders."
+"Subfolders offer you the possibility to bring more structure into your media "
+"library. They help you to keep the overview, even if you really have many "
+"files in your media library."
 msgstr ""
-"Du kan skapa upp till 10 mappar i den kostnadsfria versionen av Real Media "
-"Library. Skaffa Pro-versionen och skapa obegränsade mappar."
+
+#: inc/view/Lang.php:1
+msgid "Want to switch between folders more comfortably?"
+msgstr ""
+
+#: inc/view/Lang.php:1
+msgid ""
+"Let the complete folder tree as in your media library also be displayed in "
+"this dialog instead of searching each time in the dropdown. It is simply "
+"more comfortable!"
+msgstr ""
 
 #: inc/view/Lang.php:1
 #, fuzzy
@@ -1215,6 +1246,13 @@ msgstr "Alla"
 #: inc/view/View.php:1
 msgid "Unorganized pictures"
 msgstr "Osorterade bilder"
+
+#~ msgid ""
+#~ "You can create up to 10 folders in the free version of Real Media "
+#~ "Library. Get the Pro version and create unlimited folders."
+#~ msgstr ""
+#~ "Du kan skapa upp till 10 mappar i den kostnadsfria versionen av Real "
+#~ "Media Library. Skaffa Pro-versionen och skapa obegränsade mappar."
 
 #~ msgid "OK"
 #~ msgstr "OK"

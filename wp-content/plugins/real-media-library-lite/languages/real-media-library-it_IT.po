@@ -68,10 +68,6 @@ msgstr ""
 "Windows Explorer o Mac Finder, ma per WordPress."
 
 #: inc/AdInitiator.php:1
-msgid "In the PRO version you can create more than 10 folders (unlimited)."
-msgstr "Con la versione PRO puoi creare più di 10 cartelle (illimitate)"
-
-#: inc/AdInitiator.php:1
 msgid "Filter in insert media dialog"
 msgstr "Filtra nella finestra di dialogo inserisci media"
 
@@ -84,6 +80,12 @@ msgstr ""
 "Non importa dove ti trovi, la struttura delle cartelle di Real Media Library "
 "è sempre dove è possibile selezionare i file. Ad esempio nella finestra di "
 "dialogo per selezionare una \"Immagine di primo piano\"."
+
+#: inc/AdInitiator.php:1
+#, fuzzy
+msgid ""
+"In the Lite version you can only select the folder by a simple dropdown."
+msgstr "Con la versione PRO puoi creare più di 10 cartelle (illimitate)"
 
 #: inc/AdInitiator.php:1
 msgid "Custom image order"
@@ -270,7 +272,8 @@ msgstr "Dati importati:"
 msgid "Importing data is only available in PRO version."
 msgstr "L'importazione di dati è disponibile solo nella versione PRO."
 
-#: inc/comp/ExImport.php:1 inc/view/Lang.php:1
+#: inc/comp/ExImport.php:1 inc/usersettings/DefaultFolder.php:1
+#: inc/view/Lang.php:1
 msgid "Learn more about PRO"
 msgstr "Maggiori informazioni sulla versione PRO"
 
@@ -319,19 +322,9 @@ msgstr "'%s' esiste già nella cartella."
 msgid "This functionality is not available in the free version (%s)."
 msgstr "Questa funzione non è disponibile nella versione free (%s)."
 
-#: inc/folder/Creatable.php:1 inc/overrides/pro/order/Sortable.php:1
-#: inc/rest/Attachment.php:1
-msgid "Something went wrong."
-msgstr "Qualcosa è andato storto."
-
 #: inc/folder/Creatable.php:1
 msgid "You need to provide a set of files."
 msgstr "Devi indicare un gruppo di file."
-
-#. translators:
-#: inc/folder/Creatable.php:1
-msgid "The parent %d does not exist."
-msgstr "La cartella superiore %d non esiste."
 
 #: inc/folder/Creatable.php:1
 msgid "The folder could not be created in the database."
@@ -346,19 +339,6 @@ msgid ""
 "A folder can contain every type of file or a collection, but not gallery."
 msgstr ""
 "Una cartella può contenere ogni tipo di file o raccolte, ma non gallerie."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not exist to set the parent for this folder."
-msgstr ""
-"La cartella fornita non esiste per poterla impostare come superiore a questa."
-
-#: inc/folder/Creatable.php:1
-msgid "You are not allowed to change the parent for this folder."
-msgstr "Non sei autorizzato a cambiare la dipendenza di questa cartella."
-
-#: inc/folder/Creatable.php:1
-msgid "The given parent does not allow the folder type."
-msgstr "La dipendenza fornita non permette il tipo di cartella."
 
 #. translators:
 #: inc/folder/Creatable.php:1
@@ -462,6 +442,16 @@ msgstr "Ordinamento naturale per data ascendente"
 msgid "Natural order by filename descending"
 msgstr "Ordinamento naturale per nome del file discendente"
 
+#: inc/overrides/lite/folder/Creatable.php:1
+#: inc/overrides/pro/folder/Creatable.php:1
+#: inc/overrides/pro/order/Sortable.php:1 inc/rest/Attachment.php:1
+msgid "Something went wrong."
+msgstr "Qualcosa è andato storto."
+
+#: inc/overrides/lite/rest/Service.php:1 inc/overrides/pro/rest/Service.php:1
+msgid "Folder not found."
+msgstr "Cartella non trovata."
+
 #: inc/overrides/pro/Core.php:1
 msgid ""
 "<strong>You have not yet entered the license key</strong>. To receive "
@@ -486,6 +476,24 @@ msgid ""
 msgstr ""
 "Una raccolta non può contenere file ma puoi creare in essa altre raccolte e "
 "<strong>gallerie</strong>."
+
+#. translators:
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The parent %d does not exist."
+msgstr "La cartella superiore %d non esiste."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not exist to set the parent for this folder."
+msgstr ""
+"La cartella fornita non esiste per poterla impostare come superiore a questa."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "You are not allowed to change the parent for this folder."
+msgstr "Non sei autorizzato a cambiare la dipendenza di questa cartella."
+
+#: inc/overrides/pro/folder/Creatable.php:1
+msgid "The given parent does not allow the folder type."
+msgstr "La dipendenza fornita non permette il tipo di cartella."
 
 #: inc/overrides/pro/folder/Gallery.php:1
 msgid "You can only move images to a gallery."
@@ -512,13 +520,13 @@ msgid "This folder has an automatic order. Please deactivate that first."
 msgstr ""
 "Questa cartella è ordinata automaticamente. Per favore prima disattivatelo."
 
+#: inc/overrides/pro/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
+msgid "Please select a folder to show items."
+msgstr "Per favore seleziona una cartella per visualizzarne i contenuti."
+
 #: inc/rest/Attachment.php:1
 msgid "Fetch only media in a folder by folder id."
 msgstr "Recupera i media nella cartella solo per ID."
-
-#: inc/rest/Service.php:1
-msgid "Folder not found."
-msgstr "Cartella non trovata."
 
 #: inc/rest/Service.php:1
 msgid "Forbidden"
@@ -536,10 +544,6 @@ msgstr "Nasconde i collegamenti in \"Tutti i file\""
 msgid "The count always includes shortcuts"
 msgstr "Il conteggio include sempre i collegamenti"
 
-#: inc/usersettings/DefaultFolder.php:1 inc/view/Lang.php:1
-msgid "Please select a folder to show items."
-msgstr "Per favore seleziona una cartella per visualizzarne i contenuti."
-
 #: inc/usersettings/DefaultFolder.php:1
 msgid "Default startup folder"
 msgstr "Cartella iniziale predefinita"
@@ -552,6 +556,12 @@ msgstr "Nessuna cartella all'avvio"
 #, fuzzy
 msgid "Last opened folder"
 msgstr "Ultima cartella richiesta"
+
+#: inc/usersettings/DefaultFolder.php:1
+msgid ""
+"Your media library can always open in the last opened folder or a folder you "
+"choose. This saves you time every time you open the media library!"
+msgstr ""
 
 #: inc/view/FolderShortcode.php:1
 msgid "Gallery from Media Folder"
@@ -608,8 +618,20 @@ msgid "Full Size"
 msgstr "Dimensione intera"
 
 #: inc/view/Lang.php:1
+msgid ""
+"Subfolders are only available in the PRO version. But you can now create an "
+"unlimited number of folders on the main level (instead of the previous max. "
+"10 folders)."
+msgstr ""
+
+#: inc/view/Lang.php:1
 msgid "No folder selected"
 msgstr "Nessuna cartella selezionata"
+
+#: inc/view/Lang.php:1
+#, fuzzy
+msgid "Select folder"
+msgstr "Seleziona la cartella di destinazione"
 
 #: inc/view/Lang.php:1
 msgid "Reload content"
@@ -1163,16 +1185,26 @@ msgstr ""
 
 #: inc/view/Lang.php:1
 #, fuzzy
-msgid "Want to create more folders?"
+msgid "Want to create subfolders?"
 msgstr "Clicca qui per creare una nuova cartella"
 
 #: inc/view/Lang.php:1
 msgid ""
-"You can create up to 10 folders in the free version of Real Media Library. "
-"Get the Pro version and create unlimited folders."
+"Subfolders offer you the possibility to bring more structure into your media "
+"library. They help you to keep the overview, even if you really have many "
+"files in your media library."
 msgstr ""
-"Puoi creare fino a 10 cartelle con la versione free della Real Media "
-"Library. Ottieni la versione PRO e crea cartelle illimitate."
+
+#: inc/view/Lang.php:1
+msgid "Want to switch between folders more comfortably?"
+msgstr ""
+
+#: inc/view/Lang.php:1
+msgid ""
+"Let the complete folder tree as in your media library also be displayed in "
+"this dialog instead of searching each time in the dropdown. It is simply "
+"more comfortable!"
+msgstr ""
 
 #: inc/view/Lang.php:1
 #, fuzzy
@@ -1249,6 +1281,13 @@ msgstr "Tutti"
 #: inc/view/View.php:1
 msgid "Unorganized pictures"
 msgstr "Immagini non organizzate"
+
+#~ msgid ""
+#~ "You can create up to 10 folders in the free version of Real Media "
+#~ "Library. Get the Pro version and create unlimited folders."
+#~ msgstr ""
+#~ "Puoi creare fino a 10 cartelle con la versione free della Real Media "
+#~ "Library. Ottieni la versione PRO e crea cartelle illimitate."
 
 #~ msgid "OK"
 #~ msgstr "OK"

@@ -13,7 +13,7 @@ use MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\UtilsProvider;
  */
 class CrossRealMediaLibrary extends \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\cross\AbstractCrossSelling {
     const SLUG = 'real-media-library';
-    const PRO_LINK = 'https://devowl.io/go/codecanyon/real-media-library?source=cross-rml';
+    const PRO_LINK = 'https://devowl.io/go/real-media-library?source=cross-rml';
     const FILE_LITE = 'real-media-library-lite/index.php';
     const FILE_PRO = 'real-media-library/index.php';
     /**

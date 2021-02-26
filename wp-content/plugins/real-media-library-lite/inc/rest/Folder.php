@@ -4,8 +4,9 @@ namespace MatthiasWeb\RealMediaLibrary\rest;
 
 use MatthiasWeb\RealMediaLibrary\attachment\Structure;
 use MatthiasWeb\RealMediaLibrary\base\UtilsProvider;
-use MatthiasWeb\RealMediaLibrary\exception\OnlyInProVersionException;
+use MatthiasWeb\RealMediaLibrary\lite\rest\Folder as LiteFolder;
 use MatthiasWeb\RealMediaLibrary\metadata\Meta;
+use MatthiasWeb\RealMediaLibrary\overrides\interfce\rest\IOverrideFolder;
 use MatthiasWeb\RealMediaLibrary\rest\Service;
 use WP_Error;
 use WP_REST_Response;
@@ -16,8 +17,9 @@ use WP_REST_Response;
 /**
  * Enables the /folders REST for all creatable items.
  */
-class Folder {
+class Folder implements \MatthiasWeb\RealMediaLibrary\overrides\interfce\rest\IOverrideFolder {
     use UtilsProvider;
+    use LiteFolder;
     /**
      * Register endpoints.
      */
@@ -190,36 +192,6 @@ class Folder {
             }
         }
         return new \WP_REST_Response(['success' => $result]);
-    }
-    /**
-     * See API docs.
-     *
-     * @param WP_REST_Request $request
-     * @return WP_REST_Response|WP_Error
-     *
-     * @api {post} /realmedialibrary/v1/folders Create a new folder
-     * @apiParam {string} name The new name for the folder
-     * @apiParam {int} parent The parent
-     * @apiParam {string} type The folder type
-     * @apiName DeleteFolder
-     * @apiGroup Folder
-     * @apiVersion 1.0.0
-     * @apiPermission upload_files
-     */
-    public function createItem($request) {
-        $name = $request->get_param('name');
-        $parent = $request->get_param('parent');
-        $type = $request->get_param('type');
-        try {
-            $insert = wp_rml_create($name, $parent, $type);
-        } catch (\MatthiasWeb\RealMediaLibrary\exception\OnlyInProVersionException $e) {
-            return new \WP_Error('rest_rml_only_pro', $e->getMessage(), ['status' => 500]);
-        }
-        if (\is_array($insert)) {
-            return new \WP_Error('rest_rml_folder_create_failed', \implode(' ', $insert), ['status' => 500]);
-        } else {
-            return new \WP_REST_Response(wp_rml_get_object_by_id($insert)->getPlain());
-        }
     }
     /**
      * See API docs.
