@@ -296,7 +296,7 @@ jQuery(document).ready(function ($) {
       $('#tel').val('');
       $('#name').val('');
     });
-    $('#tel').mask('+7 (999) 999-99-99');
+    $('#tel, #telephone').mask('+7 (999) 999-99-99');
     $('.submit').click(function (e) {
       e.preventDefault();
       $('.input-danger').removeClass('input-danger');
@@ -507,22 +507,7 @@ jQuery(document).ready(function ($) {
         elem.unbind('click');
       }
     });
-  }); // Добавление уведомлений
-
-  function notification_add(message) {
-    var item = '<div class="notification-item">';
-    item += '<div class="notification-message">' + message + '</div>';
-    item += '</div>';
-    $('.notification-item').each(function (index, item) {
-      var top = (index + 1) * 50 + 20;
-      $(item).css('top', top + 'px');
-    });
-    $('.notification-list').prepend(item);
-    setTimeout(function () {
-      $('.notification-item').first().addClass('notification-show');
-    }, 300);
-  } // Работа с корзиной
-
+  }); // Работа с корзиной
 
   $('.up').click(function (e) {
     e.preventDefault();
@@ -674,5 +659,89 @@ jQuery(document).ready(function ($) {
         parent.remove();
       }
     });
-  });
+  }); // Отправляем данные заказа
+
+  var name_input = {
+    names: 'имя',
+    email: 'адрес электронной почты',
+    telephone: 'номер телефона'
+  };
+  $('.send-order').click(function (e) {
+    e.preventDefault();
+    var errors = validateOrder();
+    if (errors.length) return false;
+    var name = $('#names').val();
+    var last_name = $('#last-name').val();
+    var email = $('#email').val();
+    var telephone = $('#telephone').val();
+    var address = $('input[name="address"]').val();
+    var comment = $('#comment').val();
+    $.ajax({
+      type: 'POST',
+      url: window.wp_data.ajax_url,
+      data: {
+        action: 'send_order',
+        name: name,
+        last_name: last_name,
+        email: email,
+        telephone: telephone,
+        address: address,
+        comment: comment
+      },
+      beforeSend: function beforeSend() {
+        $('.checkout-loading').addClass('loading-show');
+      },
+      success: function success(response) {
+        var result = JSON.parse(response);
+        $('.checkout-loading').removeClass('loading-show'); //Если ошибка в отправленных данных возвращаем ошибку, иначе продолжаем оформление
+
+        if (result.type == 'error') {
+          result.errors.forEach(function (value) {
+            var message = "Поле ";
+            message += value.field;
+            message += value.error == 1 ? ' является обязательным' : ' неправильного формата';
+            notification_add(message);
+          });
+        } else {}
+      }
+    });
+  }); //Убираем красную рамку при вводу
+
+  $('.form-wrapper input').on('change', function () {
+    $(this).removeClass('error-input');
+  }); //Проверяем обязателные поля
+
+  function validateOrder() {
+    $('.form-wrapper input').removeClass('error-input');
+    var errors = [];
+    $('input.require').each(function (index, item) {
+      if (!$(item).val().trim()) {
+        var name = name_input[$(item).attr('id')];
+        $(item).addClass('error-input');
+        errors.push(name);
+      }
+    });
+
+    if (errors.length) {
+      var message = 'Поля ' + errors.join(', ') + ' являются обязательными';
+      notification_add(message);
+    }
+
+    return errors;
+  } // Добавление уведомлений
+
+
+  function notification_add(message) {
+    var item = '<div class="notification-item">';
+    item += '<div class="notification-message">' + message + '</div>';
+    item += '</div>';
+    $('.notification-item').each(function (index, item) {
+      var top = (index + 1) * 50 + 20;
+      $(item).css('top', top + 'px');
+    });
+    $('.notification-list').prepend(item);
+    setTimeout(function () {
+      $('.notification-item').first().addClass('notification-show');
+    }, 300);
+  }
 });

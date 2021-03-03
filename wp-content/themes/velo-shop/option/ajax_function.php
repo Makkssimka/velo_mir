@@ -236,5 +236,86 @@ function remove_coupon_callback(){
     wp_die();
 }
 
+//Оформление заказа
+add_action('wp_ajax_send_order', 'send_order_callback');
+add_action('wp_ajax_nopriv_send_order', 'send_order_callback');
+
+function send_order_callback(){
+
+    // Очистка ввода
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $last_name = filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $telephone = filter_input(INPUT_POST, 'telephone', FILTER_SANITIZE_STRING);
+    $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);
+    $comment = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING);
+
+    // Проверка ввода
+    $errors = array();
+    if (!trim($name)) {
+       array_push($errors, array(
+           'field' => "имя",
+           'error' => 1
+       ));
+    }
+
+    if (!trim($email)) {
+        array_push($errors, array(
+            'field' => "адрес электронной почты",
+            'error' => 1
+        ));
+    }
+
+    if (!trim($telephone)) {
+        array_push($errors, array(
+            'field' => "номер телефона",
+            'error' => 1
+        ));
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        array_push($errors, array(
+            'field' => "адрес электронной почты",
+            'error' => 2
+        ));
+    }
+
+    // Если есть ошибки, возвращаем код ошибки
+    if (count($errors)) {
+        echo json_encode(array(
+            'type' => 'error',
+            'errors' => $errors
+        ));
+        wp_die();
+    }
+
+    $new_order = wc_create_order();
+    $cart = WC()->cart;
+    $new_order->set_billing_first_name($name);
+    $new_order->set_billing_last_name($last_name);
+    $new_order->set_billing_email($email);
+    $new_order->set_billing_phone($telephone);
+    $new_order->set_shipping_address_1($address);
+    $new_order->set_customer_note($comment);
+
+    foreach ($cart->get_cart() as $product) {
+        $new_order->add_product(wc_get_product($product['variation_id']), $product['quantity']);
+    }
+
+    foreach ($cart->get_coupons() as $coupon) {
+        $new_order->apply_coupon($coupon->get_code());
+    }
+
+    $new_order->calculate_totals();
+    $new_order->save();
+
+    $email_new_order = WC()->mailer()->get_emails()['WC_Email_New_Order'];
+    $email_new_order->trigger($new_order->get_id());
+
+    echo json_encode($new_order);
+    wp_die();
+}
+
+
 
 

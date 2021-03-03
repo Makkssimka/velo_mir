@@ -41,7 +41,7 @@ $compare_array = isset($_SESSION['compare'])?json_decode($_SESSION['compare']):a
                         <?= count($favorites_array) ?>
                     </div>
                 </a></li>
-            <li><a href="#">
+            <li><a href="/cart">
                     <i class="las la-shopping-cart"></i>
                     <span>Корзина</span>
                     <div id="cart" class="label-number <?= $cart_count?'':'hidden-block' ?>">

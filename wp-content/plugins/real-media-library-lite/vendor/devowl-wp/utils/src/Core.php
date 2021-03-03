@@ -163,7 +163,7 @@ trait Core {
                 $this->getPluginConstant(
                     \MatthiasWeb\RealMediaLibrary\Vendor\MatthiasWeb\Utils\PluginReceiver::$PLUGIN_CONST_FILE
                 ),
-                \true,
+                \false,
                 \false
             ));
         return $key === null ? $data : (isset($data[$key]) ? $data[$key] : null);

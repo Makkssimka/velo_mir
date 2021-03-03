@@ -3,7 +3,7 @@
 
 global $post;
 $name_expert = get_option('name_expert');
-$address = explode('? ', get_option('address'));
+$address = explode('?', get_option('address'));
 $ur_address = get_option('ur_address');
 $map_script = get_option('map_script');
 $name_org = get_option('name_org');

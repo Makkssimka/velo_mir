@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.9.3 (2021-03-02)
+
+
+### chore
+
+* **release :** publish [ci skip]
+* **release :** publish [ci skip]
+
+
+### fix
+
+* no longer markup plugin to avoid issues with quotes (wptexturize)
+
+
+### test
+
+* update tests for wptexturize bugfix
+
+
+
+
+
 ## 1.9.2 (2021-01-24)
 
 

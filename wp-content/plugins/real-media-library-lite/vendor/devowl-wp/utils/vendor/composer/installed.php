@@ -7,7 +7,7 @@ return [
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
         'aliases' => [],
-        'reference' => 'a37619639d638df917a68388367990629e2168e6',
+        'reference' => '9e2e54c35cda18a787c86010cce7a5b40ed16ccc',
         'name' => 'devowl-wp/utils'
     ],
     'versions' => [
@@ -15,7 +15,7 @@ return [
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
             'aliases' => [],
-            'reference' => 'a37619639d638df917a68388367990629e2168e6'
+            'reference' => '9e2e54c35cda18a787c86010cce7a5b40ed16ccc'
         ]
     ]
 ];

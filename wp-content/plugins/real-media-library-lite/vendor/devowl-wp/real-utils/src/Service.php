@@ -228,7 +228,12 @@ Feedback: ' .
             ]);
         }
         $result = wp_remote_post('https://devowl.io/wp-json/devowl-site/v1/plugin-activation-newsletter', [
-            'body' => ['email' => $email, 'referer' => home_url(), 'slug' => $slug]
+            'body' => [
+                'email' => $email,
+                'referer' => home_url(),
+                'slug' => $slug,
+                'language' => \explode('_', get_user_locale())[0]
+            ]
         ]);
         if (!is_wp_error($result)) {
             if (wp_remote_retrieve_response_code($result) === 201) {

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.13.1 (2021-03-02)
+
+
+### fix
+
+* newly folders are not draggable and droppable without page reload
+* newly uploaded media attachments were missing when filtering media items by date due to lack of cache invalidation
+* respect language of newsletter subscriber to assign to correct newsletter (CU-aar8y9)
+
+
+
+
+
 # 4.13.0 (2021-02-24)
 
 

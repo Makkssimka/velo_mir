@@ -29,7 +29,7 @@
         <hr>
         <div class="cart-total-header cart-total-sum">Итого: <span><?= $total_cart->get_cart_total() ?><span></div>
         <div class="cart-total-submit">
-            <a href="#" class="btn btn-green">Оформить заказ</a>
+            <a href="/checkout" class="btn btn-green">Оформить заказ</a>
         </div>
     </div>
 </div>
