@@ -692,17 +692,20 @@ jQuery(document).ready(function ($) {
         $('.checkout-loading').addClass('loading-show');
       },
       success: function success(response) {
-        var result = JSON.parse(response);
-        $('.checkout-loading').removeClass('loading-show'); //Если ошибка в отправленных данных возвращаем ошибку, иначе продолжаем оформление
+        var result = JSON.parse(response); //Если ошибка в отправленных данных возвращаем ошибку, иначе продолжаем оформление
 
         if (result.type == 'error') {
+          $('.checkout-loading').removeClass('loading-show');
           result.errors.forEach(function (value) {
             var message = "Поле ";
             message += value.field;
             message += value.error == 1 ? ' является обязательным' : ' неправильного формата';
             notification_add(message);
           });
-        } else {}
+        } else {
+          var order = result.order_number;
+          window.location.href = "/order-complete/?order=" + order;
+        }
       }
     });
   }); //Убираем красную рамку при вводу
