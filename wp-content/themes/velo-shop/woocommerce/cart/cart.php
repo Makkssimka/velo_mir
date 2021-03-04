@@ -21,7 +21,6 @@ defined( 'ABSPATH' ) || exit; ?>
     <h1><?= $post->post_title; ?></h1>
     <div class="article-subheader"><?= $post->post_excerpt; ?></div>
     <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
-        <?php do_action( 'woocommerce_before_cart_table' ); ?>
         <div class="product-cart-wrapper">
             <div class="loading cart-loading">
                 <i class="las la-spinner"></i><span>
@@ -29,9 +28,7 @@ defined( 'ABSPATH' ) || exit; ?>
             <?php require_once "blocks/cart_list.php" ?>
             <?php require_once "blocks/cart_total.php" ?>
         </div>
-        <?php do_action( 'woocommerce_after_cart_table' ); ?>
     </form>
 
 </div>
 
-<?php do_action( 'woocommerce_after_cart' ); ?>

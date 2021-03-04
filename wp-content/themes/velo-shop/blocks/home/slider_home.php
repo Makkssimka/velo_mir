@@ -8,7 +8,7 @@ $products_slider = wc_get_products(array('include' => $ids_array));
     <div class="home-slider-nav home-slider-left" data-action="prev"><i class="las la-angle-left"></i></div>
     <div class="home-slider-nav home-slider-right" data-action="next"><i class="las la-angle-right"></i></div>
     <ul id="home-slider" class="owl-carousel owl-theme">
-        <? foreach ($products_slider as $product_slider): ?>
+        <?php foreach ($products_slider as $product_slider): ?>
             <?php
             $category = current(get_the_terms( $product_slider->get_id(), 'product_cat'));
             $price = $product_slider->get_price();

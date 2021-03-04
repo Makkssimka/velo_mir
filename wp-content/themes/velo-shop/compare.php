@@ -82,9 +82,14 @@ if ($compare_ids) {
                         <?= $remove_table ?>
                     </table>
                 <?php else : ?>
-                    <div class="compare-empty">
-                        <img src="<?= get_asset_path('images', 'not_found.svg') ?>" alt="">
-                        <p>Вы еще не выбрали товары для сравнения</p>
+                    <div class="empty">
+                        <img src="<?= get_asset_path('images', 'empty_page.svg') ?>">
+                        <div class="empty-head">Нет товаров для сравнения!</div>
+                        <p>Вы не выбрали ни одного товара для сравенния</p>
+                        <div class="empty-more-btn">
+                            <a class="btn btn-blue" href="/bikes-catalog">Каталог</a>
+                            <a class="btn btn-green" href="/">На главную</a>
+                        </div>
                     </div>
                 <?php endif ?>
                 </div>

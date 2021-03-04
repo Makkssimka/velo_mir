@@ -27,9 +27,14 @@ if ($favorites_ids) {
                 <?php endforeach ?>
                 </div>
             <?php else : ?>
-                <div class="favorites-empty">
-                    <img src="<?= get_asset_path('images', 'not_found.svg') ?>" alt="">
-                    <p>Вы еще не выбрали избранные товары</p>
+                <div class="empty">
+                    <img src="<?= get_asset_path('images', 'empty_page.svg') ?>">
+                    <div class="empty-head">Нет избранных товаров!</div>
+                    <p>Вы не добавили ни одного товара в избранные</p>
+                    <div class="empty-more-btn">
+                        <a class="btn btn-blue" href="/bikes-catalog">Каталог</a>
+                        <a class="btn btn-green" href="/">На главную</a>
+                    </div>
                 </div>
             <?php endif ?>
         </div>
