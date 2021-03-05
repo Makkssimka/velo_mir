@@ -25,7 +25,7 @@ add_action('init', 'myResetSession', 1);
 //Установка сеcсий
 function filterAddSession() {
     if (isset($_GET['session_filter'])) {
-        myCleanSession();
+        myCleanFilter();
         $data = get_url_data();
         $filter_array = array();
         foreach ($data as $data_key => $data_value) {
@@ -38,6 +38,12 @@ function filterAddSession() {
     }
 }
 add_action('init', 'filterAddSession', 1);
+
+function myCleanFilter(){
+    if(isset($_SESSION['filter'])) {
+        unset($_SESSION['filter']);
+    }
+}
 
 //Установка сесии сортировки
 function sortAddSession(){
