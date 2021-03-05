@@ -41,7 +41,7 @@ class Call_Form_Helper{
         $telephone = '8'.mb_substr($telephone, 2);
         $token = '1655959307:AAGzDwGYkWVkBGs9-2J_fAr6Q__-IrrUbGM';
         $ids_user = explode(',', get_option('telegram_ids'));
-        $message = "<b>Новая заявка:</b>%0A$name%0A<a href='tel:$telephone'>$telephone</a>";
+        $message = "<b>Новая заявка на звонок:</b>%0A$name%0A<a href='tel:$telephone'>$telephone</a>";
         $mode = "html";
 
         foreach ($ids_user as $id_user) {

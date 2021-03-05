@@ -101,3 +101,15 @@ function count_sort($array)
 
     return $array;
 }
+
+function send_telegram($order_number){
+    $token = '1655959307:AAGzDwGYkWVkBGs9-2J_fAr6Q__-IrrUbGM';
+    $ids_user = explode(',', get_option('telegram_ids'));
+    $message = "<b>Новый заказ:</b>№".$order_number;
+    $mode = "html";
+
+    foreach ($ids_user as $id_user) {
+        $id_user = trim($id_user);
+        file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$id_user&text=$message&parse_mode=$mode");
+    }
+}

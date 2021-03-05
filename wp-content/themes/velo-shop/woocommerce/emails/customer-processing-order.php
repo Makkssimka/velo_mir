@@ -1,8 +1,8 @@
 <?php
 /**
- * Admin new order email
+ * Customer processing order email
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/emails/admin-new-order.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/emails/customer-processing-order.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -11,11 +11,13 @@
  * the readme will list any important changes.
  *
  * @see https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce\Templates\Emails\HTML
+ * @package WooCommerce\Templates\Emails
  * @version 3.7.0
  */
 
-defined( 'ABSPATH' ) || exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 ?>
 
@@ -81,12 +83,10 @@ defined( 'ABSPATH' ) || exit;
         </div>
     </div>
     <div class="email-head">
-        <div class="email-head__head">Новый заказ №<?= $order->get_order_number() ?></div>
+        <div class="email-head__head">Ваш заказ №<?= $order->get_order_number() ?> готов к выдаче</div>
         <section>
-            <p>У вас новый заказ на сайте!</p>
-            <p>Заказчик: <span><?= $order->get_billing_first_name() ?> <?= $order->get_billing_last_name() ?></span></p>
-            <p>Телефон: <a href="tel:<?= $order->get_billing_phone() ?>"><?= $order->get_billing_phone() ?></a></p>
-            <p>Эл. почта: <a href="<?= $order->get_billing_email() ?>"><?= $order->get_billing_email() ?></a></p>
+            <p>Ниже Вы найдете все детали заказа. Если вы получили данное сообщение, значит заказ готов к выдаче по адресу:</p>
+            <p><span><?= $order->get_shipping_address_1() ?></span></p>
         </section>
     </div>
     <div class="email-body">
@@ -109,7 +109,7 @@ defined( 'ABSPATH' ) || exit;
                         <p>#<?= $product->get_sku() ?></p>
                     </td>
                     <td style="text-align: center;"><?= $item['quantity'] ?></td>
-                    <td style="text-align: center;"><?= wc_price($item['subtotal']) ?></td>
+                    <td style="text-align: center; white-space: nowrap"><?= wc_price($item['subtotal']) ?></td>
                 </tr>
                 <tr>
                     <td class="email-separator" colspan="3">

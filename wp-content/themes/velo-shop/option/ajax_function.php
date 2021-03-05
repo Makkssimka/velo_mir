@@ -313,6 +313,9 @@ function send_order_callback(){
     $email_new_order = WC()->mailer()->get_emails()['WC_Email_New_Order'];
     $email_new_order->trigger($new_order->get_id());
 
+    // отправка в telegramm
+    send_telegram($new_order->get_order_number());
+
     echo json_encode(array(
         'type' => 'success',
         'order_number' => $new_order->get_order_number()

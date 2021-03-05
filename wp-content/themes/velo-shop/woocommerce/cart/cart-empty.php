@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 
 if ( wc_get_page_id( 'cart' ) > 0 ) : ?>
 
-<div class="content-main article empty">
+<div class="content-main article cart-empty">
     <h1>Ваша корзина пуста</h1>
     <div class="article-subheader">Вы не добавили не одного товара</div>
     <div class="article-content">
