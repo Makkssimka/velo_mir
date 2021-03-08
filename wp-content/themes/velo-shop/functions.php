@@ -13,6 +13,12 @@ require_once "option/ajax_function.php";
 require_once "option/helper_function.php";
 require_once "blocks/widget/widget_loader.php";
 
+//Email format wp_mail
+function set_wp_mail_format(){
+    return "text/html";
+}
+add_filter( 'wp_mail_content_type','set_wp_mail_format' );
+
 //Global js variables
 function js_variables(){
     $variables = array (

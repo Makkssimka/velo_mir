@@ -26,11 +26,14 @@ class Call_Form_Helper{
     public static function sendEmail($name, $telephone){
         $emails = get_option('emails');
         $subject = "Новая заявка на обратный звонок";
-        $message = "
-            <h3>У вас новая заявка на звонок</h3>
-            <p>Имя: <strong>$name</strong></p>
-            <p>Телефон: <strong><a href='tel:$telephone'>$telephone</a></strong></p>
-        ";
+
+        ob_start();
+        require_once "call-form-free-email-layout.php";
+        $message = ob_get_clean();
+
+        add_filter('wp_mail_content_type', function( $content_type ) {
+            return 'text/html';
+        });
 
         if ($emails) {
             wp_mail($emails, $subject, $message);
