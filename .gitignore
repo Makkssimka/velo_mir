@@ -2,6 +2,7 @@ wp-config.php
 wp-config-sample.php
 .git
 .idea
+license.txt
 
 /helper
 /wp-content/themes/velo-shop/node_modules
