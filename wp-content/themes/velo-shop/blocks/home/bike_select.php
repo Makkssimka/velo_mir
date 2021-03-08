@@ -112,12 +112,5 @@ $products_count = count($products);
             </div>
             <a class="btn btn-blue count-product" href="#">Показать <span><?= $products_count ?></span></a>
         </div>
-        <div class="home-bike-select-desc">
-            <p>или</p>
-            <p>оставьте заявку и наши <span>специалисты проконсультируют вас</span></p>
-        </div>
-        <div class="home-bike-select-btn">
-            <a class="btn btn-green open-modal" href="#">Оставить заявку</a>
-        </div>
     </div>
 </div>
