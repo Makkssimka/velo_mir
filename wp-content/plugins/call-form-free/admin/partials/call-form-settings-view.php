@@ -15,7 +15,7 @@
                 </tr>
                 <tr>
                     <th scope="row">
-                        <label for="telegram_ids">Список email</label>
+                        <label for="telegram_ids">Список telegram id</label>
                     </th>
                     <td>
                         <input name="telegram_ids" type="text" id="telegram_ids" class="regular-text" placeholder="56777445664, 34445665776" value="<?= get_option('telegram_ids') ?>">
