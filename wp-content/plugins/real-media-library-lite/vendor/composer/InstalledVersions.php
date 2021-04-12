@@ -9,7 +9,7 @@ class InstalledVersions {
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
             'aliases' => [],
-            'reference' => '9e2e54c35cda18a787c86010cce7a5b40ed16ccc',
+            'reference' => '1eaeb2105d0e558281fa7b41cc98b75b760b82c1',
             'name' => '__root__'
         ],
         'versions' => [
@@ -17,7 +17,7 @@ class InstalledVersions {
                 'pretty_version' => 'dev-master',
                 'version' => 'dev-master',
                 'aliases' => [],
-                'reference' => '9e2e54c35cda18a787c86010cce7a5b40ed16ccc'
+                'reference' => '1eaeb2105d0e558281fa7b41cc98b75b760b82c1'
             ],
             'devowl-wp/freemium' => [
                 'pretty_version' => 'dev-develop',

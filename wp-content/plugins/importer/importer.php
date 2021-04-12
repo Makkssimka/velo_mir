@@ -12,7 +12,7 @@
  * @package           Importer
  *
  * @wordpress-plugin
- * Plugin Name:       importer
+ * Plugin Name:       Импортер 1С
  * Plugin URI:        /
  * Description:       Плагин для экспорта данных из 1С
  * Version:           1.0.0
@@ -35,6 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Update it as you release new versions.
  */
 define( 'IMPORTER_VERSION', '1.0.0' );
+define( 'IMPORTER_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
  * The code that runs during plugin activation.
@@ -72,6 +73,13 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-importer.php';
  *
  * @since    1.0.0
  */
+
+include_once "class/log_importer.php";
+include_once "class/files_importer.php";
+include_once "class/product_importer.php";
+include_once "class/sku_importer.php";
+include_once(IMPORTER_PLUGIN_PATH."admin/importer_action.php");
+
 function run_importer() {
 
 	$plugin = new Importer();

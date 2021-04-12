@@ -4,7 +4,11 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite85c571d3024f62dfa4d94c684c64ea7 {
+class ComposerStaticInit8063f489c1a503d8885fc9de53ab3043 {
+    public static $files = [
+        'b45694f813fe096b704a1908536cfec0' => __DIR__ . '/../..' . '/src/autoload.php'
+    ];
+
     public static $prefixLengthsPsr4 = [
         'D' => [
             'DevOwl\\RealUtils\\Test\\' => 22,
@@ -28,9 +32,9 @@ class ComposerStaticInite85c571d3024f62dfa4d94c684c64ea7 {
     public static function getInitializer(ClassLoader $loader) {
         return \Closure::bind(
             function () use ($loader) {
-                $loader->prefixLengthsPsr4 = ComposerStaticInite85c571d3024f62dfa4d94c684c64ea7::$prefixLengthsPsr4;
-                $loader->prefixDirsPsr4 = ComposerStaticInite85c571d3024f62dfa4d94c684c64ea7::$prefixDirsPsr4;
-                $loader->classMap = ComposerStaticInite85c571d3024f62dfa4d94c684c64ea7::$classMap;
+                $loader->prefixLengthsPsr4 = ComposerStaticInit8063f489c1a503d8885fc9de53ab3043::$prefixLengthsPsr4;
+                $loader->prefixDirsPsr4 = ComposerStaticInit8063f489c1a503d8885fc9de53ab3043::$prefixDirsPsr4;
+                $loader->classMap = ComposerStaticInit8063f489c1a503d8885fc9de53ab3043::$classMap;
             },
             null,
             ClassLoader::class

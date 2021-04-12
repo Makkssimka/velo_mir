@@ -60,7 +60,10 @@
     "autoload": {
         "psr-4": {
             "DevOwl\\RealUtils\\": "src/"
-        }
+        },
+        "files": [
+            "src/autoload.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.9.4 (2021-03-23)
+
+
+### fix
+
+* add password-protected plugin as security plugin which blocks REST API (CU-g14ub7)
+
+
+
+
+
 ## 1.9.3 (2021-03-02)
 
 

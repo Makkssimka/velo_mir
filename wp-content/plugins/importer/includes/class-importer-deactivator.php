@@ -29,7 +29,17 @@ class Importer_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
+        $upload_dir = wp_upload_dir();
+        $upload_basedir = $upload_dir['basedir'];
+        $file_path = $upload_basedir."/importer-logs/importer_log.txt";
 
+        if (file_exists($file_path)) {
+            unlink($file_path);
+        }
+
+        if (is_dir($upload_basedir."/importer-logs")) {
+            rmdir($upload_basedir."/importer-logs");
+        }
 	}
 
 }

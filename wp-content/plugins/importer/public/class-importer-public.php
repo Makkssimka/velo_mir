@@ -51,6 +51,8 @@ class Importer_Public {
 		$this->importer = $importer;
 		$this->version = $version;
 
+        add_action( 'init', array($this, "load_price") );
+
 	}
 
 	/**
@@ -98,5 +100,39 @@ class Importer_Public {
 		wp_enqueue_script( $this->importer, plugin_dir_url( __FILE__ ) . 'js/importer-public.js', array( 'jquery' ), $this->version, false );
 
 	}
+
+    public function load_price(){
+        $url = $_SERVER['REQUEST_URI'];
+        $url = explode('?', $url);
+        $url = $url[0];
+
+        if ($url != "/importer/loader") return;
+
+        $mode = $_REQUEST['mode'];
+        $logs = new LogImporter();
+
+        if ($mode == 'checkauth') {
+            $logs->write("Начало импорта данных");
+            $val = md5(time());
+            setcookie('hash', $val);
+            echo "success\n";
+            echo "hash\n";
+            echo "$val\n";
+        } elseif ($mode == 'init') {
+            $logs->write("Передача параметров");
+            echo "zip=no\n";
+            echo "file_limit=52428800\n";
+        } elseif ($mode == 'file') {
+            $logs->write("Полечение файла");
+            $filename = Request::get('filename');
+            $logs->write("Загружен файл $filename");
+
+            $data = file_get_contents("php://input");
+            file_put_contents(IMPORTER_PLUGIN_PATH."/upload/".$filename ,$data);
+            echo "success";
+        }
+
+        die();
+    }
 
 }

@@ -4,7 +4,7 @@ Tags: wordpress media library folders, media library folders, file manager, medi
 Stable tag: trunk
 Requires at least: 5.0
 Requires PHP: 7.0.0
-Tested up to: 5.6
+Tested up to: 5.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.en.html
 
@@ -38,7 +38,7 @@ You want to try Real Media Library before installing? **Take a free sandbox** an
 
 **Custom _image order_**: Move files per drag & drop  to change their order or use some order function e.g. to oder all files of the folder your are currently in by title ascending
 
-**Works also great in _list-mode_**: WordPress Real Media library with a the WordPress media library in list-mode
+**Works also great in _list-mode_**: Real Media library with a the WordPress media library in list-mode
 
 **Advanced _upload management_**: On uploading a file, a modal appears, which shows the current status, remaining time of the upload and the upload speed
 

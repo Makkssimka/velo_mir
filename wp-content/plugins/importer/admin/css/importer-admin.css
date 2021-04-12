@@ -1,3 +1,13 @@
 /**
  * All of the CSS for your admin-specific functionality should be included in this file.
  */
+.log-wrap table{
+    width: 600px;
+}
+
+.importer-wrap table{
+    width: 400px;
+}
+.first-td-importer{
+    width: 310px;
+}

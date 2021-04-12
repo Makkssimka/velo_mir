@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.6.8 (2021-03-30)
+
+
+### chore
+
+* **release :** publish [ci skip]
+
+
+### refactor
+
+* use composer autoload to setup constants and package localization
+
+
+
+
+
 ## 1.6.7 (2021-03-02)
 
 

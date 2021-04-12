@@ -56,13 +56,12 @@ class Core {
      * C'tor.
      */
     private function __construct() {
-        \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\UtilsProvider::setupConstants();
         $this->ratingHandler = \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\RatingHandler::instance($this);
         $this->crossSellingHandler = \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\cross\CrossSellingHandler::instance(
             $this
         );
         $this->assets = \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\Assets::instance();
-        $options = \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\view\Options::instance();
+        \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\view\Options::instance();
         add_action('rest_api_init', [
             \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\Service::instance(),
             'rest_api_init'
@@ -87,7 +86,6 @@ class Core {
         $this->crossSelling[
             \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\cross\CrossRealPhysicalMedia::SLUG
         ] = new \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\cross\CrossRealPhysicalMedia();
-        \MatthiasWeb\RealMediaLibrary\Vendor\DevOwl\RealUtils\Localization::instanceThis()->hooks();
     }
     /**
      * Add an initiator.

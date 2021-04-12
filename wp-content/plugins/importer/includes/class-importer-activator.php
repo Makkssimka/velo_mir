@@ -29,7 +29,15 @@ class Importer_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+        $upload_dir = wp_upload_dir();
+        $upload_basedir = $upload_dir['basedir'];
 
+        if (!is_dir($upload_basedir."/importer-logs")) {
+            mkdir($upload_basedir."/importer-logs", 0777);
+        }
+
+	    $file_path = $upload_basedir."/importer-logs/importer_log.txt";
+        file_put_contents($file_path, '');
 	}
 
 }

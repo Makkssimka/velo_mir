@@ -27,7 +27,8 @@ class Service {
         'hide-my-wp',
         'perfmatters',
         'swift-performance',
-        'clearfy'
+        'clearfy',
+        'password-protected'
     ];
     /**
      * C'tor.
