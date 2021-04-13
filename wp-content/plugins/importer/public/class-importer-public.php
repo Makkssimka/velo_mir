@@ -124,7 +124,7 @@ class Importer_Public {
             echo "file_limit=52428800\n";
         } elseif ($mode == 'file') {
             $logs->write("Полечение файла");
-            $filename = Request::get('filename');
+            $filename = $_GET['filename'];
             $logs->write("Загружен файл $filename");
 
             $data = file_get_contents("php://input");
