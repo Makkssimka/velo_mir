@@ -24,13 +24,20 @@ class FilesImporter
         $offers = simplexml_load_file($this->offers_file);
 
         foreach ($offers->ПакетПредложений->Предложения->Предложение as $item) {
+            $id = (string) $item->Ид;
+            $name = (string) $item->Наименование;
+            $price = (string) $item->Цены->Цена->ЦенаЗаЕдиницу;
+            $quantity = (string) $item->Количество;
+
+            if ($quantity == 0 || $price == 0) continue;
+
             $this->list[(string) $item->Ид] = new ProductImporter(
-                (string) $item->Ид,
-                (string) $item->Наименование,
-                (string) $item->Артикул,
-                (string) $item->Цены->Цена->ЦенаЗаЕдиницу,
-                (string) $item->Количество
+                $id,
+                $name,
+                $price,
+                $quantity
             );
+
             $this->counter++;
             $this->ids[] = (string) $item->Ид;
         }
@@ -70,6 +77,7 @@ class FilesImporter
         set_time_limit(2400);
 
         foreach ($this->list as $item) {
+
             if (in_array($item->getId(), $this->old_ids)) {
                 $item->update();
                 $this->update_file_counter++;

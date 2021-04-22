@@ -39,4 +39,19 @@ class SkuImporter
         $this->config->startSku = $this->start_sku;
         $this->config->saveXML($config_path);
     }
+
+    public static function getGeneratedItemSku()
+    {
+        $config_path = IMPORTER_PLUGIN_PATH."upload/config.xml";
+        $config = simplexml_load_file($config_path);
+
+        $current_sku = (integer) $config->startSku;
+        $generated_sku = str_pad($current_sku, 7, "0", STR_PAD_LEFT);
+
+        $current_sku++;
+        $config->startSku = $current_sku;
+        $config->saveXML($config_path);
+
+        return $generated_sku;
+    }
 }

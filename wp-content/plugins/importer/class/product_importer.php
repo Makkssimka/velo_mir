@@ -5,15 +5,13 @@ class ProductImporter
 {
     private $id;
     private $name;
-    private $sku;
     private $price;
     private $quantity;
 
-    public function __construct($id, $name, $sku, $price, $quantity)
+    public function __construct($id, $name, $price, $quantity)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->sku = $sku;
         $this->price = $price;
         $this->quantity = $quantity;
     }
@@ -31,10 +29,12 @@ class ProductImporter
         return $this->price;
     }
 
-    public function save(){
+    public function save()
+    {
         $post = array(
             'post_author' => 1,
-            'post_content' => '',
+            'post_content' => $this->get_description(),
+            'post_excerpt' => $this->get_post_excerpt(),
             'post_status' => "publish",
             'post_title' => $this->name, // Название товара
             'post_type' => "product",
@@ -48,15 +48,18 @@ class ProductImporter
         update_post_meta( $post_id, '_price', $this->price);
         update_post_meta( $post_id, '_sale_price', $this->price);
 
-        update_post_meta( $post_id, '_sku', 'undefined');
+        update_post_meta( $post_id, '_sku', SkuImporter::getGeneratedItemSku());
         update_post_meta( $post_id, '_stock_quantity',  $this->quantity);
 
         update_post_meta( $post_id, '_visibility', 'visible' );
         update_post_meta( $post_id, '_downloadable', 'no');
         update_post_meta( $post_id, '_virtual', 'no');
+
+        update_post_meta( $post_id, '_product_attributes', $this->get_attribute_array());
     }
 
-    public function update(){
+    public function update()
+    {
         global $wpdb;
         $table_name = $wpdb->prefix."posts";
 
@@ -67,5 +70,45 @@ class ProductImporter
         update_post_meta( $post_id, '_sale_price', $this->price);
 
         update_post_meta( $post_id, '_stock_quantity',  $this->quantity);
+    }
+
+    private function get_attribute_array()
+    {
+        $attributes = array('brand', 'color', 'frame_size', 'material', 'speed', 'tormoz', 'type_velo', 'wheel_size');
+        $attr_array = array();
+
+        foreach ($attributes as $attribute) {
+            $attr_array[$attribute] = array(
+                'name' => 'pa_'.$attribute,
+                'is_visible' => '1',
+                'is_taxonomy' => '1'
+            );
+        }
+
+        return $attr_array;
+    }
+
+    private function get_description()
+    {
+        return
+            'Год выпуска - ;'.PHP_EOL.
+            'Максимальный вес пользователя - ;'.PHP_EOL.
+            'Вес, кг - ;'.PHP_EOL.
+            'Страна производства - Россия;'.PHP_EOL.
+            'Материал рамы - ;'.PHP_EOL.
+            'Амортизация - ;'.PHP_EOL.
+            'Складная конструкция - Нет;'.PHP_EOL.
+            'Конструкция вилки - ;'.PHP_EOL.
+            'Покрышки - ;'.PHP_EOL.
+            'Тип переднего тормоза - ;'.PHP_EOL.
+            'Тип заднего тормоза - ;'.PHP_EOL.
+            'Регулировка седла - Да;'.PHP_EOL.
+            'Регулировка руля - Да;'.PHP_EOL.
+            'Материал руля - ';
+    }
+
+    private function get_post_excerpt()
+    {
+        return 'Велосипед, предназначенный для детей в возрасте от двух до четырех лет, без переключения передач. Технические особенности: стальная рама Hi-Ten, жесткая стальная вилка, одинарные алюминиевые обода, ножные педальные тормоза, защита цепи, съемные боковые колеса, багажник, длинные крылья, мягкая накладка на руле, звонок. Подходит для обучения и прогулочного катания в городских условиях.';
     }
 }
