@@ -31,21 +31,6 @@ if ( post_password_required() ) {
 	return;
 }
 
-$variations = $product->get_available_variations();
-$filter_variations = array();
-$colors_variation = array();
-
-// Задаем размер по умолчанию
-$frame_size = isset($_GET['size']) ? $_GET['size'] : explode(', ', $product->get_attribute('frame_size'))[0];
-
-foreach ($variations as $variation) {
-    if ($frame_size && $frame_size != $variation['attributes']['attribute_pa_frame_size']) continue;
-    $colors_variation[] = $variation['attributes']['attribute_pa_color'];
-    if (isset($_GET['color']) && $_GET['color'] != $variation['attributes']['attribute_pa_color']) continue;
-    $filter_variations[] = $variation;
-}
-
-$default_variable = wc_get_product($filter_variations[0]['variation_id']);
 
 $favorites_array = isset($_SESSION['favorites'])?json_decode($_SESSION['favorites']):array();
 $is_favorites = in_array($product->get_id(), $favorites_array)?'Добавлен в избранное':'В избранное';
@@ -56,29 +41,25 @@ $is_compare = in_array($product->get_id(), $compare_array)?'Добавлен к 
 ?>
 
 <div id="product-<?php the_ID(); ?>" class="content-main product">
-    <h1>Велосипед
-        <?= $product->get_name() ?>,
-        <?= get_wheel_size_string($product->get_attribute('wheel_size')) ?>,
-        <?= $default_variable->get_attribute('color') ?>
-        <?= get_frame_size_string($default_variable->get_attribute('frame_size')) ?></h1>
-    <div class="product-articul">Артикул <?= $default_variable->get_sku() ?></div>
-    <div class="product-heder">
+    <h1>Велосипед <?= $product->get_name() ?></h1>
+    <div class="product-sku">Артикул <?= $product->get_sku() ?></div>
+    <div class="product-header">
         <?php require_once "blocks/product_gallery.php" ?>
         <div class="product-price">
             <div class="product-have">
-                <?php if($default_variable->get_stock_status() == 'instock'){ ?>
+                <?php if($product->get_stock_status() == 'instock') : ?>
                 <div class="product-have-item">В наличии</div>
-                <?php } else {?>
+                <?php else : ?>
                 <div class="product-have-item">Нет в наличии</div>
-                <?php } ?>
+                <?php endif; ?>
             </div>
             <div class="product-price-item">
-                <div class="product-old-price"><?= wc_price($default_variable->get_regular_price()) ?></div>
-                <div class="product-new-price"><?= wc_price($default_variable->get_price()) ?></div>
+                <div class="product-old-price"><?= wc_price($product->get_regular_price()) ?></div>
+                <div class="product-new-price"><?= wc_price($product->get_price()) ?></div>
             </div>
             <?php require_once  "blocks/product_variation.php" ?>
             <div class="product-button">
-                <?= add_cart_btn($default_variable) ?>
+                <?= add_cart_btn($product) ?>
                 <div>
                     <a class="product-one-click" href="#">купить в один клик</a>
                 </div>
@@ -113,7 +94,7 @@ $is_compare = in_array($product->get_id(), $compare_array)?'Добавлен к 
         </div>
     </div>
     <div class="product-similar">
-        <?php require_once "blocks/product_similar.php" ?>
+        <?php // require_once "blocks/product_similar.php" ?>
     </div>
 </div>
 

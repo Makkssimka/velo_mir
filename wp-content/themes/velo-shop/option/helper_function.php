@@ -113,3 +113,21 @@ function send_telegram($order_number){
         file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$id_user&text=$message&parse_mode=$mode");
     }
 }
+
+function get_color_link($product_id){
+    $colors = wc_get_product_terms($product_id, "pa_color" );
+    $color_object = array_shift($colors);
+    $color_desc = $color_object->description;
+
+    $hex_array = explode('-', $color_desc);
+    if (count($hex_array) == 1) {
+        return '<a class="title-show title-margin-30" data-title="'.$color_object->name.'" href="'.get_permalink($product_id).'">
+                   <span style="background-color:'.$hex_array[0].';"></span>
+                </a>';
+    } else {
+        return '<a class="title-show title-margin-30" data-title="'.$color_object->name.'" href="'.get_permalink($product_id).'">
+                   <span style="background-color:'.$hex_array[0].';"></span>
+                   <span class="product-two-color" style="background-color:'.$hex_array[1].';"></span>
+                </a>';
+    }
+}

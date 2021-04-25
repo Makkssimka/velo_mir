@@ -1,14 +1,30 @@
 <?php
 
-$desc_table_array = array();
+// Получаем все характеристики продукта и исключаем без значения
+$desc_array = array();
 $description = explode(";", $product->get_description());
 foreach ($description as $row) {
     $column = explode(" - ", $row);
-    $desc_table_array[] = array(
+    if (!$column[1]) continue;
+    $desc_array[] = array(
         'name' => $column[0],
         'value' => $column[1]
     );
 }
+
+// Выбираем все аттрибуты продукта
+$attribute_array = array();
+foreach( $product->get_attributes() as $taxonomy => $attribute){
+    if (!isset($attribute->get_terms()[0])) continue;
+    $value = $attribute->get_terms()[0]->name;
+    $name = $attribute->get_taxonomy_object()->attribute_label;
+    $attribute_array[] = array(
+        'name' => $name,
+        'value' => $value
+    );
+}
+
+$table_array = array_merge($attribute_array, $desc_array);
 ?>
 
 <div class="product-tabs">
@@ -30,7 +46,7 @@ foreach ($description as $row) {
             <li data-tabcontent="1" class="active">
                 <table class="product-tabs-table">
                     <tbody>
-                        <?php foreach ($desc_table_array as $desc_item): ?>
+                        <?php foreach ($table_array as $desc_item): ?>
                         <tr>
                             <th><?= $desc_item['name'] ?>:</th>
                             <td><?= $desc_item['value'] ?></td>

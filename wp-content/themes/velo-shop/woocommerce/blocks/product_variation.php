@@ -1,26 +1,67 @@
 <?php
 
-$sizes = wc_get_product_terms($product->get_id(), 'pa_frame_size');
-$colors = wc_get_product_terms($product->get_id(), 'pa_color');
+$tags = wp_get_object_terms( $product->get_id(), 'product_tag');
+$tag = array_shift($tags);
 
-$size = $default_variable->get_attribute('frame_size');
-$color = $default_variable->get_attribute('color');
+$wheel_size = $product->get_attribute('wheel_size');
+$color = $product->get_attribute('color');
 
-// Размеры колес данной модели велосипеда
-$products = wc_get_products(array(
-    'title' => $product->get_title()
+$products_color = array();
+$products_wheel = array();
+$products_frame = array();
+
+$wheel_variation = array();
+$frame_variation = array();
+$color_variation = array();
+
+$products_tag = wc_get_products(array(
+    'product_tag' => $tag->slug,
 ));
+
+foreach ($products_tag as $item) {
+    $wheel_size_item = $item->get_attribute('wheel_size');
+    $frame_size_item = $item->get_attribute('frame_size');
+    $color_item = $item->get_attribute('color');
+
+    if ($wheel_size_item == $wheel_size && !in_array($color_item, $color_variation)) {
+        $products_color[] = $item;
+        $color_variation[] = $color_item;
+    }
+
+    if (!in_array($wheel_size_item, $wheel_variation)) {
+        $products_wheel[] = $item;
+        $wheel_variation[] = $wheel_size_item;
+    }
+
+    if (!$frame_size_item) continue;
+
+    if ($wheel_size_item == $wheel_size && $color_item == $color && !in_array($frame_size_item, $frame_variation)) {
+        $products_frame[] = $item;
+        $frame_variation[] = $frame_size_item;
+    }
+}
 
 ?>
 
-<?php if (count($sizes)): ?>
+<div class="product-color">
+    <p>цвет:</p>
+    <ul>
+        <?php foreach ($products_color as $item) : ?>
+            <li class="<?= $item->get_attribute('color') == $product->get_attribute('color')?'inactive-element':'' ?>">
+                <?= get_color_link($item->get_id()) ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+
+<?php if (count($products_frame)): ?>
     <div class="product-size">
         <p>размер рамы:</p>
         <ul>
-            <?php foreach($sizes as $value) : ?>
-                <li class="<?= $size == $value->name?'active':'' ?>">
-                    <a href="<?= get_current_request(array('size' => $value->slug)) ?>">
-                        <?= get_frame_size_string($value->name, false) ?>
+            <?php foreach($products_frame as $item) : ?>
+                <li class="<?= $item->get_attribute('frame_size') == $product->get_attribute('frame_size')?'inactive-element':'' ?>">
+                    <a href="<?= get_permalink($item->get_id()) ?>">
+                        <?= $item->get_attribute('frame_size') ?>
                     </a>
                 </li>
             <?php endforeach; ?>
@@ -28,40 +69,18 @@ $products = wc_get_products(array(
     </div>
 <?php endif ?>
 
-<div class="product-color">
-    <p>цвет:</p>
-    <ul>
-        <?php foreach ($colors as $value) : ?>
-            <li class="<?= in_array($value->slug, $colors_variation)?'':'inactive-element' ?> <?= $color == $value->name?'active':'' ?>">
-                <?php $color_array = explode('-', $value->description);  ?>
-                <?php if (count($color_array) == 1) : ?>
-                    <a class="title-show title-margin-30" data-title="<?= $value->name ?>"
-                       href="<?= get_current_request($size?array('size' => $size, 'color' => $value->slug):array('color' => $value->slug)) ?>">
-                        <span style="background-color:<?= $color_array[0] ?>;"></span>
-                    </a>
-                <?php else : ?>
-                    <a class="title-show title-margin-30" data-title="<?= $value->name ?>"
-                       href="<?= get_current_request($size?array('size' => $size, 'color' => $value->slug):array('color' => $value->slug)) ?>">>
-                        <span style="background-color:<?= $color_array[0] ?>;"></span>
-                        <span class="product-two-color" style="background-color:<?= $color_array[1] ?>;"></span>
-                    </a>
-                <?php endif; ?>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-</div>
-
 <div class="product-size">
     <p>Размер колес:</p>
     <ul>
-        <?php foreach($products as $value) : ?>
-            <li class="<?= $product->get_id() == $value->get_id()?'active':'' ?>">
-                <a href="<?= get_permalink($value->get_id()) ?>">
-                    <?= get_wheel_size_string($value->get_attribute('wheel_size')) ?>
+        <?php foreach($products_wheel as $item) : ?>
+            <li class="<?= $item->get_attribute('wheel_size') == $product->get_attribute('wheel_size')?'inactive-element':'' ?>">
+                <a href="<?= get_permalink($item->get_id()) ?>">
+                    <?= $item->get_attribute('wheel_size') ?>
                 </a>
             </li>
         <?php endforeach; ?>
     </ul>
 </div>
+
 
 
