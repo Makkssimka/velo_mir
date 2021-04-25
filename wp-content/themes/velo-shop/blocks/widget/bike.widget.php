@@ -1,10 +1,8 @@
 <?php
 
 function bike_widget($bike, $delete_btn = false) {
-    $bike_colors = wc_get_product_terms( $bike->get_id(), 'pa_color');
-    $bike_wheel_size = $bike->get_attribute('wheel_size');
 
-    $image = $bike->get_available_variations()[0]['image']['url'];
+    $image = $bike->get_image_id() ? wp_get_attachment_url($bike->get_image_id()) : get_asset_path("images", "noimage.jpg");
 
     $favorites_array = isset($_SESSION['favorites'])?json_decode($_SESSION['favorites']):array();
     $is_favorites = in_array($bike->get_id(), $favorites_array)?'added-item':'';
@@ -24,25 +22,6 @@ function bike_widget($bike, $delete_btn = false) {
         $btn = '<a href="'. get_permalink($bike->get_id()) .'#description" class="btn btn-green">Подробнее</a>';
     }
 
-    $bike_colors_list = '<ul>';
-    foreach ($bike_colors as $color) {
-        $variant_color = explode('-', $color->description);
-        if (count($variant_color) == 1) {
-            $bike_colors_list .= '
-            <li class="title-show" data-title="'.$color->name.'">
-                <span style="background-color: '.$variant_color[0].';"></span>
-            </li>
-            ';
-        } else {
-            $bike_colors_list .= '
-            <li class="title-show" data-title="'.$color->name.'">
-                <span style="background-color:'.$variant_color[0].';"></span>
-                <span class="semi-color" style="background-color:'.$variant_color[1].';"></span>
-            </li>
-            ';
-        }
-    }
-    $bike_colors_list .= '</ul>';
 
     echo '
         <div class="widget-bike-item">
@@ -52,13 +31,8 @@ function bike_widget($bike, $delete_btn = false) {
                     <img src="'.$image.'">
                 </a>
             </div>
-            <div class="widget-bike-variation-list">
-                <div class="widget-bike-color-variation">
-                    '.$bike_colors_list.'
-                </div>
-            </div>
             <a href="'.get_permalink($bike->get_id()) .'" class="widget-bike-name">
-                Велосипед <span>'.$bike->get_name().', колесо '.get_wheel_size_string($bike_wheel_size).'</span>
+                Велосипед <span>'.$bike->get_name().'</span>
             </a>
             <div class="widget-bike-price">
                 <div class="widget-bike-price-num">'.wc_price($bike->get_price()).'</div>
