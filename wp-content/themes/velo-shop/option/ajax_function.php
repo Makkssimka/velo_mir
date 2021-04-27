@@ -299,7 +299,7 @@ function send_order_callback(){
     $new_order->set_customer_note($comment);
 
     foreach ($cart->get_cart() as $product) {
-        $new_order->add_product(wc_get_product($product['variation_id']), $product['quantity']);
+        $new_order->add_product(wc_get_product($product['product_id']), $product['quantity']);
     }
 
     foreach ($cart->get_coupons() as $coupon) {

@@ -71,7 +71,7 @@ function count_sort($array)
 function send_telegram($order_number){
     $token = '1655959307:AAGzDwGYkWVkBGs9-2J_fAr6Q__-IrrUbGM';
     $ids_user = explode(',', get_option('telegram_ids'));
-    $message = "<b>Новый заказ:</b>№".$order_number;
+    $message = "<b>Новый заказ:</b> №".$order_number;
     $mode = "html";
 
     foreach ($ids_user as $id_user) {

@@ -102,11 +102,12 @@ defined( 'ABSPATH' ) || exit;
                 </td>
             </tr>
             <?php foreach ($order->get_items() as $item) : ?>
-                <?php $product = wc_get_product($item['variation_id']) ?>
+                <?php $product = wc_get_product($item['product_id']) ?>
                 <tr class="email-body__table-row">
                     <td>
                         <?= $item['name'] ?>
                         <p>#<?= $product->get_sku() ?></p>
+                        <p>id 1C: <?= get_post_field('post_content_filtered', $product->get_id()) ?></p>
                     </td>
                     <td style="text-align: center;"><?= $item['quantity'] ?></td>
                     <td style="text-align: center;"><?= wc_price($item['subtotal']) ?></td>
