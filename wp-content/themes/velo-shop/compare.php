@@ -10,49 +10,6 @@ if ($compare_ids) {
         'include' => $compare_ids
     ));
 
-    $image_table = "<tr><td></td>";
-    $price_table = "<tr><td></td>";
-    $title_table = "<tr><td></td>";
-    $add_table = "<tr><td></td>";
-    $brand_table = "<tr class='compare-option'><td>Производитель</td>";
-    $type_velo_table = "<tr class='compare-option'><td>Тип велосипеда</td>";
-    $size_wheel_table = "<tr class='compare-option'><td>Размер колес</td>";
-    $size_frame_table = "<tr class='compare-option'><td>Варианты размера рамы</td>";
-    $material_table = "<tr class='compare-option'><td>Материал</td>";
-    $speed_table = "<tr class='compare-option'><td>Колическтво скоростей</td>";
-    $tormoz_table = "<tr class='compare-option'><td>Тип тормоза</td>";
-    $color_table = "<tr class='compare-option'><td>Варианты цветов</td>";
-    $remove_table = "<tr><td></td>";
-
-    foreach ($bikes as $bike) {
-        $image_table .= "<td><img src='".$bike->get_available_variations()[0]['image']['url']."'></td>";
-        $price_table .= "<td class='compare-price'>".wc_price($bike->get_price())."</td>";
-        $title_table .= "<td class='compare-title'>".$bike->get_title()."</td>";
-        $add_table .= "<td class='compare-btn'><a href='#' class='btn btn-blue'>В корзину</a></td>";
-        $brand_table .= "<td>".$bike->get_attribute('brand')."</td>";
-        $type_velo_table .= "<td>".$bike->get_attribute('type_velo')."</td>";
-        $size_wheel_table .= "<td>".get_wheel_size_string($bike->get_attribute('wheel_size'))."</td>";
-        $size_frame_table .= "<td>".get_frame_size_one_string($bike->get_attribute('frame_size'))."</td>";
-        $material_table .= "<td>".$bike->get_attribute('material')."</td>";
-        $speed_table .= "<td>".$bike->get_attribute('speed')."</td>";
-        $tormoz_table .= "<td>".$bike->get_attribute('tormoz')."</td>";
-        $color_table .= "<td>".$bike->get_attribute('color')."</td>";
-        $remove_table .= "<td class='compare-remove'><a href='?compare_remove&id=".$bike->get_id()."'>убрать из списка</a></td>";
-    }
-
-    $image_table .= "</tr>";
-    $price_table .= "</tr>";
-    $title_table .= "</tr>";
-    $add_table .= "</tr>";
-    $brand_table .= "</tr>";
-    $type_velo_table .= "</tr>";
-    $size_wheel_table .= "</tr>";
-    $size_frame_table .= "</tr>";
-    $material_table .= "</tr>";
-    $speed_table .= "</tr>";
-    $tormoz_table .= "</tr>";
-    $color_table .= "</tr>";
-    $remove_table .= "</tr>";
 }
 
 ?>
@@ -65,33 +22,72 @@ if ($compare_ids) {
         <div class="article-content">
             <div class="article-text">
                 <div class="compare-wrapper">
-                <?php if (count($compare_ids)) : ?>
-                    <table>
-                        <?= $image_table ?>
-                        <?= $title_table ?>
-                        <?= $price_table ?>
-                        <?= $add_table ?>
-                        <?= $color_table ?>
-                        <?= $brand_table ?>
-                        <?= $type_velo_table ?>
-                        <?= $size_wheel_table ?>
-                        <?= $size_frame_table ?>
-                        <?= $material_table ?>
-                        <?= $speed_table ?>
-                        <?= $tormoz_table ?>
-                        <?= $remove_table ?>
-                    </table>
-                <?php else : ?>
-                    <div class="empty">
-                        <img src="<?= get_asset_path('images', 'empty_page.svg') ?>">
-                        <div class="empty-head">Нет товаров для сравнения!</div>
-                        <p>Вы не выбрали ни одного товара для сравенния</p>
-                        <div class="empty-more-btn">
-                            <a class="btn btn-blue" href="/bikes-catalog">Каталог</a>
-                            <a class="btn btn-green" href="/">На главную</a>
+                    <?php if (count($compare_ids)) : ?>
+                        <div class="compare-desc">
+                            <div class="compare-desc-item">Производитель <i class="las la-tag"></i></div>
+                            <div class="compare-desc-item">Тип <i class="las la-biking"></i></div>
+                            <div class="compare-desc-item">Размер колес <i class="las la-ruler-horizontal"></i></div>
+                            <div class="compare-desc-item">Размер рамы <i class="las la-ruler-vertical"></i></div>
+                            <div class="compare-desc-item">Материал <i class="las la-hammer"></i></div>
+                            <div class="compare-desc-item">Скорости <i class="las la-tachometer-alt"></i></div>
+                            <div class="compare-desc-item">Тормоз <i class="las la-shield-alt"></i></div>
+                            <div class="compare-desc-item">Цвет <i class="las la-brush"></i></div>
+                            <div class="compare-desc-item"></div>
                         </div>
-                    </div>
-                <?php endif ?>
+                        <?php foreach ($bikes as $bike) : ?>
+                        <div class="compare-item">
+                            <div class="compare-img">
+                                <img src="<?= get_image_link($bike) ?>" alt="">
+                            </div>
+                            <div class="compare-price">
+                                <?= wc_price($bike->get_price()) ?>
+                            </div>
+                            <div class="compare-title">
+                                <a href="<?= get_permalink($bike->get_id()) ?>" target="_blank"><?= $bike->get_name() ?></a>
+                            </div>
+                            <div class="compare-btn">
+                                <?= add_cart_btn($bike, 'btn-blue') ?>
+                            </div>
+                            <div class="compare-value">
+                                <?= $bike->get_attribute('brand') ?>
+                            </div>
+                            <div class="compare-value">
+                                <?= $bike->get_attribute('type_velo') ?>
+                            </div>
+                            <div class="compare-value">
+                                <?= $bike->get_attribute('wheel_size') ?>
+                            </div>
+                            <div class="compare-value">
+                                <?= $bike->get_attribute('frame_size') ?>
+                            </div>
+                            <div class="compare-value">
+                                <?= $bike->get_attribute('material') ?>
+                            </div>
+                            <div class="compare-value">
+                                <?= $bike->get_attribute('speed') ?>
+                            </div>
+                            <div class="compare-value">
+                                <?= $bike->get_attribute('tormoz') ?>
+                            </div>
+                            <div class="compare-value">
+                                <?= $bike->get_attribute('color') ?>
+                            </div>
+                            <div class="compare-value compare-remove">
+                                <a href='?compare_remove&id=".$bike->get_id()."'>убрать из списка</a>
+                            </div>
+                        </div>
+                        <?php endforeach ?>
+                    <?php else : ?>
+                        <div class="empty">
+                            <img src="<?= get_asset_path('images', 'empty_page.svg') ?>">
+                            <div class="empty-head">Нет товаров для сравнения!</div>
+                            <p>Вы не выбрали ни одного товара для сравенния</p>
+                            <div class="empty-more-btn">
+                                <a class="btn btn-blue" href="/bikes-catalog">Каталог</a>
+                                <a class="btn btn-green" href="/">На главную</a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="article-navbar">

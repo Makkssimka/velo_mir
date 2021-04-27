@@ -8,7 +8,7 @@ function add_cart_btn($product, $class = 'btn-green') {
     $carts_ids = array();
 
     foreach ($cart->get_cart_contents() as $product) {
-        array_push($carts_ids, $product['variation_id']);
+        array_push($carts_ids, $product['product_id']);
     };
 
     if(in_array($id, $carts_ids)) {

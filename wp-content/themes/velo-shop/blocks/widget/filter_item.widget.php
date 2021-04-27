@@ -17,9 +17,9 @@ function filter_item_widget($slug, $title, $attribute, $open_label=false){
         $count_val = isset($value->count)?' <span>('.$value->count.')</span>':'';
 
         if ($slug == 'wheel_size') {
-            $name_val = get_wheel_size_string($name_val);
+            $name_val = $name_val;
         } elseif ($slug == 'frame_size') {
-            $name_val = get_frame_size_string($name_val, false);
+            $name_val = $name_val;
         }
 
         $is_checked = in_array($slug_val, $item_value_list)?'checked':'';

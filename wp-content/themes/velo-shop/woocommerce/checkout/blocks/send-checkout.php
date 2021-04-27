@@ -7,10 +7,10 @@ $cart = WC()->cart;
     <div class="send-checkout-wrapper">
         <div class="checkout-product-list">
     <?php foreach ($cart->get_cart() as $cart_item_key => $cart_item) : ?>
-        <?php $product = wc_get_product($cart_item['variation_id']) ?>
+        <?php $product = wc_get_product($cart_item['product_id']) ?>
         <div class="checkout-product-item">
             <div class="checkout-product-image">
-                <img src="<?= wp_get_attachment_url($product->get_image_id()) ?>">
+                <img src="<?= get_image_link($product) ?>">
             </div>
             <div class="checkout-product-title">
                 <span>

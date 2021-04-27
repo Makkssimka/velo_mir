@@ -59,40 +59,6 @@ function get_max_and_min_price(){
     );
 }
 
-function get_frame_size_string($frame_size, $is_prefix = true){
-    $prefix = $is_prefix?', рама ':'';
-    if (strlen($frame_size) == 3) {
-        return $prefix.$frame_size.' мм';
-    } elseif (strlen($frame_size) < 3 && ctype_digit($frame_size)) {
-        return $prefix . $frame_size . '"';
-    } elseif (strlen($frame_size) >= 4) {
-        return $prefix . $frame_size . '"';
-    } elseif (!$frame_size) {
-        return '';
-    } else {
-        return $prefix.$frame_size;
-    }
-}
-
-function get_frame_size_one_string($frame_sizes) {
-    if (!$frame_sizes) {
-        return 'Нет';
-    }
-    $size_array = explode(', ', $frame_sizes);
-    foreach ($size_array as $index => $item) {
-        $size_array[$index] = get_frame_size_string($item, false);
-    }
-    return implode(', ', $size_array);
-}
-
-function get_wheel_size_string($wheel_size){
-    if (strlen($wheel_size) == 3) {
-        return $wheel_size.' мм';
-    } else {
-        return $wheel_size.'"';
-    }
-}
-
 function count_sort($array)
 {
     usort($array, function($a, $b) {
@@ -130,4 +96,14 @@ function get_color_link($product_id){
                    <span class="product-two-color" style="background-color:'.$hex_array[1].';"></span>
                 </a>';
     }
+}
+
+function get_image_link($product){
+    if ($product->get_image_id()) {
+        $default_image_link = wp_get_attachment_url($product->get_image_id());
+    } else {
+        $default_image_link = get_asset_path("images", "noimage.jpg");
+    }
+
+    return $default_image_link;
 }

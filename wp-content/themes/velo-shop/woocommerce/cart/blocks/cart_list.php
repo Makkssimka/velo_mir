@@ -13,11 +13,10 @@
         <tbody>
         <?php do_action( 'woocommerce_before_cart_contents' ); ?>
         <?php foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) : ?>
-            <?php $product = wc_get_product($cart_item['variation_id']) ?>
-            <?php $parent = wc_get_product($cart_item['product_id']) ?>
+            <?php $product = wc_get_product($cart_item['product_id']) ?>
             <tr>
                 <td class="cart-item-image">
-                    <img src="<?= wp_get_attachment_url($product->get_image_id()) ?>">
+                    <img src="<?= get_image_link($product) ?>">
                 </td>
                 <td class="cart-item-description">
                     <div class="cart-item-name">
@@ -28,12 +27,12 @@
                     </div>
                     <div class="cart-item-attribute">
                         <span>колеса:</span>
-                        <?= get_wheel_size_string($parent->get_attribute('wheel_size')) ?>
+                        <?= $product->get_attribute('wheel_size') ?>
                         <span>цвет:</span>
                         <?= $product->get_attribute('color') ?>
                         <?php if ($product->get_attribute('frame_size')) : ?>
                             <span>рама:</span>
-                            <?= get_frame_size_string($product->get_attribute('frame_size'), false) ?>
+                            <?= $product->get_attribute('frame_size') ?>
                         <?php endif; ?>
                     </div>
                 </td>

@@ -2,8 +2,6 @@
 
 function bike_widget($bike, $delete_btn = false) {
 
-    $image = $bike->get_image_id() ? wp_get_attachment_url($bike->get_image_id()) : get_asset_path("images", "noimage.jpg");
-
     $favorites_array = isset($_SESSION['favorites'])?json_decode($_SESSION['favorites']):array();
     $is_favorites = in_array($bike->get_id(), $favorites_array)?'added-item':'';
 
@@ -28,7 +26,7 @@ function bike_widget($bike, $delete_btn = false) {
             <div class="widget-bike-have">'.$have.'</div>
             <div class="widget-bike-image-wrapper">
                 <a href="'.get_permalink($bike->get_id()) .'">
-                    <img src="'.$image.'">
+                    <img src="'.get_image_link($bike).'">
                 </a>
             </div>
             <a href="'.get_permalink($bike->get_id()) .'" class="widget-bike-name">
