@@ -12,9 +12,9 @@ $products_slider = wc_get_products(array('include' => $ids_array));
             <?php
             $category = current(get_the_terms( $product_slider->get_id(), 'product_cat'));
             $price = $product_slider->get_price();
-            $price_regular = $product_slider->get_variation_regular_price();
+            $price_regular = $product_slider->get_regular_price();
             $sale = round(100 - $price/$price_regular*100);
-            $image_url = wp_get_attachment_url($product_slider->get_image_id());
+            $image_url = get_image_link($product_slider);
             ?>
             <li>
                 <div class="home-slider-desc">

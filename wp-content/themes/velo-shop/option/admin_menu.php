@@ -24,6 +24,7 @@ function register_my_settings(){
     register_setting("social_settings", "vk");
     register_setting("home_settings", "ids_slider");
     register_setting("home_settings", "banner_list");
+    register_setting("home_settings", "is_show_banner");
 }
 
 
@@ -174,6 +175,17 @@ function home_setting_page_template(){ ?>
                     <td>
                         <input name="ids_slider" type="text" id="ids_slider" class="regular-text" placeholder="32, 45, 67, 89" value="<?= get_option('ids_slider') ?>">
                         <p class="description" id="ids_slider">ID товаров для слайдера через запятую</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Показывать баннер
+                    </th>
+                    <td>
+                        <label for="is_show_banner">
+                            <input name="is_show_banner" type="checkbox" id="is_show_banner" checked="<?= get_option('is_show_banner') ?>" value="1">
+                            Показывать баннер в каталоге
+                        </label>
                     </td>
                 </tr>
                 <tr>

@@ -16,7 +16,7 @@ $bikes_array = wc_get_products(array(
     <div class="home-list-product">
         <?php foreach ($bikes_array as $key => $bike): ?>
             <?php bike_widget($bike, true) ?>
-            <?php if ($key == 2 || $key == 12): ?>
+            <?php if ($key == 2 || $key == 12) : ?>
                 <?php catalog_banner_widget($key) ?>
             <?php endif; ?>
         <?php endforeach; ?>
