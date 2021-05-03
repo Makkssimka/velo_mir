@@ -110,7 +110,7 @@ $products_count = count($products);
             <div class="load-progress invisible-element">
                 <i class="las la-spinner"></i><span>идет загрузка...</span>
             </div>
-            <a class="btn btn-blue count-product" href="#">Показать <span><?= $products_count ?></span></a>
+            <a class="btn btn-blue count-product" href="/bikes-catalog">Показать <span><?= $products_count ?></span></a>
         </div>
     </div>
 </div>

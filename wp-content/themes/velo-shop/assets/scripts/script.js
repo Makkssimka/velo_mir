@@ -166,6 +166,17 @@ jQuery(document).ready(function ($) {
           $('.count-product').removeClass('inactive-element');
         }
 
+        result_select.forEach(function (item) {
+          var link = '';
+
+          if (item.type == 'price') {
+            link = '/bikes-catalog?session_filter&' + item.type + '=' + item.value.from + ',' + item.value.to;
+          } else {
+            link = '/bikes-catalog?session_filter&' + item.type + '=' + item.value;
+          }
+
+          $('.count-product').attr('href', link);
+        });
         $('.home-bike-select-wrapper').removeClass('inactive-element');
         $('.show-bike-select-btn .btn').removeClass('invisible-element');
         $('.load-progress').addClass('invisible-element');
