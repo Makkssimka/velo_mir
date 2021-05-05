@@ -46,16 +46,18 @@ $is_compare = in_array($product->get_id(), $compare_array)?'Добавлен к 
     <div class="product-header">
         <?php require_once "blocks/product_gallery.php" ?>
         <div class="product-price">
-            <div class="product-have">
-                <?php if($product->get_stock_status() == 'instock') : ?>
-                <div class="product-have-item">В наличии</div>
-                <?php else : ?>
-                <div class="product-have-item">Нет в наличии</div>
-                <?php endif; ?>
-            </div>
-            <div class="product-price-item">
-                <div class="product-old-price"><?= wc_price($product->get_regular_price()) ?></div>
-                <div class="product-new-price"><?= wc_price($product->get_price()) ?></div>
+            <div class="product-item-price-wrapper">
+                <div class="product-have">
+                    <?php if($product->get_stock_status() == 'instock') : ?>
+                        <div class="product-have-item">В наличии</div>
+                    <?php else : ?>
+                        <div class="product-have-item">Нет в наличии</div>
+                    <?php endif; ?>
+                </div>
+                <div class="product-price-item">
+                    <div class="product-old-price"><?= wc_price($product->get_regular_price()) ?></div>
+                    <div class="product-new-price"><?= wc_price($product->get_price()) ?></div>
+                </div>
             </div>
             <?php require_once  "blocks/product_variation.php" ?>
             <div class="product-button">

@@ -42,7 +42,6 @@ foreach ($products_tag as $item) {
 }
 
 ?>
-
 <div class="product-color">
     <p>цвет:</p>
     <ul>
@@ -54,33 +53,34 @@ foreach ($products_tag as $item) {
     </ul>
 </div>
 
-<?php if (count($products_frame)): ?>
+<div class="product-variation-wrapper">
+    <?php if (count($products_frame)): ?>
+        <div class="product-size">
+            <p>размер рамы:</p>
+            <ul>
+                <?php foreach($products_frame as $item) : ?>
+                    <li class="<?= $item->get_attribute('frame_size') == $product->get_attribute('frame_size')?'inactive-element':'' ?>">
+                        <a href="<?= get_permalink($item->get_id()) ?>">
+                            <?= $item->get_attribute('frame_size') ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif ?>
+
     <div class="product-size">
-        <p>размер рамы:</p>
+        <p>Размер колес:</p>
         <ul>
-            <?php foreach($products_frame as $item) : ?>
-                <li class="<?= $item->get_attribute('frame_size') == $product->get_attribute('frame_size')?'inactive-element':'' ?>">
+            <?php foreach($products_wheel as $item) : ?>
+                <li class="<?= $item->get_attribute('wheel_size') == $product->get_attribute('wheel_size')?'inactive-element':'' ?>">
                     <a href="<?= get_permalink($item->get_id()) ?>">
-                        <?= $item->get_attribute('frame_size') ?>
+                        <?= $item->get_attribute('wheel_size') ?>
                     </a>
                 </li>
             <?php endforeach; ?>
         </ul>
     </div>
-<?php endif ?>
-
-<div class="product-size">
-    <p>Размер колес:</p>
-    <ul>
-        <?php foreach($products_wheel as $item) : ?>
-            <li class="<?= $item->get_attribute('wheel_size') == $product->get_attribute('wheel_size')?'inactive-element':'' ?>">
-                <a href="<?= get_permalink($item->get_id()) ?>">
-                    <?= $item->get_attribute('wheel_size') ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
 </div>
-
 
 
