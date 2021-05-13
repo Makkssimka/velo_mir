@@ -10,6 +10,7 @@
     <div id="app">
         <?php get_template_part('blocks/all/notification') ?>
         <?php get_template_part('blocks/left_menu') ?>
+        <?php get_template_part('blocks/mobile_menu') ?>
         <div class="content">
             <?php get_template_part('blocks/top_sidebar') ?>
             <?php get_template_part('blocks/breadcrumbs') ?>

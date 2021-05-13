@@ -1,7 +1,4 @@
 <div class="left-menu">
-    <div class="logo-menu-small">
-        <?= get_custom_logo(); ?>
-    </div>
     <div class="logo-menu">
         <?= get_custom_logo(); ?>
     </div>

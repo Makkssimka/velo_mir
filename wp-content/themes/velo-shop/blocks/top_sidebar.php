@@ -11,6 +11,24 @@ $compare_array = isset($_SESSION['compare'])?json_decode($_SESSION['compare']):a
 
 ?>
 <div class="top-sidebar">
+    <div class="mobile-top-sidebar">
+        <div class="mobile-menu-open-wrapper">
+            <a href="#">
+                <i class="las la-bars"></i>
+            </a>
+        </div>
+        <div class="mobile-top-sidebar-logo">
+            <?= get_custom_logo(); ?>
+        </div>
+        <div class="mobile-top-sidebar-cart">
+            <a href="/cart">
+                <i class="las la-shopping-cart"></i>
+                <div id="cart_mobile" class="label-number <?= $cart_count?'':'hidden-block' ?>">
+                    <?= $cart_count ?>
+                </div>
+            </a>
+        </div>
+    </div>
     <div class="left-top-sidebar">
         <ul>
             <?php foreach ($telephone_array as $telephone) : ?>
