@@ -15,7 +15,7 @@ $bikes_array = wc_get_products(array(
     <p class="home-block-subheader">Приглашаем Вас посетить наш магазин, расположенный недалеко от станции метро «Савёловская». Здесь вы можете посмотреть на велосипеды вживую и получить консультацию по каждой модели.</p>
     <div class="home-list-product">
         <?php foreach ($bikes_array as $key => $bike): ?>
-            <?php bike_widget($bike, true) ?>
+            <?php bike_widget($bike, false) ?>
             <?php if ($key == 2 || $key == 12) : ?>
                 <?php catalog_banner_widget($key) ?>
             <?php endif; ?>

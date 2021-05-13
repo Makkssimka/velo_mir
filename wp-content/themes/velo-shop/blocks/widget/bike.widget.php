@@ -15,9 +15,9 @@ function bike_widget($bike, $delete_btn = false) {
     }
 
     if($delete_btn){
-        $btn = '<a href="#" data-id="'.$bike->get_id().'" class="btn btn-green favorite-delete">Удалить</a>';
+        $btn = '<a href="#" data-id="'.$bike->get_id().'" class="btn btn-blue favorite-delete">Удалить</a>';
     } else {
-        $btn = '<a href="'. get_permalink($bike->get_id()) .'#description" class="btn btn-green">Подробнее</a>';
+        $btn = '<a href="'. get_permalink($bike->get_id()) .'#description" class="btn btn-blue">Подробнее</a>';
     }
 
 
@@ -40,7 +40,7 @@ function bike_widget($bike, $delete_btn = false) {
                 </ul>
             </div>
             <div class="widget-bike-button">
-                <a href="'. get_permalink($bike->get_id()) .'" class="btn btn-blue">Выбрать</a>
+                '. add_cart_btn($bike).'
                 '.$btn.'
             </div>
         </div>
