@@ -12,7 +12,7 @@ function add_cart_btn($product, $class = 'btn-green') {
     };
 
     if(in_array($id, $carts_ids)) {
-        $btn = '<a class="btn '.$class.'" href="/cart">Товар в корзине</a>';
+        $btn = '<a class="btn '.$class.'" href="/cart">в корзине</a>';
     } else {
         $btn = '<a data-id="'.$id.'" data-name="'.$name.'" class="btn '.$class.' add-cart" href="/cart">в корзину</a>';
     }

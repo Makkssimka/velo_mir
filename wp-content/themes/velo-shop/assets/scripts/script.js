@@ -193,6 +193,11 @@ jQuery(document).ready(function ($) {
   } // Catalog page script
 
 
+  $('.filter-open-wrapper a, #filter_close').click(function (e) {
+    e.preventDefault();
+    $('.catalog-filter-wrapper').toggleClass('catalog-filter-open');
+  });
+
   if ($('.catalog').length) {
     // filter open
     var openFilterText = 'Развернуть';
@@ -522,7 +527,7 @@ jQuery(document).ready(function ($) {
         $('#cart, #cart_mobile').text(count);
         $('#cart, #cart_mobile').removeClass('hidden-block');
         elem.removeClass('inactive-element').removeClass('add-cart');
-        elem.text('Товар в корзине');
+        elem.text('в корзине');
         elem.unbind('click');
       }
     });

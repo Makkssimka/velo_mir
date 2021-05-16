@@ -23,21 +23,23 @@ function bike_widget($bike, $delete_btn = false) {
 
     echo '
         <div class="widget-bike-item">
-            <div class="widget-bike-have">'.$have.'</div>
-            <div class="widget-bike-image-wrapper">
-                <a href="'.get_permalink($bike->get_id()) .'">
-                    <img src="'.get_image_link($bike).'">
+            <div class="widget-bike-body">
+                <div class="widget-bike-have">'.$have.'</div>
+                <div class="widget-bike-image-wrapper">
+                    <a href="'.get_permalink($bike->get_id()) .'">
+                        <img src="'.get_image_link($bike).'">
+                    </a>
+                </div>
+                <a href="'.get_permalink($bike->get_id()) .'" class="widget-bike-name">
+                    Велосипед <span>'.$bike->get_name().'</span>
                 </a>
-            </div>
-            <a href="'.get_permalink($bike->get_id()) .'" class="widget-bike-name">
-                Велосипед <span>'.$bike->get_name().'</span>
-            </a>
-            <div class="widget-bike-price">
-                <div class="widget-bike-price-num">'.wc_price($bike->get_price()).'</div>
-                <ul>
-                    <li><a href="#" class="add-compare title-show '.$is_compare.'" data-title="в сравнение" data-id="'.$bike->get_id().'"><i class="las la-balance-scale-left"></i></a></li>
-                    <li><a href="#" class="add-favorites title-show '.$is_favorites.'" data-title="в избранное" data-id="'.$bike->get_id().'"><i class="lar la-star"></i></a></li>
-                </ul>
+                <div class="widget-bike-price">
+                    <div class="widget-bike-price-num">'.wc_price($bike->get_price()).'</div>
+                    <ul>
+                        <li><a href="#" class="add-compare title-show '.$is_compare.'" data-title="в сравнение" data-id="'.$bike->get_id().'"><i class="las la-balance-scale-left"></i></a></li>
+                        <li><a href="#" class="add-favorites title-show '.$is_favorites.'" data-title="в избранное" data-id="'.$bike->get_id().'"><i class="lar la-star"></i></a></li>
+                    </ul>
+                </div>
             </div>
             <div class="widget-bike-button">
                 '. add_cart_btn($bike).'

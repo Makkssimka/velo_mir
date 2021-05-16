@@ -47,6 +47,7 @@ $have = array(
         <?php filter_item_widget('speed','Кол-во скоростей', $speed, true) ?>
     </div>
     <div class="catalog-filter-footer">
+        <a id="filter_close" href="#>"><i class="las la-arrow-left"></i> закрыть</a>
         <a id="filter_submit" href="#>"><i class="las la-filter"></i> применить</a>
     </div>
 </div>

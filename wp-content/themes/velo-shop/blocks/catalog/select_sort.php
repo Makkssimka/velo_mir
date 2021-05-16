@@ -15,6 +15,11 @@ $value_list = [
 
 ?>
 <div class="catalog-list-sort">
+    <div class="filter-open-wrapper">
+        <a href="#">
+            <i class="las la-filter"></i>
+        </a>
+    </div>
     <div id="sort" class="select-input">
         <div class="select-input-value">
             <span></span>
