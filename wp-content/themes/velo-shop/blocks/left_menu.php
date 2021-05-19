@@ -4,6 +4,10 @@
     </div>
     <nav>
         <?php wp_nav_menu(['theme_location' => 'left_menu', 'container' => false]);?>
-        <?php wp_nav_menu(['theme_location' => 'location_menu', 'container' => false]); ?>
+        <ul class="open-desktop-menu">
+            <li>
+                <a href="#"><span class="las la-arrow-right"></span></a>
+            </li>
+        </ul>
     </nav>
 </div>

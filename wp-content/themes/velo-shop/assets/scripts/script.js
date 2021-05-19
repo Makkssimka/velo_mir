@@ -79,6 +79,17 @@ jQuery(document).ready(function ($) {
     var icon = $('.mobile-menu-open-wrapper i');
     icon.toggleClass('la-bars');
     icon.toggleClass('la-times');
+  }); // Open desktop menu
+
+  $('.left-menu').mouseover(function () {
+    $(this).addClass('left-menu-open');
+  });
+  $('.left-menu').mouseout(function () {
+    $(this).removeClass('left-menu-open');
+  });
+  $('.open-desktop-menu a').click(function (e) {
+    e.preventDefault();
+    $('.left-menu').toggleClass('left-menu-open');
   }); // Index page script
 
   if ($('.home').length) {
