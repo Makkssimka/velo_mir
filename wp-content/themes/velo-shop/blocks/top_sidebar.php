@@ -36,10 +36,12 @@ $compare_array = isset($_SESSION['compare'])?json_decode($_SESSION['compare']):a
             <?php endforeach; ?>
             <li class="top-sidebar-time">
                 <?php foreach ($time_job_array as $time_job) : ?>
-                <?= $time_job['label'] ?> <span><?= $time_job['time'] ?></span>
+                <span class="top-sidebar-row">
+                    <?= $time_job['label'] ?> <span><?= $time_job['time'] ?></span>
+                </span>
                 <?php endforeach; ?>
             </li>
-            <li><a href="#" class="open-modal">Обратный звонок</a></li>
+            <li class="top-side-bar-call"><a href="#" class="open-modal">Обратный звонок</a></li>
         </ul>
         <?php wp_nav_menu(['theme_location' => 'top_menu', 'container' => false, 'menu_class' => 'top-sidebar-menu']);?>
     </div>
