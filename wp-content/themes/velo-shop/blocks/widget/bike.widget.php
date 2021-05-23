@@ -33,6 +33,8 @@ function bike_widget($bike, $delete_btn = false) {
                 <a href="'.get_permalink($bike->get_id()) .'" class="widget-bike-name">
                     Велосипед <span>'.$bike->get_name().'</span>
                 </a>
+            </div>
+            <div class="widget-bike-button">
                 <div class="widget-bike-price">
                     <div class="widget-bike-price-num">'.wc_price($bike->get_price()).'</div>
                     <ul>
@@ -40,8 +42,6 @@ function bike_widget($bike, $delete_btn = false) {
                         <li><a href="#" class="add-favorites title-show '.$is_favorites.'" data-title="в избранное" data-id="'.$bike->get_id().'"><i class="lar la-star"></i></a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="widget-bike-button">
                 '. add_cart_btn($bike).'
                 '.$btn.'
             </div>

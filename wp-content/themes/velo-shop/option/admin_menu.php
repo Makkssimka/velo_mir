@@ -8,6 +8,14 @@ function add_theme_menu_item(){
     add_submenu_page("contact-theme-params", "Настройки статистики", "Статистика", "manage_options", "statistics-theme-params", "statistics_setting_page_template");
     add_submenu_page("contact-theme-params", "Настройки главной страницы", "Главная", "manage_options", "home-theme-params", "home_setting_page_template");
 
+    add_settings_field(
+            "maintenance_mode_id",
+            "Режим разработки",
+            "maintenance_mode_template",
+            "general",
+            "default"
+    );
+
     add_action('admin_init', 'register_my_settings');
 }
 
@@ -25,6 +33,16 @@ function register_my_settings(){
     register_setting("home_settings", "ids_slider");
     register_setting("home_settings", "banner_list");
     register_setting("home_settings", "is_show_banner");
+    register_setting( "general",  "maintenance_mode_active");
+}
+
+function maintenance_mode_template(){
+    ?>
+    <label for="maintenance_mode_active">
+        <input name="maintenance_mode_active" type="checkbox" id="maintenance_mode_active" value="1" <?= get_option('maintenance_mode_active') ? "checked" : "" ?>>
+        Активировать
+    </label>
+    <?php
 }
 
 

@@ -19,17 +19,15 @@ $page_url = get_current_url();
             </a>
         </li>
         <?php endif ?>
-        <?php for ($count = 1; $count <= $count_page; $count++): ?>
-            <?php if ($count == $offset_page): ?>
-            <li>
-                <a href="#" class="inactive"><?= $count ?></a>
-            </li>
-            <?php else: ?>
-            <li>
-                <a href="<?= $page_url.'?page_count='.$count ?>"><?= $count ?></a>
-            </li>
-            <?php endif ?>
-        <?php endfor ?>
+        <li>
+            <form action="" method="get">
+                <input type="text" name="page_count" value="<?= $offset_page ?>">
+            </form>
+        </li>
+        <li class="nav-separator">из</li>
+        <li>
+            <a href="#" class="inactive"><?= $count_page ?></a>
+        </li>
         <?php if ($offset_page+1 <= $count_page): ?>
         <li>
             <a href="<?= $page_url.'?page_count='.($offset_page+1)?>">

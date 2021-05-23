@@ -29,7 +29,8 @@ class FilesImporter
             $price = (string) $item->Цены->Цена->ЦенаЗаЕдиницу;
             $quantity = (string) $item->Количество;
 
-            if ($quantity == 0 || $price == 0) continue;
+            // Для первичной загрузки товаров
+            //if ($quantity <= 0 || $price <= 0) continue;
 
             $this->list[(string) $item->Ид] = new ProductImporter(
                 $id,

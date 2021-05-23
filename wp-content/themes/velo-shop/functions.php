@@ -118,3 +118,13 @@ require_once "option/admin_menu.php";
 
  //Woocommerce files
 require_once "option/wc_new_fields.php";
+
+// Maintenance mode activation
+function wp_maintenance_mode(){
+    if (get_option('maintenance_mode_active') && (!current_user_can('edit_themes') || !is_user_logged_in())){
+        load_template(get_template_directory().'/maintenance.php');
+        die();
+    }
+}
+
+add_action('get_header', 'wp_maintenance_mode');
