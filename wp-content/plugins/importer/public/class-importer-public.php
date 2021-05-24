@@ -130,6 +130,8 @@ class Importer_Public {
             $data = file_get_contents("php://input");
             file_put_contents(IMPORTER_PLUGIN_PATH."/upload/".$filename ,$data);
             echo "success";
+        } elseif ($mode == 'import') {
+            echo "success";
         }
 
         die();

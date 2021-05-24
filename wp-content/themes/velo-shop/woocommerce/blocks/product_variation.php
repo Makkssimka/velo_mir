@@ -1,9 +1,11 @@
 <?php
 
 $tags = wp_get_object_terms( $product->get_id(), 'product_tag');
-$tag = array_shift($tags);
+$tag = array_shift($tags); ?>
 
-$wheel_size = $product->get_attribute('wheel_size');
+<?php if ($tag) : ?>
+
+<?php $wheel_size = $product->get_attribute('wheel_size');
 $color = $product->get_attribute('color');
 
 $products_color = array();
@@ -83,4 +85,4 @@ foreach ($products_tag as $item) {
     </div>
 </div>
 
-
+<?php endif; ?>
