@@ -63,6 +63,14 @@
                 </tr>
                 <tr>
                     <td>
+                        <span class="importer-title">Из них новых</span>
+                    </td>
+                    <td>
+                        <span class="importer-title"><?= $files_import->get_new_counter() ?></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <span class="importer-title">Из них измененна цена</span>
                     </td>
                     <td>
@@ -70,8 +78,16 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                        <span class="importer-title">Из них измененно количество</span>
+                    </td>
+                    <td>
+                        <span class="importer-title"><?= $files_import->get_quantity_change_counter() ?></span>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
-                    <?php if ($files_import->get_test_counter() != $files_import->get_counter()) :?>
+                    <?php if ($files_import->is_update()) :?>
                         <span class="status-not">Требуется обновление базы товаров,</span> нажмите кнопку "Импортировать данные"
                     <?php else: ?>
                         <span class="status-ok">База данных товаров актуальна</span> никаких действий не требуется

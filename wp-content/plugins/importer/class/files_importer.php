@@ -9,6 +9,7 @@ class FilesImporter
     private $old_ids = array();
     private $test_counter = 0;
     private $price_change_counter = 0;
+    private $quantity_change_counter = 0;
     private $new_file_counter = 0;
     private $update_file_counter = 0;
     private $list = array();
@@ -51,24 +52,36 @@ class FilesImporter
 
     public function test_product()
     {
-        global $wpdb;
-        $table_name = $wpdb->prefix."posts";
-
         // Получаем из базы продукты из списка
-        $ids_string = implode("','", $this->ids);
-        $old_product = $wpdb->get_results("SELECT * FROM $table_name WHERE `post_content_filtered` IN ('$ids_string')");
+        $query_args = array(
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'pa_1c-id',
+                    'field'    => 'slug',
+                    'terms'    => $this->ids,
+                    'compare' => 'IN'
+                )
+            )
+        );
+
+        $old_product = wc_get_products($query_args);
         $this->test_counter = count($old_product);
 
-        // Проверяем совпадение цен
+        // Проверяем совпадение цен и количество товаров
         foreach ($old_product as $item) {
             // Собираем список уже добавленных товаров
-            $this->old_ids[] = $item->post_content_filtered;
+            $this->old_ids[] = $item->get_attribute('1c-id');
+
+            $new_product = $this->list[$item->get_attribute('1c-id')];
 
             // Проверяем цены
-            $product = wc_get_product($item->ID);
-            $new_product = $this->list[$item->post_content_filtered];
-            if ($product->get_price() != $new_product->getPrice()) {
+            if ($item->get_price() != $new_product->getPrice()) {
                 $this->price_change_counter++;
+            }
+
+            // Проверяем количество
+            if ($item->get_stock_quantity() != $new_product->getQuantity()) {
+                $this->quantity_change_counter++;
             }
         }
     }
@@ -107,6 +120,25 @@ class FilesImporter
     public function get_update_file_counter()
     {
         return $this->update_file_counter;
+    }
+
+    public function get_quantity_change_counter()
+    {
+        return $this->quantity_change_counter;
+    }
+
+    public function get_new_counter()
+    {
+        return $this->counter - $this->test_counter;
+    }
+
+    public function is_update()
+    {
+        if ($this->get_update_file_counter() || $this->get_price_change_counter() || $this->get_quantity_change_counter()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
