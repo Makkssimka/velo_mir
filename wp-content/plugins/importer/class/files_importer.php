@@ -134,7 +134,7 @@ class FilesImporter
 
     public function is_update()
     {
-        if ($this->get_update_file_counter() || $this->get_price_change_counter() || $this->get_quantity_change_counter()) {
+        if ($this->get_new_file_counter() || $this->get_price_change_counter() || $this->get_quantity_change_counter()) {
             return true;
         } else {
             return false;
