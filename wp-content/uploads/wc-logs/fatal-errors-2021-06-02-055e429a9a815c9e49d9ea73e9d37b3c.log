@@ -1,0 +1,11 @@
+2021-06-02T03:40:04+00:00 CRITICAL Uncaught Error: Class 'Год выпуска' not found in /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/blocks/product_tabs.php:8
+Stack trace:
+#0 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/content-single-product.php(92): require_once()
+#1 /Users/maksimzukovic/Sites/velo/wp-includes/template.php(732): require('/Users/maksimzu...')
+#2 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/Users/maksimzu...', false)
+#3 /Users/maksimzukovic/Sites/velo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(971): wc_get_template_part('content', 'single-product')
+#4 /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce.php(3): woocommerce_content()
+#5 /Users/maksimzukovic/Sites/velo/wp-includes/template-loader.php(106): include('/Users/maksimzu...')
+#6 /Users/maksimzukovic/Sites/velo/wp-blog-header.php(19): require_once('/Users/maksimzu...')
+#7 /Users/maksimzukovic/Sites/v в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/woocommerce/blocks/product_tabs.php на строке 8
+

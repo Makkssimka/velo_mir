@@ -1,0 +1,8 @@
+2021-05-23T18:08:38+00:00 CRITICAL syntax error, unexpected end of file в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/admin_menu.php на строке 258
+
+2021-05-23T18:08:39+00:00 CRITICAL syntax error, unexpected end of file в /Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shop/option/admin_menu.php на строке 258
+
+2021-05-23T19:18:30+00:00 CRITICAL require_once(): Failed opening required 'maintenance.php' (include_path='.:/Applications/MAMP/bin/php/php7.4.2/lib/php') в /Users/maksimzukovic/Sites/velo/wp-includes/template.php на строке 730
+
+2021-05-23T19:19:27+00:00 CRITICAL require_once(): Failed opening required '/Users/maksimzukovic/Sites/velo/wp-content/themes/velo-shopmaintenance.php' (include_path='.:/Applications/MAMP/bin/php/php7.4.2/lib/php') в /Users/maksimzukovic/Sites/velo/wp-includes/template.php на строке 730
+
