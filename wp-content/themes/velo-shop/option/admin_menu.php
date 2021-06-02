@@ -201,7 +201,7 @@ function home_setting_page_template(){ ?>
                     </th>
                     <td>
                         <label for="is_show_banner">
-                            <input name="is_show_banner" type="checkbox" id="is_show_banner" checked="<?= get_option('is_show_banner') ?>" value="1">
+                            <input name="is_show_banner" type="checkbox" id="is_show_banner" <?= get_option('is_show_banner') ? "checked" : "" ?> value="1">
                             Показывать баннер в каталоге
                         </label>
                     </td>

@@ -5,7 +5,7 @@ $desc_array = array();
 $description = explode(";", $product->get_description());
 foreach ($description as $row) {
     $column = explode(" - ", $row);
-    if (!$column[1]) continue;
+    if (count($column) < 2 || !$column[1]) continue;
     $desc_array[] = array(
         'name' => $column[0],
         'value' => $column[1]
@@ -15,7 +15,7 @@ foreach ($description as $row) {
 // Выбираем все аттрибуты продукта
 $attribute_array = array();
 foreach( $product->get_attributes() as $taxonomy => $attribute){
-    if (!isset($attribute->get_terms()[0])) continue;
+    if (!isset($attribute->get_terms()[0]) || $attribute->get_taxonomy_object()->attribute_label == "1с Ид") continue;
     $value = $attribute->get_terms()[0]->name;
     $name = $attribute->get_taxonomy_object()->attribute_label;
     $attribute_array[] = array(

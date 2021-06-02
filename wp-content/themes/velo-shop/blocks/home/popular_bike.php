@@ -22,6 +22,6 @@ $bikes_array = wc_get_products(array(
         <?php endforeach; ?>
     </div>
     <div class="home-block-button">
-        <a href="/bikes-catalog" class="btn btn-green">Весь каталог</a>
+        <a href="/bikes-catalog?session_reset" class="btn btn-green">Весь каталог</a>
     </div>
 </div>
