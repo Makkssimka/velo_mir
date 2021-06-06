@@ -16,3 +16,13 @@ license.txt
 
 /wp-content/uploads
 
+/wp-includes
+/wp-admin
+/wp-content/languages
+/wp-content/plugins/akismet
+/wp-content/plugins/block-data-attribute
+/wp-content/plugins/post-smtp
+/wp-content/plugins/sitemap-by-click5
+/wp-content/plugins/woocommerce
+/wp-content/plugins/wordpress-seo
+/wp-content/plugins/index.php
