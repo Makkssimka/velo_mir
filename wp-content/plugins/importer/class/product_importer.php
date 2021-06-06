@@ -72,8 +72,6 @@ class ProductImporter
 
         $product->set_attributes($this->get_attributes_array());
 
-        //print_r($this->get_attributes_array());
-
         $product->save();
     }
 
@@ -105,32 +103,35 @@ class ProductImporter
         $attributes = array(
             'brand' => $this->brand,
             'material' => $this->material,
-            'color' => 'red',
             'speed' => $this->speed,
             'tormoz' => $this->tormoz,
             'type_velo' => $this->type_velo,
             'wheel_size' => $this->wheel_size,
-            'frame_size' => '10',
-            '1c-id' => $this->id
+            'color' => false,
+            'frame_size' => false,
+            '1c-id' => '1c'
         );
 
         $attr_array = array();
 
         foreach ($attributes as $key => $value) {
-            $attribute_new = new WC_Product_Attribute();
+            $attribute_id = wc_attribute_taxonomy_id_by_name($key);
+            $attribute = new WC_Product_Attribute();
+            $attribute->set_id($attribute_id);
+            $attribute->set_name( 'pa_'.$key );
+            $attribute->set_visible( true );
+            $attribute->set_variation( false );
 
-            $attribute = get_term_by('slug', $value, 'pa_'.$key);
-            $attribute_new->set_id($attribute->term_id);
-            $attribute_new->set_name( 'pa_'.$key);
-            $attribute_new->set_visible( 1 );
-
-            if ($key == 'color' || $key == 'frame_size') {
-                $attribute_new->set_options([]);
+            if ($value == '1c') {
+                $attribute->set_options([$this->id]);
+            } else if ($value) {
+                $term = get_term_by('slug', $value, 'pa_'.$key);
+                $attribute->set_options([$term->name]);
             } else {
-                $attribute_new->set_options([$value]);
+                $attribute->set_options([]);
             }
 
-            $attr_array[] =$attribute_new;
+            $attr_array[] = $attribute;
         }
 
         return $attr_array;

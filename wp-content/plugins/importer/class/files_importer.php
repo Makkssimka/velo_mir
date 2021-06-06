@@ -45,7 +45,7 @@ class FilesImporter
             $wheel_size = isset($product['wheel_size']) ? $product['wheel_size'] : '24';
             $material = isset($product['material']) ? $product['material'] : 'сталь';
             $speed = isset($product['speed']) ? $product['speed'] : '1';
-            $tormoz = isset($product['tormoz']) ? $product['tormoz'] : 'дисковые';
+            $tormoz = isset($product['tormoz']) ? $product['tormoz'] : 'барабанные';
 
             $this->list[$id] = new ProductImporter(
                 $id,
@@ -62,7 +62,6 @@ class FilesImporter
 
             $this->counter++;
             $this->ids[] = $id;
-
         }
     }
 
@@ -85,7 +84,7 @@ class FilesImporter
         foreach ($this->imports->Классификатор->Группы->Группа->Группы->Группа as $category) {
             $brand = explode(' ', $category->Наименование, 2);
             $brand = strtolower($brand[1]);
-            $brand = str_replace(' ', '-', $brand);
+            $brand = str_replace(' ', '_', $brand);
 
             foreach ($category->Группы->Группа as $type_velo) {
                 $id = (string) $type_velo->Ид;
@@ -128,7 +127,7 @@ class FilesImporter
             foreach ($attribute->ВариантыЗначений->Справочник as $value) {
                 $id_value = (string) $value->ИдЗначения;
                 $val_value = (string) $value->Значение;
-                $this->attr_value_list[$id_value] = mb_strtolower($val_value);
+                $this->attr_value_list[$id_value] = str_replace('.', '-', mb_strtolower($val_value));
             }
         }
     }
@@ -157,9 +156,6 @@ class FilesImporter
             foreach ($product->ЗначенияСвойств->ЗначенияСвойства as $attr) {
                 $id_attr = (string) $attr->Ид;
                 $id_attr_val = (string) $attr->Значение;
-
-                if (!isset($this->attr_value_list[$id_attr_val])) continue;
-
                 $this->products_list[$id][$this->attr_name_list[$id_attr]] = $this->attr_value_list[$id_attr_val];
             }
         }
