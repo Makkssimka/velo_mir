@@ -72,7 +72,7 @@ class ProductImporter
 
         $product->set_attributes($this->get_attributes_array());
 
-        $product->save();
+        //$product->save();
     }
 
     public function update()
