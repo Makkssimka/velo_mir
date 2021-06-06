@@ -7,13 +7,25 @@ class ProductImporter
     private $name;
     private $price;
     private $quantity;
+    private $brand;
+    private $type_velo;
+    private $wheel_size;
+    private $material;
+    private $speed;
+    private $tormoz;
 
-    public function __construct($id, $name, $price, $quantity)
+    public function __construct($id, $name, $price, $quantity, $brand, $type_velo, $wheel_size, $material, $speed, $tormoz)
     {
         $this->id = $id;
         $this->name = $name;
         $this->price = $price;
         $this->quantity = $quantity;
+        $this->brand = $brand;
+        $this->type_velo = $type_velo;
+        $this->wheel_size = $wheel_size;
+        $this->material = $material;
+        $this->speed = $speed;
+        $this->tormoz = $tormoz;
     }
 
     /**
@@ -46,6 +58,9 @@ class ProductImporter
         $product->set_virtual('no');
         $product->set_downloadable('no');
 
+        $category = get_term_by('slug', $this->type_velo, 'product_cat');
+        $product->set_category_ids([$category->term_id]);
+
         $product->set_sku(SkuImporter::getGeneratedItemSku());
         $product->set_manage_stock(true);
         $product->set_stock_quantity($this->quantity);
@@ -55,7 +70,9 @@ class ProductImporter
         $product->set_regular_price($this->price*1.2);
         $product->set_sale_price($this->price);
 
-        $product->set_attributes($this->get_attributes_array($this->id));
+        $product->set_attributes($this->get_attributes_array());
+
+        //print_r($this->get_attributes_array());
 
         $product->save();
     }
@@ -83,21 +100,37 @@ class ProductImporter
         $product->save();
     }
 
-    private function get_attributes_array($id_1c)
+    private function get_attributes_array()
     {
-        $attributes = array('brand', 'color', 'frame_size', 'material', 'speed', 'tormoz', 'type_velo', 'wheel_size', '1c-id');
+        $attributes = array(
+            'brand' => $this->brand,
+            'material' => $this->material,
+            'color' => 'red',
+            'speed' => $this->speed,
+            'tormoz' => $this->tormoz,
+            'type_velo' => $this->type_velo,
+            'wheel_size' => $this->wheel_size,
+            'frame_size' => '10',
+            '1c-id' => $this->id
+        );
+
         $attr_array = array();
 
-        foreach ($attributes as $key => $attribute_item) {
-            $attribute = new WC_Product_Attribute();
-            $attribute->set_id( $key + 1 );
-            $attribute->set_name( 'pa_'.$attribute_item );
-            $attribute->set_position( $key + 1 );
-            $attribute->set_visible( true );
-            $attribute->set_variation( false );
-            $attribute->set_options($attribute_item == '1c-id' ? [$id_1c] : []);
+        foreach ($attributes as $key => $value) {
+            $attribute_new = new WC_Product_Attribute();
 
-            $attr_array[] = $attribute;
+            $attribute = get_term_by('slug', $value, 'pa_'.$key);
+            $attribute_new->set_id($attribute->term_id);
+            $attribute_new->set_name( 'pa_'.$key);
+            $attribute_new->set_visible( 1 );
+
+            if ($key == 'color' || $key == 'frame_size') {
+                $attribute_new->set_options([]);
+            } else {
+                $attribute_new->set_options([$value]);
+            }
+
+            $attr_array[] =$attribute_new;
         }
 
         return $attr_array;
@@ -119,7 +152,7 @@ class ProductImporter
             'Тип заднего тормоза - ;'.PHP_EOL.
             'Регулировка седла - Да;'.PHP_EOL.
             'Регулировка руля - Да;'.PHP_EOL.
-            'Материал руля - ';
+            'Материал руля - ;';
     }
 
     private function get_post_excerpt()

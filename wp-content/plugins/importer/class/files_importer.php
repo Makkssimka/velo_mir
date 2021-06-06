@@ -3,7 +3,8 @@
 
 class FilesImporter
 {
-    private $offers_file;
+    private $offers;
+    private $imports;
     private $counter = 0;
     private $ids = array();
     private $old_ids = array();
@@ -13,41 +14,155 @@ class FilesImporter
     private $new_file_counter = 0;
     private $update_file_counter = 0;
     private $list = array();
+    private $price_list = array();
+    private $categories_list = array();
+    private $attr_name_list = array();
+    private $attr_value_list = array();
+    private $products_list = array();
 
     public function __construct()
     {
         $upload_path = IMPORTER_PLUGIN_PATH."upload/";
-        $this->offers_file = $upload_path."offers0_1.xml";
+        $this->offers = simplexml_load_file($upload_path."offers0_1.xml");
+        $this->imports = simplexml_load_file($upload_path."import0_1.xml");
     }
 
     public function get_product()
     {
-        $offers = simplexml_load_file($this->offers_file);
+        $this->generate_products_list();
 
-        foreach ($offers->ПакетПредложений->Предложения->Предложение as $item) {
-            $id = (string) $item->Ид;
-            $name = (string) $item->Наименование;
-            $price = (string) $item->Цены->Цена->ЦенаЗаЕдиницу;
-            $quantity = (string) $item->Количество;
+        foreach ($this->products_list as $key => $product) {
 
             // Для первичной загрузки товаров
-            //if ($quantity <= 0 || $price <= 0) continue;
+            if ($product['price'] <= 0 || $product['quantity'] <= 0) continue;
 
-            $this->list[(string) $item->Ид] = new ProductImporter(
+            $id = $key;
+            $name = $product['name'];
+            $price = $product['price'];
+            $quantity = $product['quantity'];
+            $brand = $product['brand'];
+            $type_velo = isset($product['type_velo']) ? $product['type_velo'] : 'горные';
+            $wheel_size = isset($product['wheel_size']) ? $product['wheel_size'] : '24';
+            $material = isset($product['material']) ? $product['material'] : 'сталь';
+            $speed = isset($product['speed']) ? $product['speed'] : '1';
+            $tormoz = isset($product['tormoz']) ? $product['tormoz'] : 'дисковые';
+
+            $this->list[$id] = new ProductImporter(
                 $id,
                 $name,
                 $price,
-                $quantity
+                $quantity,
+                $brand,
+                $type_velo,
+                $wheel_size,
+                $material,
+                $speed,
+                $tormoz
             );
 
             $this->counter++;
-            $this->ids[] = (string) $item->Ид;
+            $this->ids[] = $id;
+
         }
     }
 
-    public function get_counter()
+    public function generate_price_list()
     {
-        return $this->counter;
+        foreach ($this->offers->ПакетПредложений->Предложения->Предложение as $product) {
+            $id = (string) $product->Ид;
+            $price = (string) $product->Цены->Цена->ЦенаЗаЕдиницу;
+            $quantity = (string) $product->Количество;
+
+            $this->price_list[$id] = [
+                'price' => $price,
+                'quantity' => $quantity
+            ];
+        }
+    }
+
+    public function generate_categories_list()
+    {
+        foreach ($this->imports->Классификатор->Группы->Группа->Группы->Группа as $category) {
+            $brand = explode(' ', $category->Наименование, 2);
+            $brand = strtolower($brand[1]);
+            $brand = str_replace(' ', '-', $brand);
+
+            foreach ($category->Группы->Группа as $type_velo) {
+                $id = (string) $type_velo->Ид;
+                $type_velo = explode(' ', $type_velo->Наименование);
+                $type_velo = mb_strtolower($type_velo[1]);
+
+                $this->categories_list[$id] = [
+                    'brand' => $brand,
+                    'type_velo' => $type_velo
+                ];
+            }
+        }
+    }
+
+    public function generate_attributes_list()
+    {
+        foreach ($this->imports->Классификатор->Свойства->Свойство as $attribute) {
+            $id_name = (string) $attribute->Ид;
+            $val_name = (string) $attribute->Наименование;
+
+            switch ($val_name) {
+                case 'Диаметр колес' :
+                    $val_name = 'wheel_size';
+                    break;
+                case 'Количество скоростей' :
+                    $val_name = 'speed';
+                    break;
+                case 'Тормоза' :
+                    $val_name = 'tormoz';
+                    break;
+                case 'Материал рамы' :
+                    $val_name = 'material';
+                    break;
+            }
+
+            $this->attr_name_list[$id_name] = $val_name;
+
+            if (!$attribute->ВариантыЗначений) continue;
+
+            foreach ($attribute->ВариантыЗначений->Справочник as $value) {
+                $id_value = (string) $value->ИдЗначения;
+                $val_value = (string) $value->Значение;
+                $this->attr_value_list[$id_value] = mb_strtolower($val_value);
+            }
+        }
+    }
+
+    public function generate_products_list()
+    {
+        $this->generate_price_list();
+        $this->generate_categories_list();
+        $this->generate_attributes_list();
+
+        foreach ($this->imports->Каталог->Товары->Товар as $product) {
+            $id = (string) $product->Ид;
+            $name = (string) $product->Наименование;
+            $group_id = (string) $product->Группы->Ид;
+
+            $this->products_list[$id] = [
+                'name' => $name,
+                'price' => $this->price_list[$id]['price'],
+                'quantity' => $this->price_list[$id]['quantity'],
+                'brand' => $this->categories_list[$group_id]['brand'],
+                'type_velo' => $this->categories_list[$group_id]['type_velo'],
+            ];
+
+            if (!$product->ЗначенияСвойств) continue;
+
+            foreach ($product->ЗначенияСвойств->ЗначенияСвойства as $attr) {
+                $id_attr = (string) $attr->Ид;
+                $id_attr_val = (string) $attr->Значение;
+
+                if (!isset($this->attr_value_list[$id_attr_val])) continue;
+
+                $this->products_list[$id][$this->attr_name_list[$id_attr]] = $this->attr_value_list[$id_attr_val];
+            }
+        }
     }
 
     public function test_product()
@@ -102,6 +217,11 @@ class FilesImporter
         }
     }
 
+    public function get_counter()
+    {
+        return $this->counter;
+    }
+
     public function get_test_counter()
     {
         return $this->test_counter;
@@ -134,7 +254,7 @@ class FilesImporter
 
     public function is_update()
     {
-        if ($this->get_new_file_counter() || $this->get_price_change_counter() || $this->get_quantity_change_counter()) {
+        if ($this->get_new_counter() || $this->get_price_change_counter() || $this->get_quantity_change_counter()) {
             return true;
         } else {
             return false;
