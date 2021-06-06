@@ -72,7 +72,7 @@ class ProductImporter
 
         $product->set_attributes($this->get_attributes_array());
 
-        //$product->save();
+        $product->save();
     }
 
     public function update()
@@ -126,7 +126,6 @@ class ProductImporter
                 $attribute->set_options([$this->id]);
             } else if ($value) {
                 $term = get_term_by('slug', $value, 'pa_'.$key);
-                if (!isset($term->name)) print_r($key." | ".$this->id.PHP_EOL);
                 $attribute->set_options([$term->name]);
             } else {
                 $attribute->set_options([]);
