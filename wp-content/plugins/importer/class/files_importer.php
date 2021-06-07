@@ -34,7 +34,7 @@ class FilesImporter
         foreach ($this->products_list as $key => $product) {
 
             // Для первичной загрузки товаров
-            if ($product['price'] <= 0 || $product['quantity'] <= 0) continue;
+            //if ($product['price'] <= 0 || $product['quantity'] <= 0) continue;
 
             $id = $key;
             $name = $product['name'];
@@ -165,6 +165,7 @@ class FilesImporter
     {
         // Получаем из базы продукты из списка
         $query_args = array(
+            'posts_per_page' => -1,
             'tax_query' => array(
                 array(
                     'taxonomy' => 'pa_1c-id',

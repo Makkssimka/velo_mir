@@ -16,13 +16,7 @@ function filter_item_widget($slug, $title, $attribute, $open_label=false){
         $name_val = isset($value->name)?$value->name:$value['name'];
         $count_val = isset($value->count)?' <span>('.$value->count.')</span>':'';
 
-        if ($slug == 'wheel_size') {
-            $name_val = $name_val;
-        } elseif ($slug == 'frame_size') {
-            $name_val = $name_val;
-        }
-
-        $is_checked = in_array($slug_val, $item_value_list)?'checked':'';
+        $is_checked = in_array(mb_strtoupper($slug_val), $item_value_list) || in_array($slug_val, $item_value_list)?'checked':'';
         $list_item .= '
             <div>
                 <input type="checkbox" name="'.$slug.'" id="'.$slug.$slug_val.'" '.$is_checked.' value="'.$slug_val.'">';

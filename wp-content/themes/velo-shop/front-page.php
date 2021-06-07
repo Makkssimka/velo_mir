@@ -1,6 +1,6 @@
 <?php
 
-$products = wc_get_products(array());
+$products = wc_get_products(array('posts_per_page' => -1));
 global $wpdb;
 
 ?>
