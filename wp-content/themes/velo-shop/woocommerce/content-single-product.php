@@ -63,7 +63,7 @@ $is_compare = in_array($product->get_id(), $compare_array)?'Добавлен к 
             <div class="product-button">
                 <?= add_cart_btn($product) ?>
                 <div>
-                    <a class="product-one-click" href="#">купить в один клик</a>
+                    <?= add_one_click_btn($product) ?>
                 </div>
             </div>
             <div class="product-action">
@@ -96,7 +96,7 @@ $is_compare = in_array($product->get_id(), $compare_array)?'Добавлен к 
         </div>
     </div>
     <div class="product-similar">
-        <?php // require_once "blocks/product_similar.php" ?>
+        <?php require_once "blocks/product_similar.php" ?>
     </div>
 </div>
 

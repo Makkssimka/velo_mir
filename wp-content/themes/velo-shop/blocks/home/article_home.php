@@ -7,7 +7,7 @@ $articles = get_posts(array(
 
 <div class="home-block">
     <h2>Полезные <span>статьи</span></h2>
-    <p class="home-block-subheader">Приглашаем Вас посетить наш магазин, расположенный недалеко от станции метро «Савёловская». Здесь вы можете посмотреть на велосипеды вживую и получить консультацию по каждой модели.</p>
+    <p class="home-block-subheader">Мы подготовили для вас ряд статей про правильный выбор велосиредов. Приобретайте себе велосипед осмысленно.</p>
     <div class="sm-wrapper">
         <div class="home-list-article">
             <?php foreach ($articles as $key => $article): ?>

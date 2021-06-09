@@ -56,9 +56,25 @@ jQuery(document).ready(function ($) {
 
     var owlSimilar = $('#similar-carousel').owlCarousel({
       dots: false,
-      items: 5,
       margin: 10,
-      loop: true
+      loop: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        700: {
+          items: 2
+        },
+        1050: {
+          items: 3
+        },
+        1250: {
+          items: 4
+        },
+        1600: {
+          items: 5
+        }
+      }
     });
     $('.similar-caroussel-nav').click(function (e) {
       e.preventDefault();
@@ -185,17 +201,15 @@ jQuery(document).ready(function ($) {
           $('.count-product').removeClass('inactive-element');
         }
 
+        var link = '/bikes-catalog?session_filter';
         result_select.forEach(function (item) {
-          var link = '';
-
           if (item.type == 'price') {
-            link = '/bikes-catalog?session_filter&' + item.type + '=' + item.value.from + ',' + item.value.to;
+            link += '&' + item.type + '=' + item.value.from + ',' + item.value.to;
           } else {
-            link = '/bikes-catalog?session_filter&' + item.type + '=' + item.value;
+            link += '&' + item.type + '=' + item.value;
           }
-
-          $('.count-product').attr('href', link);
         });
+        $('.count-product').attr('href', link);
         $('.home-bike-select-wrapper').removeClass('inactive-element');
         $('.show-bike-select-btn .btn').removeClass('invisible-element');
         $('.load-progress').addClass('invisible-element');
@@ -540,6 +554,28 @@ jQuery(document).ready(function ($) {
         elem.removeClass('inactive-element').removeClass('add-cart');
         elem.text('в корзине');
         elem.unbind('click');
+      }
+    });
+  }); //Купить в один клик
+
+  $('.product-one-click').click(function (e) {
+    e.preventDefault(); //Ajax добавить в корзину
+
+    var id = $(this).data('id');
+    var elem = $(this);
+    $.ajax({
+      type: 'POST',
+      url: window.wp_data.ajax_url,
+      data: {
+        action: 'add_to_cart',
+        id: id
+      },
+      beforeSend: function beforeSend() {
+        elem.addClass('inactive-element');
+        elem.text('Добавляем');
+      },
+      success: function success(response) {
+        location.assign('/checkout');
       }
     });
   }); // Работа с корзиной
