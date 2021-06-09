@@ -36,7 +36,6 @@ $have = array(
         <span>Фильтры</span> <a href="?session_reset"><i class="las la-times"></i> сбросить</a>
     </div>
     <div class="catalog-filter-body">
-        <?php filter_item_widget('have', 'Наличие', $have) ?>
         <?php require "filter_rage_price.php" ?>
         <?php filter_item_widget('brand','Производители', $brands, true) ?>
         <?php filter_item_widget('wheel_size','Размеры колес', $wheel_sizes, true) ?>

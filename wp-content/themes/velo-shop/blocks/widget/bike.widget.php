@@ -8,12 +8,6 @@ function bike_widget($bike, $delete_btn = false) {
     $compare_array = isset($_SESSION['compare'])?json_decode($_SESSION['compare']):array();
     $is_compare = in_array($bike->get_id(), $compare_array)?'added-item':'';
 
-    if($bike->get_stock_status() == 'instock') {
-        $have = '<div class="widget-bike-have widget-bike-have-item" > В наличии </div >';
-    } else {
-        $have = '<div class="widget-bike-have widget-bike-nohave-item" > Под заказ </div >';
-    }
-
     if($delete_btn){
         $btn = '<a href="#" data-id="'.$bike->get_id().'" class="btn btn-blue favorite-delete">Удалить</a>';
     } else {
@@ -24,7 +18,6 @@ function bike_widget($bike, $delete_btn = false) {
     echo '
         <div class="widget-bike-item">
             <div class="widget-bike-body">
-                <div class="widget-bike-have">'.$have.'</div>
                 <div class="widget-bike-image-wrapper">
                     <a href="'.get_permalink($bike->get_id()) .'">
                         <img src="'.get_image_link($bike).'">
