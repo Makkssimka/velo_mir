@@ -62,10 +62,8 @@ class ProductImporter
         $product->set_category_ids([$category->term_id]);
 
         $product->set_sku(SkuImporter::getGeneratedItemSku());
-        $product->set_manage_stock(true);
-        $product->set_stock_quantity($this->quantity);
 
-        $product->set_stock_status($this->quantity ? 'instock' : 'outofstock');
+        $product->set_stock_status('instock');
 
         $product->set_regular_price($this->price*1.2);
         $product->set_sale_price($this->price);

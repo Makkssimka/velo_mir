@@ -34,7 +34,7 @@ class FilesImporter
         foreach ($this->products_list as $key => $product) {
 
             // Для первичной загрузки товаров
-            //if ($product['price'] <= 0 || $product['quantity'] <= 0) continue;
+            if ($product['price'] <= 0 || $product['quantity'] <= 0) continue;
 
             $id = $key;
             $name = $product['name'];
@@ -127,7 +127,10 @@ class FilesImporter
             foreach ($attribute->ВариантыЗначений->Справочник as $value) {
                 $id_value = (string) $value->ИдЗначения;
                 $val_value = (string) $value->Значение;
-                $this->attr_value_list[$id_value] = str_replace('.', '-', mb_strtolower($val_value));
+                $val_value = str_replace('.', '-', mb_strtolower($val_value));
+                $val_value = str_replace(' ', '-', $val_value);
+                $this->attr_value_list[$id_value] = $val_value;
+                $this->attr_value_list[$id_value] = $val_value;
             }
         }
     }
