@@ -59,11 +59,19 @@ function get_max_and_min_price(){
     );
 }
 
-function count_sort($array)
+function terms_sort($array, $sort_by = "name")
 {
-    usort($array, function($a, $b) {
-        return $a->name > $b->name ? 1 : -1;
-    });
+    if ($sort_by == "name") {
+        usort($array, function ($a, $b) {
+            return $a->name > $b->name ? 1 : -1;
+        });
+    } else {
+        usort($array, function ($a, $b) {
+            return $a->count < $b->count ? 1 : -1;
+        });
+    }
+
+
 
     return $array;
 }

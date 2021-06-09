@@ -11,13 +11,13 @@ $speed = get_terms('pa_speed', $options);
 
 
 // сортировка массивов параметров
-$brands = count_sort($brands);
-$wheel_sizes = count_sort($wheel_sizes);
-$frame_size = count_sort($frame_size);
-$material = count_sort($material);
-$types = count_sort($types);
-$tormozs = count_sort($tormozs);
-$speed = count_sort($speed);
+$brands = terms_sort($brands, 'count');
+$wheel_sizes = terms_sort($wheel_sizes);
+$frame_size = terms_sort($frame_size);
+$material = terms_sort($material, 'count');
+$types = terms_sort($types, 'count');
+$tormozs = terms_sort($tormozs, 'count');
+$speed = terms_sort($speed);
 
 $have = array(
     array(
