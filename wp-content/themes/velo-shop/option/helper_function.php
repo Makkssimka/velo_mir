@@ -62,7 +62,7 @@ function get_max_and_min_price(){
 function count_sort($array)
 {
     usort($array, function($a, $b) {
-        return $a->count < $b->count ? 1 : -1;
+        return $a->name > $b->name ? 1 : -1;
     });
 
     return $array;

@@ -1,7 +1,7 @@
 <?php
 
 $options = array('hide_empty' => false);
-$brands = get_terms('pa_brand', $options);
+$brands = get_terms('pa_brand', array('hide_empty' => true));
 $wheel_sizes = get_terms('pa_wheel_size', $options);
 $frame_size = get_terms('pa_frame_size', $options);
 $material = get_terms('pa_material', $options);
