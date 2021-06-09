@@ -86,7 +86,6 @@ $is_compare = in_array($product->get_id(), $compare_array)?'Добавлен к 
             </div>
         </div>
     </div>
-    <?php require_once "blocks/product_option.php" ?>
     <div id="description" class="product-desription">
         <div class="product-decription-left">
             <?php require_once "blocks/product_tabs.php" ?>
