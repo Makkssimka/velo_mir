@@ -34,7 +34,7 @@ class FilesImporter
         foreach ($this->products_list as $key => $product) {
 
             // Для первичной загрузки товаров
-            //if ($product['price'] <= 0 || $product['quantity'] <= 0) continue;
+            if ($product['price'] <= 0 || $product['quantity'] <= 0) continue;
 
             $id = $key;
             $name = $product['name'];
