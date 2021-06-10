@@ -8,6 +8,7 @@ $material = get_terms('pa_material', $options);
 $types = get_terms('pa_type_velo', $options);
 $tormozs = get_terms('pa_tormoz', $options);
 $speed = get_terms('pa_speed', $options);
+$colors = get_terms('pa_color', array('hide_empty' => true));
 
 
 // сортировка массивов параметров
@@ -18,6 +19,7 @@ $material = terms_sort($material, 'count');
 $types = terms_sort($types, 'count');
 $tormozs = terms_sort($tormozs, 'count');
 $speed = terms_sort($speed);
+$colors = terms_sort($colors, 'count');
 
 $have = array(
     array(
@@ -41,6 +43,7 @@ $have = array(
         <?php filter_item_widget('wheel_size','Размеры колес', $wheel_sizes, true) ?>
         <?php filter_item_widget('type_velo', 'Назначение', $types, true) ?>
         <?php filter_item_widget('material', 'Материал', $material) ?>
+        <?php filter_item_widget('color', 'Цвет', $colors) ?>
         <?php filter_item_widget('frame_size','Размеры рамы', $frame_size, true) ?>
         <?php filter_item_widget('tormoz','Тип тормоза', $tormozs, true) ?>
         <?php filter_item_widget('speed','Кол-во скоростей', $speed, true) ?>
