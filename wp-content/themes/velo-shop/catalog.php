@@ -67,13 +67,23 @@ if ($filter_value) {
 $products_obj = wc_get_products($args);
 $products = $products_obj->products;
 
+$title_types = '';
+if (isset($filter_value->type_velo)) {
+    foreach ($filter_value->type_velo as $key => $slug) {
+        $term = get_term_by('slug', $slug, 'pa_type_velo');
+        $term_name = preg_replace('/е$/', 'х', $term->name);
+        $term_name = mb_strtolower($term_name);
+        $title_types .= ($key) ? ', '.$term_name : $term_name;
+    }
+}
+
 ?>
 
 <div class="content-main catalog">
     <?php require_once "blocks/catalog/filter_catalog.php" ?>
     <div class="catalog-list-wrapper">
         <div class="catalog-list-header">
-            <h1>Каталог велосипедов</h1>
+            <h1>Каталог <?= $title_types ?> велосипедов</h1>
             <?php require_once "blocks/catalog/select_sort.php" ?>
         </div>
         <div class="catalog-list-body">
