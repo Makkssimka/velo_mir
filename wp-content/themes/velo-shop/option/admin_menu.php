@@ -33,6 +33,7 @@ function register_my_settings(){
     register_setting("home_settings", "ids_slider");
     register_setting("home_settings", "banner_list");
     register_setting("home_settings", "is_show_banner");
+    register_setting("home_settings", "is_show_develop");
     register_setting( "general",  "maintenance_mode_active");
 }
 
@@ -193,6 +194,17 @@ function home_setting_page_template(){ ?>
                     <td>
                         <input name="ids_slider" type="text" id="ids_slider" class="regular-text" placeholder="32, 45, 67, 89" value="<?= get_option('ids_slider') ?>">
                         <p class="description" id="ids_slider">ID товаров для слайдера через запятую</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        Сайт в разработке
+                    </th>
+                    <td>
+                        <label for="is_show_develop">
+                            <input name="is_show_develop" type="checkbox" id="is_show_develop" <?= get_option('is_show_develop') ? "checked" : "" ?> value="1">
+                            Вывести предупреждение
+                        </label>
                     </td>
                 </tr>
                 <tr>

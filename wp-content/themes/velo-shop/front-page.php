@@ -9,6 +9,7 @@ global $wpdb;
 <div class="content-main home">
 
     <?php require_once "blocks/home/slider_home.php" ?>
+    <?php require_once "blocks/home/alert_home.php" ?>
     <?php require_once "blocks/home/bike_select.php" ?>
     <?php require_once "blocks/home/info-grey.php" ?>
     <?php require_once "blocks/home/popular_bike.php" ?>
