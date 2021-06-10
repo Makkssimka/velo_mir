@@ -13,8 +13,9 @@ class ProductImporter
     private $material;
     private $speed;
     private $tormoz;
+    private $frame_size;
 
-    public function __construct($id, $name, $price, $quantity, $brand, $type_velo, $wheel_size, $material, $speed, $tormoz)
+    public function __construct($id, $name, $price, $quantity, $brand, $type_velo, $wheel_size, $material, $speed, $tormoz, $frame_size)
     {
         $this->id = $id;
         $this->name = $name;
@@ -26,6 +27,7 @@ class ProductImporter
         $this->material = $material;
         $this->speed = $speed;
         $this->tormoz = $tormoz;
+        $this->frame_size = $frame_size;
     }
 
     /**

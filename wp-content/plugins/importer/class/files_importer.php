@@ -34,7 +34,7 @@ class FilesImporter
         foreach ($this->products_list as $key => $product) {
 
             // Для первичной загрузки товаров
-            if ($product['price'] <= 0 || $product['quantity'] <= 0) continue;
+            //if ($product['price'] <= 0 || $product['quantity'] <= 0) continue;
 
             $id = $key;
             $name = $product['name'];
@@ -46,6 +46,7 @@ class FilesImporter
             $material = isset($product['material']) ? $product['material'] : 'сталь';
             $speed = isset($product['speed']) ? $product['speed'] : '1';
             $tormoz = isset($product['tormoz']) ? $product['tormoz'] : 'барабанные';
+            $frame_size = isset($product['frame_size']) ? $product['frame_size'] : '';
 
             $this->list[$id] = new ProductImporter(
                 $id,
@@ -57,7 +58,8 @@ class FilesImporter
                 $wheel_size,
                 $material,
                 $speed,
-                $tormoz
+                $tormoz,
+                $frame_size
             );
 
             $this->counter++;
