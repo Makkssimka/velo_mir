@@ -90,18 +90,17 @@ function send_telegram($order_number){
 
 function get_color_link($product_id){
     $colors = wc_get_product_terms($product_id, "pa_color" );
-    $color_object = array_shift($colors);
-    $color_desc = $color_object->description;
 
-    $hex_array = explode('-', $color_desc);
-    if (count($hex_array) == 1) {
-        return '<a class="title-show title-margin-30" data-title="'.$color_object->name.'" href="'.get_permalink($product_id).'">
-                   <span style="background-color:'.$hex_array[0].';"></span>
+    if (count($colors) == 2) {
+        $color_name = mb_strtolower($colors[0]->name."-".$colors[1]->name);
+        return '<a class="title-show title-margin-30" data-title="'.$color_name.'" href="'.get_permalink($product_id).'">
+                   <span style="background-color:'.$colors[0]->description.';"></span>
+                   <span class="product-two-color" style="background-color:'.$colors[1]->description.';"></span>
                 </a>';
     } else {
-        return '<a class="title-show title-margin-30" data-title="'.$color_object->name.'" href="'.get_permalink($product_id).'">
-                   <span style="background-color:'.$hex_array[0].';"></span>
-                   <span class="product-two-color" style="background-color:'.$hex_array[1].';"></span>
+        $color_name = mb_strtolower($colors[0]->name);
+        return '<a class="title-show title-margin-30" data-title="'.$color_name.'" href="'.get_permalink($product_id).'">
+                   <span style="background-color:'.$colors[0]->description.';"></span>
                 </a>';
     }
 }
