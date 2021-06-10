@@ -91,6 +91,8 @@ function send_telegram($order_number){
 function get_color_link($product_id){
     $colors = wc_get_product_terms($product_id, "pa_color" );
 
+    if (!$colors) return '';
+
     if (count($colors) == 2) {
         $color_name = mb_strtolower($colors[0]->name."-".$colors[1]->name);
         return '<a class="title-show title-margin-30" data-title="'.$color_name.'" href="'.get_permalink($product_id).'">
