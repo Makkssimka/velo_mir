@@ -14,8 +14,9 @@ class ProductImporter
     private $speed;
     private $tormoz;
     private $frame_size;
+    private $color;
 
-    public function __construct($id, $name, $price, $quantity, $brand, $type_velo, $wheel_size, $material, $speed, $tormoz, $frame_size)
+    public function __construct($id, $name, $price, $quantity, $brand, $type_velo, $wheel_size, $material, $speed, $tormoz, $frame_size, $color)
     {
         $this->id = $id;
         $this->name = $name;
@@ -28,6 +29,7 @@ class ProductImporter
         $this->speed = $speed;
         $this->tormoz = $tormoz;
         $this->frame_size = $frame_size;
+        $this->color = $color;
     }
 
     /**
@@ -114,7 +116,7 @@ class ProductImporter
             'tormoz' => $this->tormoz,
             'type_velo' => $this->type_velo,
             'wheel_size' => $this->wheel_size,
-            'color' => false,
+            'color' => isset($this->color) ? $this->color : false,
             'frame_size' => isset($this->frame_size) ? $this->frame_size : false,
             '1c-id' => '1c'
         );

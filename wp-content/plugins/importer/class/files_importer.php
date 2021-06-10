@@ -47,6 +47,7 @@ class FilesImporter
             $speed = isset($product['speed']) ? $product['speed'] : '1';
             $tormoz = isset($product['tormoz']) ? $product['tormoz'] : 'барабанные';
             $frame_size = isset($product['frame_size']) ? $product['frame_size'] : '';
+            $color = isset($product['color']) ? $product['color'] : '';
 
             $this->list[$id] = new ProductImporter(
                 $id,
@@ -59,7 +60,8 @@ class FilesImporter
                 $material,
                 $speed,
                 $tormoz,
-                $frame_size
+                $frame_size,
+                $color
             );
 
             $this->counter++;
@@ -122,6 +124,9 @@ class FilesImporter
                     break;
                 case 'Размер рамы' :
                     $val_name = 'frame_size';
+                    break;
+                case 'Цвет' :
+                    $val_name = 'color';
                     break;
             }
 
