@@ -63,7 +63,12 @@ class ProductImporter
 
         $product->set_sku(SkuImporter::getGeneratedItemSku());
 
+        $product->set_manage_stock(true);
+        $product->set_stock_quantity($this->quantity);
+
+        $product->set_stock_status($this->quantity ? 'instock' : 'outofstock');
         $product->set_stock_status('instock');
+
 
         $product->set_regular_price($this->price*1.2);
         $product->set_sale_price($this->price);
@@ -93,6 +98,8 @@ class ProductImporter
         $product->set_sale_price($this->price);
         $product->set_stock_quantity($this->quantity);
 
+        $product->set_attributes($this->get_attributes_array());
+
         $product->save();
     }
 
@@ -106,7 +113,7 @@ class ProductImporter
             'type_velo' => $this->type_velo,
             'wheel_size' => $this->wheel_size,
             'color' => false,
-            'frame_size' => false,
+            'frame_size' => isset($this->frame_size) ? $this->frame_size : false,
             '1c-id' => '1c'
         );
 
