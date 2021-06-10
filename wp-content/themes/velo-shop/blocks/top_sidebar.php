@@ -41,7 +41,9 @@ $compare_array = isset($_SESSION['compare'])?json_decode($_SESSION['compare']):a
                 </span>
                 <?php endforeach; ?>
             </li>
+            <?php if (get_option('call_show')) : ?>
             <li class="top-side-bar-call"><a href="#" class="open-modal">Обратный звонок</a></li>
+            <?php endif; ?>
         </ul>
         <?php wp_nav_menu(['theme_location' => 'top_menu', 'container' => false, 'menu_class' => 'top-sidebar-menu']);?>
     </div>

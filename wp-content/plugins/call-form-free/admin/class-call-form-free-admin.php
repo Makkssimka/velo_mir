@@ -184,6 +184,7 @@ class Call_Form_Free_Admin {
 	public function register_call_form_settings(){
         register_setting("call-form-settings", "emails");
         register_setting("call-form-settings", "telegram_ids");
+        register_setting("call-form-settings", "call_show");
     }
 
 }

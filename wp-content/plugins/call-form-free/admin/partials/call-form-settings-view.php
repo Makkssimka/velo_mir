@@ -22,6 +22,17 @@
                         <p class="description" id="telegram_ids">Список id для рассылки заявок в telegram, через запятую</p>
                     </td>
                 </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="call_show">Форма обратной связи</label>
+                    </th>
+                    <td>
+                        <label for="call_show">
+                            <input name="call_show" type="checkbox" id="call_show" <?= get_option('call_show') ? "checked" : "" ?> value="1">
+                            Показать форму обратной связи
+                        </label>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <?php submit_button() ?>

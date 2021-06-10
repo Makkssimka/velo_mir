@@ -21,7 +21,9 @@ $inst_url = get_option('instagram');
             </div>
             <?php endforeach; ?>
             </li>
+            <?php if (get_option('call_show')) : ?>
             <li><a href="#" class="open-modal">Обратный звонок</a></li>
+            <?php endif; ?>
         </ul>
     </div>
     <div class="right-bottom-sidebar">
